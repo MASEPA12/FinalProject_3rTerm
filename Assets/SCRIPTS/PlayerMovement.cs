@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (crouchPressed)
         {
-            animator.SetBool("isSteady", false); //ja no esta`dret 
+            animator.SetBool("isSteady", false); //ja no està dret 
 
         }
         if (!crouchPressed)
@@ -50,8 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        rb.AddForce(transform.forward * walkingForce * forwardInput); //Move forwad
+        rb.AddForce(transform.forward * walkingForce * forwardInput); //Move forward
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * horizontalInput);//rotate body
+
         //IN progress
         if (forwardInput != 0)
         {
