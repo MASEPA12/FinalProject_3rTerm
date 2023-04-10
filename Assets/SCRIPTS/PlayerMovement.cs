@@ -34,47 +34,64 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        bool crouchPressed = Input.GetKey("c");
-        forwardInput = Input.GetAxis("Vertical"); //Check if W or S is pressed
-        horizontalInput = Input.GetAxis("Horizontal"); //Check if A o D is pressed
-
-        if (crouchPressed)
-        {
-            animator.SetBool("isSteady", false); //ja no està dret 
-
-        }
-        if (!crouchPressed)
-        {
-            animator.SetBool("isSteady", true); //si no pitj, està dret
-            //rb.AddForce(Vector3.forward * walkingForce, ForceMode.Force);
-
-        }
 
         rb.AddForce(transform.forward * walkingForce * forwardInput); //Move forward
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * horizontalInput);//rotate body
 
-        //IN progress
-        if (forwardInput != 0)
+        //CROUCH
+        if (Input.GetKey(KeyCode.E))
         {
-            animator.SetBool("isRunning", true);
+            animator.SetBool("isSteady", false); //ja no esta`dret  
+            animator.SetBool("isRunning", false); //ja no esta`dret  
         }
-        else {
-            animator.SetBool("isRunning", false);
+        if (!Input.GetKey(KeyCode.E))
+        {
+            animator.SetBool("isSteady", true); //si no pitj, està dret
+            //rb.AddForce(Vector3.forward * walkingForce, ForceMode.Force);
         }
-        
 
-        if (Input.GetKeyDown(KeyCode.Space)) //bota
+        //JUMPING
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-
             animator.SetBool("isJumping", true);
-
         }
-
         if (!Input.GetKey(KeyCode.Space))
         {
             animator.SetBool("isJumping", false);
         }
 
+        //RUNNING
+        if (Input.GetKey(KeyCode.W))
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        //PATADA
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            animator.SetBool("isPegando", true);
+
+        }
+        if (!Input.GetKeyDown(KeyCode.F))
+        {
+            animator.SetBool("isPegando", false);
+        }
+
+        //SHOOTING
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("isShooting", true);
+        }
+        if (!Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("isShooting", false);
+        }
     }
+
 }
+
