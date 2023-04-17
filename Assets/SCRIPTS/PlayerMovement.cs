@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput; //Rotation movement
     public float rotationSpeed = 6.5f; //Rotation speed
 
+    public Vector3 movement;
     //private bool isJumping;
     public Animator animator;
 
@@ -32,12 +33,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
+        horizontalInput = Input.GetAxis("Horizontal"); //side movement
 
+        /*
+        movement = new Vector3(horizontalInput, 0, forwardInput);
+        transform.Translate(movement * walkingForce * Time.deltaTime);
+        */
+        
         rb.AddForce(transform.forward * walkingForce * forwardInput); //Move forward
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * horizontalInput);//rotate body
-
+        
         //CROUCH
         if (Input.GetKey(KeyCode.E))
         {
@@ -66,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
         }
-        else
+        else  
         {
             animator.SetBool("isRunning", false);
         }
@@ -90,6 +98,16 @@ public class PlayerMovement : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Q))
         {
             animator.SetBool("isShooting", false);
+        }
+
+        //RUNNING BCK
+        if (Input.GetKey(KeyCode.S))
+        {
+            animator.SetBool("isRunningBck", true);
+        }
+        else
+        {
+            animator.SetBool("isRunningBck", false);
         }
     }
 
