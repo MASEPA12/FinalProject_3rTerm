@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
     //private bool isJumping;
     public Animator animator;
 
+    //Animation Booleans
+    private bool isJumping = false;
+    private bool isSteady = true;
+    private bool isRunning = false;
+    private bool isRuningBack = false;
+    private bool isKicking = false;
+    private bool isShotting = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -35,6 +43,92 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //CROUCH
+        if (Input.GetKey(KeyCode.E))
+        {
+            isSteady = false;
+        }
+        if (!Input.GetKey(KeyCode.E))
+        {
+            isSteady = true;
+        }
+
+        //JUMPING
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = true;
+            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+        }
+        if (!Input.GetKey(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+
+        //RUNNING
+        if (Input.GetKey(KeyCode.W))
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+
+        //PATADA
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isKicking = true;
+        }
+        if (!Input.GetKeyDown(KeyCode.F))
+        {
+            isKicking = false;
+        }
+
+        //SHOOTING
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            isShotting = true;
+        }
+        if (!Input.GetKeyDown(KeyCode.Q))
+        {
+            isShotting = false;
+        }
+
+        //RUNNING BCK
+        if (Input.GetKey(KeyCode.S))
+        {
+            isRuningBack = true;
+        }
+        else
+        {
+            isRuningBack = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
+        horizontalInput = Input.GetAxis("Horizontal"); //side movement
+        
+        /*
+        movement = new Vector3(horizontalInput, 0, forwardInput);
+        transform.Translate(movement * walkingForce * Time.deltaTime);
+        */
+
+        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
+    }
+
+    private void LateUpdate()
+    {
+        animator.SetBool("isSteady", isSteady);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isPegando", isKicking);
+        animator.SetBool("isShooting", isShotting);
+        animator.SetBool("isRunningBck", isRuningBack);
+        
+        /*
         //CROUCH
         if (Input.GetKey(KeyCode.E))
         {
@@ -98,20 +192,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isRunningBck", false);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
-        horizontalInput = Input.GetAxis("Horizontal"); //side movement
-        
-        /*
-        movement = new Vector3(horizontalInput, 0, forwardInput);
-        transform.Translate(movement * walkingForce * Time.deltaTime);
         */
-
-        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
     }
 
 }
