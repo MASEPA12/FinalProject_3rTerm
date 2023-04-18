@@ -33,19 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
-        horizontalInput = Input.GetAxis("Horizontal"); //side movement
-        
-        /*
-        movement = new Vector3(horizontalInput, 0, forwardInput);
-        transform.Translate(movement * walkingForce * Time.deltaTime);
-        */
-
-        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
-        
         //CROUCH
         if (Input.GetKey(KeyCode.E))
         {
@@ -74,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isRunning", true);
         }
-        else  
+        else
         {
             animator.SetBool("isRunning", false);
         }
@@ -109,6 +98,20 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isRunningBck", false);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
+        horizontalInput = Input.GetAxis("Horizontal"); //side movement
+        
+        /*
+        movement = new Vector3(horizontalInput, 0, forwardInput);
+        transform.Translate(movement * walkingForce * Time.deltaTime);
+        */
+
+        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
     }
 
 }
