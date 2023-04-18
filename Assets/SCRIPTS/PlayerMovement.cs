@@ -37,14 +37,14 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical"); //movement front/back 
         horizontalInput = Input.GetAxis("Horizontal"); //side movement
-
+        
         /*
         movement = new Vector3(horizontalInput, 0, forwardInput);
         transform.Translate(movement * walkingForce * Time.deltaTime);
         */
-        
-        rb.AddForce(transform.forward * walkingForce * forwardInput); //Move forward
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * horizontalInput);//rotate body
+
+        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
         
         //CROUCH
         if (Input.GetKey(KeyCode.E))
