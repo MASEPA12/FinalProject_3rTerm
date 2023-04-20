@@ -46,7 +46,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cb8c180d7a8a9b3409565019fb3ffa90, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: d4b8be23f642e044cac750aaa92610db,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -129,7 +130,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7b5580c6680bf5b44a43b71c127f8dc4, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: 2ef4b2ad2b416664da71116a7b752240,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -588,7 +590,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.97
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-4935922158725992969
@@ -913,7 +915,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a1fe6991c1ddea443abcb997a3458ad0, type: 2}
+  m_Motion: {fileID: -203655887218126122, guid: 0342ec1d05b22ec4cb40ce50b65fe8da,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1166,38 +1169,38 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
   - m_Name: isJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isRunning
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isPegando
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isShooting
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isRunningBck
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1306,16 +1309,16 @@ AnimatorStateMachine:
     m_Position: {x: 380, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4712731711432190250}
-    m_Position: {x: -480, y: 250, z: 0}
+    m_Position: {x: -300, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6266296338518527886}
-    m_Position: {x: -380, y: 170, z: 0}
+    m_Position: {x: -260, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5435503019091898312}
-    m_Position: {x: -650, y: 340, z: 0}
+    m_Position: {x: -470, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2480059851178059279}
-    m_Position: {x: 180, y: 110, z: 0}
+    m_Position: {x: 200, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8978558081012112028}
     m_Position: {x: 610, y: 180, z: 0}
@@ -1333,7 +1336,7 @@ AnimatorStateMachine:
     m_Position: {x: -250, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -749663814668459763}
-    m_Position: {x: -1100, y: 270, z: 0}
+    m_Position: {x: -740, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4493325216513070071}
     m_Position: {x: -500, y: 420, z: 0}
@@ -1354,7 +1357,7 @@ AnimatorStateMachine:
     m_Position: {x: -450, y: -180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9101249718160103620}
-    m_Position: {x: -200, y: -160, z: 0}
+    m_Position: {x: -220, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8680735694960170774}
     m_Position: {x: -260, y: -320, z: 0}
@@ -2062,7 +2065,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.7580645
   m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &6797303245790138040

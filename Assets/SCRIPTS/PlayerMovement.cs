@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         rb = GetComponent<Rigidbody>();
-        //isJumping = false;
+        animator.SetBool("isSteady", isSteady);
 
     }
 
