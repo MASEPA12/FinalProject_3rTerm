@@ -1452,7 +1452,6 @@ GameObject:
   - component: {fileID: 6137922820626234493}
   - component: {fileID: 6137922820626234490}
   - component: {fileID: 6137922820626234488}
-  - component: {fileID: 6137922820626234491}
   m_Layer: 0
   m_Name: GIRL
   m_TagString: Untagged
@@ -1504,7 +1503,7 @@ Animator:
   m_GameObject: {fileID: 6480435329323860246}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aebb409506732c64eac1a760e9c7b822, type: 2}
+  m_Controller: {fileID: 9100000, guid: b876aa63ec936d54c840b72187a3cf03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1531,24 +1530,6 @@ MonoBehaviour:
   jumpingForce: 100
   rotationSpeed: 50
   movement: {x: 0, y: 0, z: 0}
-  animator: {fileID: 0}
---- !u!114 &6137922820626234491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6480435329323860246}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4faf3c0eeedb28c4ba81daba2a5e54c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  walkingForce: 0.5
-  jumpingForce: 0.2
-  audioSource: {fileID: 0}
-  prova1: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &6497366970271031885
 GameObject:

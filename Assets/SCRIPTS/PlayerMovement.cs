@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 6.5f; //Rotation speed
 
     public Vector3 movement;
-    //private bool isJumping;
     public Animator animator;
 
     //Animation Booleans
@@ -48,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSteady = false;
         }
-        if (!Input.GetKey(KeyCode.E))
+        else
         {
             isSteady = true;
         }
@@ -59,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
         }
-        if (!Input.GetKey(KeyCode.Space))
+        else
         {
             isJumping = false;
         }
@@ -79,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isKicking = true;
         }
-        if (!Input.GetKeyDown(KeyCode.F))
+        else
         {
             isKicking = false;
         }
@@ -89,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isShotting = true;
         }
-        if (!Input.GetKeyDown(KeyCode.Q))
+        else
         {
             isShotting = false;
         }

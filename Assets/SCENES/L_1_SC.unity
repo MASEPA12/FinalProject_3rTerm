@@ -2312,6 +2312,11 @@ PrefabInstance:
       propertyPath: jumpingForce
       value: 700
       objectReference: {fileID: 0}
+    - target: {fileID: 6137922820626234490, guid: 06e34804d0f9a2c43a643b00b3dff529,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b876aa63ec936d54c840b72187a3cf03, type: 2}
     - target: {fileID: 6480435329323860246, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_Name
