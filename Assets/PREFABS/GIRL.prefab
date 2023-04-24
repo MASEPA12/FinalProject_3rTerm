@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   walkingForce: 5
-  jumpingForce: 100
+  jumpingForce: 700
   rotationSpeed: 50
   movement: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
