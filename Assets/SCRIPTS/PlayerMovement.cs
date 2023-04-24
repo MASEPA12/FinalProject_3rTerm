@@ -108,13 +108,19 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical"); //movement front/back 
         horizontalInput = Input.GetAxis("Horizontal"); //side movement
-        
+
         /*
         movement = new Vector3(horizontalInput, 0, forwardInput);
         transform.Translate(movement * walkingForce * Time.deltaTime);
         */
-
-        rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        if (forwardInput < 0 || !isSteady)
+        {
+            rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        }
+        else {
+            rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+        }
+        
         rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
     }
 
