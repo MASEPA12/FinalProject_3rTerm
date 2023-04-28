@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Collectable
   - bread
+  - appleRED
+  - appleGREEN
+  - meat
   layers:
   - Default
   - TransparentFX
