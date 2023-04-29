@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
     //power ups
     public int secondsToWaitAppleRed = 5;
 
-    
+    //actual position
+    public Vector3 pos;
 
     void Start()
     {
@@ -57,7 +58,9 @@ public class PlayerMovement : MonoBehaviour
         gameManagerScript.counterSliderPanel.SetActive(false);
         gameManagerScript.appleRedIsOn = false;
 
-        gameManagerScript.isBig = false; 
+        gameManagerScript.isBig = false;
+
+        pos = transform.position;
     }
 
     private void Update()
@@ -121,6 +124,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isRuningBack = false;
+        }
+
+        if (transform.position != pos) //if the player has started moving, will start to hungry
+        {
+            StartCoroutine(gameManagerScript.LooseFoodTimer());
         }
     }
 

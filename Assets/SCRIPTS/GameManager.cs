@@ -9,7 +9,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int points;
+    public int points = 25; //INITIAL VALOR TO FACILITE THE PLAYER 
     public Slider foodCounterSlider;
 
     //counter power ups
@@ -25,25 +25,36 @@ public class GameManager : MonoBehaviour
     //script conections
     public PlayerMovement playerMovementScript;
 
+
+    
+
     private void Start()
     {
+        Debug.Log($"{points}");
+
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
+        
+    }
+
+
+
+    private void UpdateFoodCounter()
+    {
+        foodCounterSlider.value = points;
+        Debug.Log($"{points}");
     }
 
     public IEnumerator LooseFoodTimer()
     {
         while (true)
         {
-
+            points--;
+            UpdateFoodCounter();
+            yield return new WaitForSeconds(5); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, GAME OVER
         }
     }
 
-    //function to update food counter slider
-    private void UpdateFoodCounter() 
-    {
-        foodCounterSlider.value = points;
-    }
 
     public void DestroyRecollectable(Collider other1,string recollectableName,int pointsToSum)
     {
