@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
         playerMovementScript = FindObjectOfType<PlayerMovement>();
     }
 
+    public IEnumerator LooseFoodTimer()
+    {
+        while (true)
+        {
+
+        }
+    }
+
     //function to update food counter slider
     private void UpdateFoodCounter() 
     {
