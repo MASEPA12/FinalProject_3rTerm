@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /*
  Script that controls the player movement, animation and 
@@ -33,7 +34,16 @@ public class PlayerMovement : MonoBehaviour
 
     //scripts conections
     GameManager gameManagerScript;
-    public int points2;
+
+
+    //recollectable variables
+    private int breadPoints = 1;
+    private int meatPoints = 5;
+
+    //power ups
+    public int secondsToWaitAppleRed = 5;
+
+    
 
     void Start()
     {
@@ -44,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
 
+        gameManagerScript.counterSliderPanel.SetActive(false);
+        gameManagerScript.appleRedIsOn = false;
     }
 
     private void Update()
@@ -137,22 +149,25 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //string bread = "bread";
-        //string meet = "meet";
+        string bread = "bread";
+        string meet = "meet";
+        string appleRed = "appleRed";
 
-        //això era per provar només
-        if (other.CompareTag("bread"))
+        gameManagerScript.DestroyRecollectable(other, meet, meatPoints);
+        gameManagerScript.DestroyRecollectable(other, bread, breadPoints);
+
+        if (other.CompareTag(appleRed) && gameManagerScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
-            Destroy(other.gameObject); //destroy bread prefab
-            gameManagerScript.points++; //update food score
-            Debug.Log($"has sumat {gameManagerScript.points} punts");
-            //play animation de quan menja // particles play
+            Debug.Log("entre");
+            Destroy(other.gameObject);
+            transform.localScale = new Vector3(2, 2, 2); //x2 player scale
+            StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
+
         }
-        //gameManagerScript.DestroyRecollectable(other, bread, 1);
-        //gameManagerScript.DestroyRecollectable(other, meet, 2);
 
 
     }
+
 
 }
 
