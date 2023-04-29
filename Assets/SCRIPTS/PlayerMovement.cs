@@ -31,8 +31,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isKicking = false;
     private bool isShotting = false;
 
+    //scripts conections
+    GameManager gameManagerScript;
+    public int points2;
+
     void Start()
     {
+        gameManagerScript = FindObjectOfType<GameManager>();
+
         animator = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
         rb = GetComponent<Rigidbody>();
@@ -109,10 +115,6 @@ public class PlayerMovement : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical"); //movement front/back 
         horizontalInput = Input.GetAxis("Horizontal"); //side movement
 
-        /*
-        movement = new Vector3(horizontalInput, 0, forwardInput);
-        transform.Translate(movement * walkingForce * Time.deltaTime);
-        */
         if (forwardInput < 0 || !isSteady)
         {
             rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
@@ -132,72 +134,24 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isPegando", isKicking);
         animator.SetBool("isShooting", isShotting);
         animator.SetBool("isRunningBck", isRuningBack);
-        
-        /*
-        //CROUCH
-        if (Input.GetKey(KeyCode.E))
-        {
-            animator.SetBool("isSteady", false); //ja no esta`dret  
-            animator.SetBool("isRunning", false); //ja no esta`dret  
-        }
-        if (!Input.GetKey(KeyCode.E))
-        {
-            animator.SetBool("isSteady", true); //si no pitj, està dret
-            //rb.AddForce(Vector3.forward * walkingForce, ForceMode.Force);
-        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //string bread = "bread";
+        //string meet = "meet";
 
-        //JUMPING
-        if (Input.GetKeyDown(KeyCode.Space))
+        //això era per provar només
+        if (other.CompareTag("bread"))
         {
-            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-            animator.SetBool("isJumping", true);
+            Destroy(other.gameObject); //destroy bread prefab
+            gameManagerScript.points++; //update food score
+            Debug.Log($"has sumat {gameManagerScript.points} punts");
+            //play animation de quan menja // particles play
         }
-        if (!Input.GetKey(KeyCode.Space))
-        {
-            animator.SetBool("isJumping", false);
-        }
+        //gameManagerScript.DestroyRecollectable(other, bread, 1);
+        //gameManagerScript.DestroyRecollectable(other, meet, 2);
 
-        //RUNNING
-        if (Input.GetKey(KeyCode.W))
-        {
-            animator.SetBool("isRunning", true);
-        }
-        else
-        {
-            animator.SetBool("isRunning", false);
-        }
 
-        //PATADA
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            animator.SetBool("isPegando", true);
-
-        }
-        if (!Input.GetKeyDown(KeyCode.F))
-        {
-            animator.SetBool("isPegando", false);
-        }
-
-        //SHOOTING
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            animator.SetBool("isShooting", true);
-        }
-        if (!Input.GetKeyDown(KeyCode.Q))
-        {
-            animator.SetBool("isShooting", false);
-        }
-
-        //RUNNING BCK
-        if (Input.GetKey(KeyCode.S))
-        {
-            animator.SetBool("isRunningBck", true);
-        }
-        else
-        {
-            animator.SetBool("isRunningBck", false);
-        }
-        */
     }
 
 }

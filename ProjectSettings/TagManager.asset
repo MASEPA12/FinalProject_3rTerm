@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Collectable
   - bread
-  - appleRED
+  - meet
+  - appleRed
+  - appleGreen
   - appleGREEN
-  - meat
   layers:
   - Default
   - TransparentFX
