@@ -17,13 +17,18 @@ public class GameManager : MonoBehaviour
     public Slider timeCounterPoweUpSlider;
     public GameObject counterSliderPanel;
 
-    //powear up bools
+    //power up bools
     public bool appleRedIsOn;
+    public bool isBig;
+    public bool isNormalScale;
 
+    //script conections
+    public PlayerMovement playerMovementScript;
 
     private void Start()
     {
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
+        playerMovementScript = FindObjectOfType<PlayerMovement>();
     }
 
     //function to update food counter slider
@@ -46,9 +51,11 @@ public class GameManager : MonoBehaviour
             }
     }
 
+    
+
     public IEnumerator LocalScaleTransformer(int secondsToWait)
     {
-
+        playerMovementScript.Scale(2);
         appleRedIsOn = true;
 
         counterSliderPanel.SetActive(true);
@@ -62,7 +69,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine("Counter"); // posam enmarxa es contador enrrere
 
         yield return new WaitForSeconds(secondsToWait);
-        transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+
+        Debug.Log("aaaaa");
 
         appleRedIsOn = false;
     }
@@ -79,6 +88,8 @@ public class GameManager : MonoBehaviour
             if(time == 0)
             {
                 counterSliderPanel.SetActive(false);
+                playerMovementScript.Scale(1.5f);
+
             }
             yield return new WaitForSeconds(0.5f); //sait 30 seconds to low the number
         }

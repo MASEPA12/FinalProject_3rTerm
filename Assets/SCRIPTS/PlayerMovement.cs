@@ -56,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
 
         gameManagerScript.counterSliderPanel.SetActive(false);
         gameManagerScript.appleRedIsOn = false;
+
+        gameManagerScript.isBig = false; 
     }
 
     private void Update()
@@ -147,6 +149,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isShooting", isShotting);
         animator.SetBool("isRunningBck", isRuningBack);
     }
+    public void Scale(float num)
+    {
+        transform.localScale = new Vector3(num, num, num);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         string bread = "bread";
@@ -160,7 +167,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("entre");
             Destroy(other.gameObject);
-            transform.localScale = new Vector3(2, 2, 2); //x2 player scale
+
+
             StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
 
         }
