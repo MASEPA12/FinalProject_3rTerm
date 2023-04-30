@@ -47,10 +47,12 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LooseFoodTimer()
     {
-        while (points > 0) //Player has points
+        while (true) //Player has points
         {
-            points--;
-            UpdateFoodCounter();
+            if (points > 0) { //Player still has points
+                points--;
+                UpdateFoodCounter();
+            }
             yield return new WaitForSeconds(5); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, GAME OVER
         }
     }

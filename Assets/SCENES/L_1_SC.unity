@@ -8393,7 +8393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9490821b45a614186c5fafd5d83edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
+  points: 10
   foodCounterSlider: {fileID: 1969945203}
   time: 0
   timeCounterPoweUpSlider: {fileID: 210816610}
@@ -10393,6 +10393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137922820626234488, guid: 06e34804d0f9a2c43a643b00b3dff529,
+        type: 3}
+      propertyPath: jumpingForce
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 6480435329323860246, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}

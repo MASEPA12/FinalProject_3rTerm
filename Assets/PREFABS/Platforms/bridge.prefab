@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4379416625869705342}
   - component: {fileID: 822201199840747483}
   - component: {fileID: 3210500197653719825}
+  - component: {fileID: -3276086407206857442}
   m_Layer: 0
   m_Name: bridge
   m_TagString: Untagged
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-3276086407206857442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002856310844885700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.034003, y: 0.81536007, z: 10}
+  m_Center: {x: 4.9999986, y: 9.242319, z: 5}

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float walkingForce = 0.5f;
 
     public float jumpingForce = 0.2f;
-    private float gravityModifier = 1.5f;
+    private float gravityModifier = 1.7f;
 
     //Speed variables
     private float forwardInput; //Forward and backwar move
@@ -61,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         gameManagerScript.isBig = false;
 
         pos = transform.position;
+
+        StartCoroutine(gameManagerScript.LooseFoodTimer());
     }
 
     private void Update()
@@ -126,10 +128,13 @@ public class PlayerMovement : MonoBehaviour
             isRuningBack = false;
         }
 
+        /**
         if (transform.position != pos) //if the player has started moving, will start to hungry
         {
             StartCoroutine(gameManagerScript.LooseFoodTimer());
+            
         }
+        */
     }
 
     private void FixedUpdate()
