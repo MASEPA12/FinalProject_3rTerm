@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LooseFoodTimer()
     {
-        while (true)
+        while (points > 0) //Player has points
         {
             points--;
             UpdateFoodCounter();
@@ -114,6 +114,4 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
 }
