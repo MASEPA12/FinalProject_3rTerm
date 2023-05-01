@@ -21,6 +21,14 @@ public class recollectableMovement : MonoBehaviour
         if (playerMovement.isInTheSphere == true) //if the player is near the recollectable, particles play
         {
             transform.Rotate(Vector3.up);
+
+            if (gameObject.CompareTag("bread"))
+            {
+                /*això no funciona :( lo que volia fer és que si s'objecte és meet
+                 * es color de ses partícles sigui red, si és una poma de colorines o algo
+                 * recollectableParticles.main.startColor = Color.red*/
+            }
+            //això tampoc funciona :(( sa sphere per lo menos sí que funciona
             recollectableParticles.Play();
         }
         else //if it's not, do not play
