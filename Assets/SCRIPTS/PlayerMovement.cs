@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 /*
  Script that controls the player movement, animation and 
@@ -45,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
 
     //actual position
     public Vector3 pos;
+
+    //sphere
+    public float sphereRadius = 5;
+    public bool isInTheSphere = false;
+    public LayerMask recollectableLayerMask;
 
     void Start()
     {
@@ -128,13 +134,24 @@ public class PlayerMovement : MonoBehaviour
             isRuningBack = false;
         }
 
-        /**
-        if (transform.position != pos) //if the player has started moving, will start to hungry
+        /* if there's any recollectable inside the sphere 
+         * (només mira sa layer de recollectables, hem de mirar mem si se pot instanciar només a una capa)*/
+        if (Physics.CheckSphere(transform.position, sphereRadius,recollectableLayerMask))
         {
-            StartCoroutine(gameManagerScript.LooseFoodTimer());
-            
+            Debug.Log($"IS IN THE SPHERE");
+            isInTheSphere = true;
         }
-        */
+        else
+        {
+            //Debug.Log($"IS NOT INS THE SPHERE");
+            isInTheSphere = false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, sphereRadius);
     }
 
     private void FixedUpdate()

@@ -7,22 +7,25 @@ as well as instantiate some recollectables in random spots */
 
 public class recollectableMovement : MonoBehaviour
 {
-    public ParticleSystem breadParticles;
-    public ParticleSystem meetParticles;
-    public ParticleSystem appleRedParticles;
-    public ParticleSystem appleParticles;
-
+    public ParticleSystem recollectableParticles;
+    public PlayerMovement playerMovement;
+   
 
     void Start()
     {
-        if (/*recollectable is in player view (sphere) &&*/ gameObject.CompareTag("bread"))
-        {
-            breadParticles.Play();
-        }
+        playerMovement = FindObjectOfType<PlayerMovement>(); 
     }
 
     void Update()
     {
-        
+        if (playerMovement.isInTheSphere == true) //if the player is near the recollectable, particles play
+        {
+            transform.Rotate(Vector3.up);
+            recollectableParticles.Play();
+        }
+        else //if it's not, do not play
+        {
+            recollectableParticles.Stop();
+        }
     }
 }
