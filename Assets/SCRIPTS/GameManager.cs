@@ -21,16 +21,24 @@ public class GameManager : MonoBehaviour
     public bool appleRedIsOn;
     public bool isBig;
     public bool isNormalScale;
+    public bool isGameOver = false;
 
     //script conections
     public PlayerMovement playerMovementScript;
 
+    //sounds
+    public AudioClip gameOverAudioClip; //renou de quan perd
+    public AudioClip jumpAudioclip; //renou de quan bota
+    public AudioClip shootedAudioclip;//renou de quan li han pegat
+    public AudioSource audioSource;
 
+    //particles
+    public ParticleSystem jumpingParticles;
     
 
     private void Start()
     {
-        Debug.Log($"{points}");
+        audioSource = GetComponent<AudioSource>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
@@ -115,5 +123,21 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f); //sait 30 seconds to low the number
         }
 
+    }
+
+    public void ItIsGameOver() //funcition to revise if it's game over
+    {
+        if(points  <= 0)
+        {
+            isGameOver = true;
+        }
+        if(isGameOver == true)
+        {
+            Time.timeScale = 0;
+            //gameOverPanel.SetActive(true);
+
+            //audiosource.audiclip = gameOverSound;
+            //audiosource.Paley()
+        }
     }
 }
