@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
 
     //particles
     public ParticleSystem jumpingParticles;
-    
+
+    //random power ups in a random place of an especific zone
+    public BoxCollider powerUpZone1;
+    public GameObject[] powerUpArray;
 
     private void Start()
     {
@@ -42,9 +45,8 @@ public class GameManager : MonoBehaviour
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
-        
-    }
 
+    }
 
 
     private void UpdateFoodCounter()
@@ -140,4 +142,21 @@ public class GameManager : MonoBehaviour
             //audiosource.Paley()
         }
     }
+
+    //this function calculates a rondom pos in the box collider
+    public Vector3 RandomPosInZone(BoxCollider box)
+    {
+        //asign the size of the box
+        float boxSizeX = box.size.x;
+        float boxSizeY = box.size.y;
+        float boxSizeZ = box.size.z;
+
+        float randomPosX = Random.Range(0, boxSizeX);
+        float randomPosY = Random.Range(0, boxSizeY);
+        float randomPosZ = Random.Range(0, boxSizeZ);
+
+        return new Vector3(randomPosX, randomPosY, randomPosZ);
+    }
+    
+
 }
