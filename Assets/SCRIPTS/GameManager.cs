@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
     }
 
     
-
     public IEnumerator LocalScaleTransformer(int secondsToWait)
     {
         playerMovementScript.Scale(2);
