@@ -9,6 +9,7 @@ TagManager:
   - appleRed
   - appleGreen
   - appleGREEN
+  - floor
   layers:
   - Default
   - TransparentFX

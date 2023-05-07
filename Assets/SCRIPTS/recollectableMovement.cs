@@ -22,14 +22,7 @@ public class recollectableMovement : MonoBehaviour
         if (Physics.CheckSphere(transform.position, sphereRadius, playerLayer)) //if the player is near the recollectable, the recollectable rotates and particles play
         {
             transform.Rotate(Vector3.up);
-
-            if (gameObject.CompareTag("bread"))
-            {
-                /*això no funciona :( lo que volia fer és que si s'objecte és meet
-                 * es color de ses partícles sigui red, si és una poma de colorines o algo
-                 * recollectableParticles.main.startColor = Color.red*/
-            }
-            //això tampoc funciona :(( sa sphere per lo menos sí que funciona
+            //play sound de que hi ha un panesito per recollir
             recollectableParticles.Play();
         }
         else //if it's not, do not play
@@ -41,6 +34,6 @@ public class recollectableMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, 2);
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
 }

@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         if(isGameOver == true)
         {
             Time.timeScale = 0;
+            Debug.Log("YOUR HAVE LOST");
             //gameOverPanel.SetActive(true);
 
             //audiosource.audiclip = gameOverSound;

@@ -186,6 +186,12 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
 
         }
+
+        if (other.CompareTag("floor"))
+        {
+            //set active the game over panel
+            Debug.Log("YOU HAVE LOST");
+        }
     }
 }
 
