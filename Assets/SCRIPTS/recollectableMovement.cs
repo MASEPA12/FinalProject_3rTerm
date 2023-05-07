@@ -9,7 +9,8 @@ public class recollectableMovement : MonoBehaviour
 {
     public ParticleSystem recollectableParticles;
     public PlayerMovement playerMovement;
-   
+    public LayerMask playerLayer;
+    public int sphereRadius = 3;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class recollectableMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerMovement.isInTheSphere == true) //if the player is near the recollectable, particles play
+        if (Physics.CheckSphere(transform.position, sphereRadius, playerLayer)) //if the player is near the recollectable, the recollectable rotates and particles play
         {
             transform.Rotate(Vector3.up);
 
@@ -35,5 +36,11 @@ public class recollectableMovement : MonoBehaviour
         {
             recollectableParticles.Stop();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 2);
     }
 }

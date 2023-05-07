@@ -137,31 +137,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isRuningBack = false;
         }
-
-        /* if there's any recollectable inside the sphere 
-         * (només mira sa layer de recollectables, hem de mirar mem si se pot instanciar només a una capa)*/
-        if (Physics.CheckSphere(transform.position, sphereRadius1,recollectableLayerMask))
-        {
-            Debug.Log($"IS IN THE SPHERE");
-            isInTheSphere = true;
-        }
-        else
-        {
-            //Debug.Log($"IS NOT INS THE SPHERE");
-            isInTheSphere = false;
-        }
-
-        //if the player is near the box zone were the power up is going to instantiate, instanciate the power up
-        if (Physics.CheckSphere(transform.position, sphereRadius2, powerUpsLayerMask)) 
-        {       //de moment només ho instancia a una zona, faltaria fer que se instancii a sa zona que està aprop :))
-            Instantiate(gameManagerScript.powerUpArray[Random.Range(0, gameManagerScript.powerUpArray.Length)], gameManagerScript.RandomPosInZone(gameManagerScript.powerUpZone1), Quaternion.identity);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, sphereRadius1);
     }
 
     private void FixedUpdate()
@@ -208,14 +183,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("entre");
             Destroy(other.gameObject);
 
-
             StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
 
         }
-
-
     }
-
-
 }
 

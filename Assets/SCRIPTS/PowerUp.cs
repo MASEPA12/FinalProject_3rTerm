@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* this script determine the power up mecanic and it's UI */
+
 public class PowerUp : MonoBehaviour
 {
     //random power ups in a random place of an especific zone
