@@ -142,20 +142,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //this function calculates a rondom pos in the box collider
-    public Vector3 RandomPosInZone(BoxCollider box)
-    {
-        //asign the size of the box
-        float boxSizeX = box.size.x;
-        float boxSizeY = box.size.y;
-        float boxSizeZ = box.size.z;
-
-        float randomPosX = Random.Range(0, boxSizeX);
-        float randomPosY = Random.Range(0, boxSizeY);
-        float randomPosZ = Random.Range(0, boxSizeZ);
-
-        return new Vector3(randomPosX, randomPosY, randomPosZ);
-    }
     
 
 }
