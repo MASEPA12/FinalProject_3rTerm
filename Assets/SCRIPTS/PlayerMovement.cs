@@ -194,9 +194,21 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("YOU HAVE LOST");
         }
 
-        if (other.CompareTag("Finish")) {
+        //If player
+        if (other.CompareTag("Finish")){//&& points >= 100) {
             gameManagerScript.IsHasWin();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")){
+            gameManagerScript.UpdateLife(-1);
+            rb.AddForce(Vector3.up * 300, ForceMode.Impulse); //Vertcal knockback
+            rb.AddForce(Vector3.back * 700, ForceMode.Impulse); //horizontal force
+        }
+    }
+
+
 }
 

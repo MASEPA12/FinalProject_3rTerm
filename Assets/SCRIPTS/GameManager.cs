@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public bool isWin = false;
 
+    public int lifes = 5;
+
     //script conections
     public PlayerMovement playerMovementScript;
 
@@ -150,6 +152,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("You Won");
         //Return level menu
     }
-    
+
+    public void UpdateLife(int num) { //
+        if (lifes > 0)
+        {
+            lifes += num;
+        }
+        else {
+            IsGameOver();
+        }
+        
+        Debug.Log($" Lifepoints: {lifes}");
+    }
 
 }
