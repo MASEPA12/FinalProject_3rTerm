@@ -189,8 +189,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag("floor"))
         {
+            gameManagerScript.IsGameOver();
             //set active the game over panel
             Debug.Log("YOU HAVE LOST");
+        }
+
+        if (other.CompareTag("Finish")) {
+            gameManagerScript.IsHasWin();
         }
     }
 }

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool isBig;
     public bool isNormalScale;
     public bool isGameOver = false;
+    public bool isWin = false;
 
     //script conections
     public PlayerMovement playerMovementScript;
@@ -126,23 +127,29 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ItIsGameOver() //funcition to revise if it's game over
+    public void IsGameOver() //funcition to revise if it's game over
     {
-        if(points  <= 0)
-        {
-            isGameOver = true;
-        }
-        if(isGameOver == true)
-        {
-            Time.timeScale = 0;
-            Debug.Log("YOUR HAVE LOST");
-            //gameOverPanel.SetActive(true);
 
-            //audiosource.audiclip = gameOverSound;
-            //audiosource.Paley()
-        }
+        isGameOver = true;
+        //gameOverPanel.SetActive(true);
+
+        //audiosource.audiclip = gameOverSound;
+        //audiosource.Play()
+        Time.timeScale = 0;
+        Debug.Log("YOUR HAVE LOST");
+
     }
 
+    public void IsHasWin() {
+        isWin = true;
+        //winPanel.SetActive(true);
+
+        //audiosource.audiclip = gameOverSound;
+        //audiosource.Play()
+        Time.timeScale = 0;
+        Debug.Log("You Won");
+        //Return level menu
+    }
     
 
 }

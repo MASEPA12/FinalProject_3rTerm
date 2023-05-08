@@ -1565,11 +1565,15 @@ MonoBehaviour:
   animator: {fileID: 0}
   secondsToWaitAppleRed: 5
   pos: {x: 0, y: 0, z: 0}
-  sphereRadius: 5
+  sphereRadius1: 5
+  sphereRadius2: 10
   isInTheSphere: 0
   recollectableLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
+  powerUpsLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &6497366970271031885
 GameObject:
   m_ObjectHideFlags: 0
