@@ -11,6 +11,8 @@ TagManager:
   - appleGREEN
   - floor
   - Enemy
+  - Checkpoint
+  - Trap
   layers:
   - Default
   - TransparentFX
