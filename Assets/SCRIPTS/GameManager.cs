@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     public BoxCollider powerUpZone1;
     public GameObject[] powerUpArray;
 
+    //UI
+    public Image[] hearts;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -154,15 +157,21 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateLife(int num) { //
-        if (lifes > 0)
+        if (lifes > 0 && lifes <=5) //5 has to be a variable MAX_lifes
         {
             lifes += num;
+            GetLife(lifes);
         }
-        else {
+
+        if (lifes <= 0){
             IsGameOver();
         }
         
         Debug.Log($" Lifepoints: {lifes}");
+    }
+
+    public void GetLife(int num) {
+        hearts[num].gameObject.SetActive(false);
     }
 
 }
