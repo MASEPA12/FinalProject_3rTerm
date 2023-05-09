@@ -204,8 +204,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")){
             gameManagerScript.UpdateLife(-1);
-            rb.AddForce(Vector3.up * 300, ForceMode.Impulse); //Vertcal knockback
-            rb.AddForce(Vector3.back * 700, ForceMode.Impulse); //horizontal force
+            Vector3 pushAway = (transform.position - collision.gameObject.transform.position).normalized; //Get direction back to be pushed
+            //rb.AddForce(pushAway * 300, ForceMode.Impulse); //Vertcal knockback
+            rb.AddForce(pushAway * 700, ForceMode.Impulse); //horizontal force
         }
     }
 
