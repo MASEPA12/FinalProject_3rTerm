@@ -23,11 +23,11 @@ public class recollectableMovement : MonoBehaviour
         {
             transform.Rotate(Vector3.up);
             //play sound de que hi ha un panesito per recollir
-            if (!recollectableParticles.isPlaying)
+
+            if (!recollectableParticles.isPlaying) //Play only if not already playing
             {
                 recollectableParticles.Play();
             }
-            //recollectableParticles.Play();
         }
         else //if it's not, do not play
         {

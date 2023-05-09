@@ -18,14 +18,11 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 lookAtPlayer = new Vector3(playerPos.position.x, transform.position.y, playerPos.position.z);
-        transform.LookAt(lookAtPlayer);
-
         Vector3 pos = transform.position;
         playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
 
         if (playerInVisionRange) {
-            
+            lookAtPlayer();
         }
     }
 
@@ -34,5 +31,10 @@ public class Cannon : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, visionRange);
+    }
+
+    private void lookAtPlayer() {
+        Vector3 lookAtPlayer = new Vector3(playerPos.position.x, transform.position.y, playerPos.position.z);
+        transform.LookAt(lookAtPlayer);
     }
 }
