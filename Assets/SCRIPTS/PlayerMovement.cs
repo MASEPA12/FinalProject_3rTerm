@@ -207,12 +207,12 @@ public class PlayerMovement : MonoBehaviour
             //knockback dirrection
             Vector3 pushAway = (transform.position - collision.gameObject.transform.position).normalized; //Get direction back to be pushed
             //Update hearts
-            takeDamage(-1, 700, pushAway);
+            takeDamage(-1, 700f, pushAway);
         }
     }
 
     //Function that manages de damage done to the player
-    public void takeDamage(int damage, int knockback, Vector3 knockbackDir) {
+    public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
         gameManagerScript.UpdateLife(damage);
         //Apply knockback
         rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
