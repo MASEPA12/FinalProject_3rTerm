@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public float walkingForce = 0.5f;
 
-    public float jumpingForce = 0.2f;
+    public float jumpingForce = 0.02f;
     private float gravityModifier = 1.7f;
 
     //Speed variables
@@ -55,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask recollectableLayerMask;
     public LayerMask powerUpsLayerMask;
 
+    //jumping bool
+    private bool jumpAxisUsing;
 
     void Start()
     {
@@ -87,19 +89,28 @@ public class PlayerMovement : MonoBehaviour
             isSteady = true;
         }
 
-        //JUMPING
-        if (Input.GetKeyDown(KeyCode.Space))
+        //JUMPING [if the jump input is not equal to 0, it's jumping]
+        if (Input.GetAxisRaw("Jump") != 0)
         {
-            isJumping = true;
-            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+            
+            if(jumpAxisUsing == false)
+            {
+                isJumping = true;
+                rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+            }
+            
         }
-        else
+        if(Input.GetAxisRaw("Jump") == 0)
         {
+            jumpAxisUsing = false;
+
             isJumping = false;
         }
 
-        //RUNNING
-        if (Input.GetKey(KeyCode.W))
+
+
+        //RUNNING [if its a positive value, is going forwards]
+        if (Input.GetAxis("Vertical") >0)
         {
             isRunning = true;
         }
@@ -109,14 +120,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //PATADA
-        if (Input.GetKeyDown(KeyCode.F))
+        /*if (Input.GetKeyDown(KeyCode.F))
         {
             isKicking = true;
         }
         else
         {
             isKicking = false;
-        }
+        }*/
 
         //SHOOTING
         if (Input.GetKeyDown(KeyCode.Q))
@@ -128,8 +139,8 @@ public class PlayerMovement : MonoBehaviour
             isShotting = false;
         }
 
-        //RUNNING BCK
-        if (Input.GetKey(KeyCode.S))
+        //RUNNING BCK [if its a negative value, is going backwards]
+        if (Input.GetAxis("Vertical") < 0) 
         {
             isRuningBack = true;
         }
