@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public int secondsToWaitAppleRed = 5;
 
     //actual position
-    public Vector3 pos;
+    public Vector3 spawnPos;
 
     //sphere
     public float sphereRadius1 = 5;
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
         gameManagerScript.isBig = false;
 
-        pos = transform.position;
+        spawnPos = transform.position; //set spawn position at the start of the level;
 
         StartCoroutine(gameManagerScript.LooseFoodTimer());
     }
@@ -228,6 +228,13 @@ public class PlayerMovement : MonoBehaviour
         //Apply knockback
         rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
         //play auchh sound
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Checkpoint")) {
+            spawnPos = transform.position; //update to new spawn position;
+        }
     }
 
     public void restoreLife() {
