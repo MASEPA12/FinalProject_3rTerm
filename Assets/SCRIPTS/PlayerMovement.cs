@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //CROUCH
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetButton("Fire1")) //Fire1 = LCrt || 
         {
             isSteady = false;
         }
@@ -90,23 +90,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //JUMPING [if the jump input is not equal to 0, it's jumping]
-        if (Input.GetAxisRaw("Jump") != 0)
+        if (Input.GetButtonDown("Jump"))
         {
-            
-            if(jumpAxisUsing == false)
-            {
-                isJumping = true;
-                rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-            }
-            
+            isJumping = true;
+            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
         }
+        else {
+            isJumping = false;
+        }
+
+        /*
         if(Input.GetAxisRaw("Jump") == 0)
         {
             jumpAxisUsing = false;
 
             isJumping = false;
         }
-
+        */
 
 
         //RUNNING [if its a positive value, is going forwards]
