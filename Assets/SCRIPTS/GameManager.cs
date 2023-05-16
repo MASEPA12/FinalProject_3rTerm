@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     //Hunger gauge variables
     public int hunger = INITIAL_HUNGER; //INITIAL VALOR TO FACILITE THE PLAYER 
     public Slider foodCounterSlider;
+    public float hungerTimer = 2.5f;
 
     //Score variables
     public int score = 0; //INITIAL VALOR TO FACILITE THE PLAYER 
@@ -41,7 +42,6 @@ public class GameManager : MonoBehaviour
 
     //script conections
     public PlayerMovement playerMovementScript;
-    private PowerUp powerUpScript;
 
     //sounds
     public AudioClip gameOverAudioClip; //renou de quan perd
@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         lives = maxLives;
 
         audioSource = GetComponent<AudioSource>();
-        powerUpScript = FindObjectOfType<PowerUp>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
@@ -93,7 +92,7 @@ public class GameManager : MonoBehaviour
             else { //Check if the player is Hungry
                 UpdateLife(-1); //Lose Life
             }
-            yield return new WaitForSeconds(5); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, GAME OVER
+            yield return new WaitForSeconds(hungerTimer); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
         }
     }
 
@@ -167,7 +166,7 @@ public class GameManager : MonoBehaviour
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Debug.Log("YOUR HAVE LOST");
 
     }
