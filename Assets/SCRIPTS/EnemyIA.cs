@@ -117,9 +117,8 @@ public class EnemyIA : MonoBehaviour
     //alomejor moverlo
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-
             //knockback dirrection
             Vector3 pushAway = (collision.gameObject.transform.position - transform.position).normalized; //Get direction back to be pushed
             //Update hearts

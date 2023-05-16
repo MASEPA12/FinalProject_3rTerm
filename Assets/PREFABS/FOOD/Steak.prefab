@@ -4958,11 +4958,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recollectableParticles: {fileID: 4301421569734601108}
-  playerMovement: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   sphereRadius: 4
+  points: 10
+  hunger: 5
+  playerMovement: {fileID: 0}
 --- !u!1 &7476188577537242881
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,16 +107,6 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
         }
 
-        /*
-        if(Input.GetAxisRaw("Jump") == 0)
-        {
-            jumpAxisUsing = false;
-
-            isJumping = false;
-        }
-        */
-
-
         //RUNNING [if its a positive value, is going forwards]
         if (Input.GetAxis("Vertical") >0)
         {

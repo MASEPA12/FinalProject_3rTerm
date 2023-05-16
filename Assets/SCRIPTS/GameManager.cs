@@ -88,8 +88,7 @@ public class GameManager : MonoBehaviour
         {
             if (hunger > 0)
             { //Player still has points
-                hunger--;
-                UpdateFoodCounter();
+                UpdateHunger(-1);
             }
             else { //Check if the player is Hungry
                 UpdateLife(-1); //Lose Life
@@ -104,7 +103,7 @@ public class GameManager : MonoBehaviour
         if (other1.CompareTag(recollectableName))
         {
             Destroy(other1.gameObject); //destroy bread prefab
-            score = score + pointsToSum; //update food score
+            //score = score + pointsToSum; //update food score
 
             //play animation de quan menja 
             // particles play
@@ -159,6 +158,7 @@ public class GameManager : MonoBehaviour
     }
     */
 
+    //Function that manages lose condition
     public void IsGameOver() //funcition to revise if it's game over
     {
 
@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //Function that manages win condition
     public void IsHasWin() {
         isWin = true;
         //winPanel.SetActive(true);
@@ -183,11 +184,12 @@ public class GameManager : MonoBehaviour
         //Return level menu
     }
 
+    //Function that updates life information
     public void UpdateLife(int num) { //
         if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
         {
             lives += num;
-            GetLife(lives);
+            ShowLife(lives);    
         }
 
         if (lives <= 0){
@@ -197,8 +199,28 @@ public class GameManager : MonoBehaviour
         Debug.Log($" Lifepoints: {lives}");
     }
 
-    public void GetLife(int num) {
-        hearts[num].gameObject.SetActive(false);
+    //Function that updates life UI
+    public void ShowLife(int num) {
+        for(int i = 0; i < maxLives; i++)
+        {
+            if (i > num-1) {
+                hearts[i].gameObject.SetActive(false);
+            }
+
+        }
+    }
+
+    //Function that updates score information
+    public void UpdateScore(int points) {
+        score += points;
+        //scoreText.text() = score
+    }
+
+    //Function that update hunger information
+    public void UpdateHunger(int hungerPoints) {
+        hunger += hungerPoints;
+        foodCounterSlider.value = hunger;
+        Debug.Log($"{hunger}");
     }
 
 }

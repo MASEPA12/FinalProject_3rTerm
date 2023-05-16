@@ -8,13 +8,21 @@ as well as instantiate some recollectables in random spots */
 public class recollectableMovement : MonoBehaviour
 {
     public ParticleSystem recollectableParticles;
-    public PlayerMovement playerMovement;
     public LayerMask playerLayer;
     public int sphereRadius = 3;
 
+    //Points variables
+    public int points;
+    public int hunger;
+
+    //Scripts connections
+    public PlayerMovement playerMovement;
+    private GameManager gameManagerScript;
+
     void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>(); 
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        gameManagerScript = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -40,4 +48,11 @@ public class recollectableMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
+
+    private void OnDestroy()
+    {
+        gameManagerScript.UpdateLife(points);
+        gameManagerScript.UpdateHunger(hunger);
+    }
+
 }
