@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private float gravityModifier = 1.7f;
 
     //Speed variables
-    private float forwardInput; //Forward and backwar move
-    private float horizontalInput; //Rotation movement
+    public float forwardInput; //Forward and backwar move
+    public float horizontalInput; //Rotation movement
     public float rotationSpeed = 6.5f; //Rotation speed
 
     public Vector3 movement;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Animation Booleans
     private bool isJumping = false;
-    private bool isSteady = true;
+    public bool isSteady = true;
     private bool isRunning = false;
     private bool isRuningBack = false;
     private bool isKicking = false;
@@ -63,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask powerUpsLayerMask;
 
     //jumping bool
-    private bool jumpAxisUsing;
+    public bool canJump;
+    public bool canBeSteady;
 
     void Start()
     {
@@ -92,13 +93,13 @@ public class PlayerMovement : MonoBehaviour
         {
             isSteady = false;
         }
-        else
+        else if(!Input.GetButton("Fire1") && canBeSteady)
         {
             isSteady = true;
         }
 
         //JUMPING [if the jump input is not equal to 0, it's jumping]
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             isJumping = true;
             rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
@@ -116,16 +117,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isRunning = false;
         }
-
-        //PATADA
-        /*if (Input.GetKeyDown(KeyCode.F))
-        {
-            isKicking = true;
-        }
-        else
-        {
-            isKicking = false;
-        }*/
 
         //SHOOTING
         if (Input.GetKeyDown(KeyCode.Q))
@@ -146,6 +137,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isRuningBack = false;
         }
+
     }
 
     private void FixedUpdate()
@@ -161,7 +153,8 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
         }
         
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body        
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body
+                                                                                                                    //
     }
 
     private void LateUpdate()
