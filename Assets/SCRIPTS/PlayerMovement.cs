@@ -11,8 +11,10 @@ interaction with other object
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Constant
+    public const float INITIAL_SPEED = 5f;
     public Rigidbody rb;
-    public float walkingForce = 0.5f;
+    public float walkingForce = INITIAL_SPEED;
 
     public float jumpingForce = 0.02f;
     private float gravityModifier = 1.7f;
@@ -34,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isShotting = false;
 
     //scripts conections
-    GameManager gameManagerScript;
+    private GameManager gameManagerScript;
+    private PowerUp powerUpScript;
 
     //Game Variables
     private bool canDamage = true; //bool that indicate if the player can receive damage
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     //power ups
     public int secondsToWaitAppleRed = 5;
+    public int secondsToWaitAppleGreen = 5;
 
     //Spawn variables
     public Vector3 spawnPos;
@@ -64,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         gameManagerScript = FindObjectOfType<GameManager>();
+        powerUpScript = FindObjectOfType<PowerUp>();
 
         animator = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
@@ -189,16 +194,25 @@ public class PlayerMovement : MonoBehaviour
         string bread = "bread";
         string meet = "meet";
         string appleRed = "appleRed";
+        string appleGreen = "appleGreen";
 
         gameManagerScript.DestroyRecollectable(other, meet, meatPoints);
         gameManagerScript.DestroyRecollectable(other, bread, breadPoints);
 
-        if (other.CompareTag(appleRed) && gameManagerScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
+        if (other.CompareTag(appleRed) && powerUpScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
             Debug.Log("entre");
             Destroy(other.gameObject);
 
-            StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
+            StartCoroutine(powerUpScript.LocalScaleTransformer(secondsToWaitAppleRed));
+        }
+
+        if (other.CompareTag(appleGreen) && powerUpScript.appleGreenIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
+        {
+            Debug.Log("entre");
+            Destroy(other.gameObject);
+
+            StartCoroutine(powerUpScript.SpeedPowerUp(walkingForce*2,secondsToWaitAppleGreen));
         }
 
         //if the player falls loses
@@ -212,17 +226,6 @@ public class PlayerMovement : MonoBehaviour
         //If player
         if (other.CompareTag("Finish")){//&& points >= 100) {
             gameManagerScript.IsHasWin();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy")){
-            
-            //knockback dirrection
-            Vector3 pushAway = (transform.position - collision.gameObject.transform.position).normalized; //Get direction back to be pushed
-            //Update hearts
-            takeDamage(-1, 700f, pushAway);
         }
     }
 
@@ -258,6 +261,10 @@ public class PlayerMovement : MonoBehaviour
         //feedback to player
         yield return new WaitForSeconds(invulnerabilityTime);
         canDamage = true;
+    }
+
+    public void changeSpeed(float newSpeed) {
+        walkingForce = newSpeed;
     }
 }
 

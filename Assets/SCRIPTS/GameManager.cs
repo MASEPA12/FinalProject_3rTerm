@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     //script conections
     public PlayerMovement playerMovementScript;
+    private PowerUp powerUpScript;
 
     //sounds
     public AudioClip gameOverAudioClip; //renou de quan perd
@@ -65,12 +66,14 @@ public class GameManager : MonoBehaviour
         lives = maxLives;
 
         audioSource = GetComponent<AudioSource>();
+        powerUpScript = FindObjectOfType<PowerUp>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
     }
 
 
+    //Function that updates the value of hunger gauge
     private void UpdateFoodCounter()
     {
         foodCounterSlider.value = hunger;
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //Coroutine that manages the hunger Gauge
     public IEnumerator LooseFoodTimer()
     {
         while (!isGameOver || isWin) //Player has points
@@ -109,7 +113,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    /*
     public IEnumerator LocalScaleTransformer(int secondsToWait)
     {
         playerMovementScript.Scale(2);
@@ -123,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         time = secondsToWait;
 
-        StartCoroutine("Counter"); // posam enmarxa es contador enrrere
+        //StartCoroutine(powerUpScript.Counter(timeCounterPoweUpSlider,counterSliderPanel,1)); // posam enmarxa es contador enrrere
 
         yield return new WaitForSeconds(secondsToWait);
 
@@ -132,6 +136,7 @@ public class GameManager : MonoBehaviour
 
         appleRedIsOn = false;
     }
+
 
     private IEnumerator Counter()
     {   //it displays the seconds 
@@ -152,6 +157,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    */
 
     public void IsGameOver() //funcition to revise if it's game over
     {

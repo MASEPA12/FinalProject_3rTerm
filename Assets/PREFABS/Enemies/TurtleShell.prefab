@@ -288,6 +288,7 @@ MonoBehaviour:
   visionRange: 10
   playerInVisionRange: 0
   canAttack: 1
+  damage: -2
   attackCooldownTimer: 3
   attackRange: 1
   playerInAttackRange: 0

@@ -26,6 +26,10 @@ public class PowerUp : MonoBehaviour
     public bool isNormalScale;
     public bool isGameOver = false;
 
+    //power up apple green variables
+    public bool appleGreenIsOn = false;
+    public GameObject sliderPanelGreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,22 +43,31 @@ public class PowerUp : MonoBehaviour
         
     }
 
-    private IEnumerator Counter()
-    {   //it displays the seconds 
+    private IEnumerator Counter(Slider slider, GameObject panelOfTheSlider, int numOfPowerUp)
+    {   //it displays the seconds
 
-        timeCounterPoweUpSlider.maxValue = time;//posam que es valor màxim de slider sigui es temps que ha d'esperar
+        slider.maxValue = time;//posam que es valor màxim de slider sigui es temps que ha d'esperar
 
         while (time > 0)
         {
             time -= 0.5f;
-            timeCounterPoweUpSlider.value = time;
+            slider.value = time;
+
+            //as soon as the time is over, restablish the values
             if (time == 0)
             {
-                counterSliderPanel.SetActive(false);
-                playerMovementScript.Scale(1.5f);
+                panelOfTheSlider.SetActive(false);
+                if (numOfPowerUp == 1)
+                {
+                    playerMovementScript.Scale(1.5f);
+                }
+                if (numOfPowerUp == 2)
+                {
+                    playerMovementScript.walkingForce = 5f; //restablish the speed
+                }
 
             }
-            yield return new WaitForSeconds(0.5f); //sait 30 seconds to low the number
+            yield return new WaitForSeconds(0.5f); //wait 30 seconds to low the number
         }
 
     }
@@ -72,7 +85,7 @@ public class PowerUp : MonoBehaviour
 
         time = secondsToWait;
 
-        StartCoroutine("Counter"); // posam enmarxa es contador enrrere
+        StartCoroutine(Counter(timeCounterPoweUpSlider, counterSliderPanel, 1));
 
         yield return new WaitForSeconds(secondsToWait);
 
@@ -80,5 +93,19 @@ public class PowerUp : MonoBehaviour
         Debug.Log("aaaaa");
 
         appleRedIsOn = false;
+    }
+
+    public IEnumerator SpeedPowerUp(float speed, float durationOfPowerUp)
+    {
+        playerMovementScript.changeSpeed(speed); //double up the speed
+        appleGreenIsOn = true;
+        sliderPanelGreen.SetActive(true);
+
+        time = durationOfPowerUp;
+        StartCoroutine(Counter(timeCounterPoweUpSlider, sliderPanelGreen, 2)); //--> ja està dins s'escript de power up (modificada!!!)
+
+        yield return new WaitForSeconds(durationOfPowerUp);
+ 
+        appleGreenIsOn = false;
     }
 }
