@@ -7,7 +7,7 @@ public class Boulder : MonoBehaviour
     private Vector3 initialPos;
     private Vector3 spawnPos;
     
-    private int damage = 1; //Damage done to the player
+    private int damage = -1; //Damage done to the player
     private float knockback = 1000f; //Knockback done to the player
 
     private Rigidbody rb;
@@ -20,25 +20,28 @@ public class Boulder : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        initialPos = transform.position;
+        initialPos = transform.position; //Store boulder initial position
+        gameManager = FindObjectOfType<GameManager>();
         playerCon = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (transform.position.y < -15) {
+    {   
+        if (transform.position.y < -15) { //Boulder falls out of the play field
             RandomSpawnPosition();
         }
     }
 
+    //Function that spawn the boulder in a random X position
     private void RandomSpawnPosition() {
         spawnPos = new Vector3(Random.Range(-10f, -55f), initialPos.y, initialPos.z);
         transform.position = spawnPos; //move object to the position
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero; //reset velocity value
 
     }
 

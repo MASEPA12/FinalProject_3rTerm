@@ -9,8 +9,18 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int points = 25; //INITIAL VALOR TO FACILITE THE PLAYER 
+    //CONSTANTS
+    private const int MAX_RETRIES = 3; // number of retry before game_over
+    private const int INITIAL_HUNGER = 25;
+    private const int INITIAL_LIVES = 5;
+
+    //Hunger gauge variables
+    public int hunger = INITIAL_HUNGER; //INITIAL VALOR TO FACILITE THE PLAYER 
     public Slider foodCounterSlider;
+
+    //Score variables
+    public int score = 0; //INITIAL VALOR TO FACILITE THE PLAYER 
+    public TextMeshProUGUI scoreText;
 
     //counter power ups
     public float time;
@@ -24,7 +34,10 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     public bool isWin = false;
 
-    public int lifes = 5;
+    //Life variables
+    public int maxLives = INITIAL_LIVES;
+    public int lives = 5;
+    private int retry = MAX_RETRIES;
 
     //script conections
     public PlayerMovement playerMovementScript;
@@ -47,27 +60,35 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Reset values
+        maxLives = INITIAL_LIVES;
+        lives = maxLives;
+
         audioSource = GetComponent<AudioSource>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
-
     }
 
 
     private void UpdateFoodCounter()
     {
-        foodCounterSlider.value = points;
-        Debug.Log($"{points}");
+        foodCounterSlider.value = hunger;
+        Debug.Log($"{hunger}");
     }
+
 
     public IEnumerator LooseFoodTimer()
     {
-        while (true) //Player has points
+        while (!isGameOver || isWin) //Player has points
         {
-            if (points > 0) { //Player still has points
-                points--;
+            if (hunger > 0)
+            { //Player still has points
+                hunger--;
                 UpdateFoodCounter();
+            }
+            else { //Check if the player is Hungry
+                UpdateLife(-1); //Lose Life
             }
             yield return new WaitForSeconds(5); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, GAME OVER
         }
@@ -77,15 +98,15 @@ public class GameManager : MonoBehaviour
     public void DestroyRecollectable(Collider other1,string recollectableName,int pointsToSum)
     {
         if (other1.CompareTag(recollectableName))
-            {
-                Destroy(other1.gameObject); //destroy bread prefab
-                points = points + pointsToSum; //update food score
+        {
+            Destroy(other1.gameObject); //destroy bread prefab
+            score = score + pointsToSum; //update food score
 
-                //play animation de quan menja 
-                // particles play
+            //play animation de quan menja 
+            // particles play
                 
-                UpdateFoodCounter();
-            }
+            UpdateFoodCounter();
+        }
     }
 
     
@@ -151,23 +172,23 @@ public class GameManager : MonoBehaviour
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Debug.Log("You Won");
         //Return level menu
     }
 
     public void UpdateLife(int num) { //
-        if (lifes > 0 && lifes <=5) //5 has to be a variable MAX_lifes
+        if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
         {
-            lifes += num;
-            GetLife(lifes);
+            lives += num;
+            GetLife(lives);
         }
 
-        if (lifes <= 0){
+        if (lives <= 0){
             IsGameOver();
         }
         
-        Debug.Log($" Lifepoints: {lifes}");
+        Debug.Log($" Lifepoints: {lives}");
     }
 
     public void GetLife(int num) {

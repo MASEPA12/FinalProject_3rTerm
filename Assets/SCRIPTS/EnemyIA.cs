@@ -5,22 +5,34 @@ using UnityEngine.AI;
 
 public class EnemyIA : MonoBehaviour
 {
+    //Range Variables
     private NavMeshAgent _agent;
     public Transform player;
     public float visionRange;
     public bool playerInVisionRange;
 
+    //Attack Variables
     public bool canAttack = true;
+    public int damage = -1; //damage that does the enemy
     public float attackCooldownTimer;
     public float attackRange;
     public bool playerInAttackRange;
     
+    //Waypoints Variables
     public Transform[] waypoints;
     public int nextPoint;
     public int totalWaypoints;
 
+    //Speed Variables
+    [SerializeField] float speedPatrol = 3.5f;
+    [SerializeField] float speedChase = 4.5f;
+
+    //Mask
     public LayerMask playerLayer;
 
+    //Scripts connections
+    private GameManager gameManager;
+    private PlayerMovement playerCon;
 
     private void Awake()
     {
@@ -30,6 +42,8 @@ public class EnemyIA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+        playerCon = FindObjectOfType<PlayerMovement>();
         totalWaypoints = waypoints.Length;
         nextPoint = 1;
     }
@@ -37,25 +51,27 @@ public class EnemyIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
-        playerInAttackRange = Physics.CheckSphere(pos, attackRange, playerLayer);
-
-        if (!playerInVisionRange && !playerInAttackRange)
+        if (!gameManager.isGameOver || gameManager.isWin)
         {
-            Patrol();
-        }
-        
-        if (playerInVisionRange && !playerInAttackRange)
-        {
-            Chase();
-        }
-        
-        if (playerInVisionRange && playerInAttackRange) {
-            Attack();
-        }
+            Vector3 pos = transform.position;
+            playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
+            playerInAttackRange = Physics.CheckSphere(pos, attackRange, playerLayer);
 
+            if (!playerInVisionRange && !playerInAttackRange)
+            {
+                Patrol();
+            }
 
+            if (playerInVisionRange && !playerInAttackRange)
+            {
+                Chase();
+            }
+
+            if (playerInVisionRange && playerInAttackRange)
+            {
+                Attack();
+            }
+        }
     }
 
     private void OnDrawGizmos()
@@ -67,8 +83,9 @@ public class EnemyIA : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
+    //Function that manages enemy patrol 
     private void Patrol() {
-        _agent.speed = 3.5f;
+        _agent.speed = speedPatrol;
         if (Vector3.Distance(transform.position, waypoints[nextPoint].position) < 2.5) {
             nextPoint++;
             if (nextPoint == totalWaypoints) {
@@ -80,26 +97,28 @@ public class EnemyIA : MonoBehaviour
         _agent.SetDestination(waypoints[nextPoint].position);
     }
 
+    //Function that manages enemy chase
     private void Chase() {
-        _agent.speed = 4.5f;
-        _agent.SetDestination(player.position);
-        transform.LookAt(player);
+        _agent.speed = speedChase;
+        _agent.SetDestination(playerCon.transform.position);
+        transform.LookAt(playerCon.transform);
     }
 
+    //Function that manages enemy Attack
     private void Attack() {
         if (canAttack) {
             //Play attack animation
             Debug.Log("Fuiste atacado");
             canAttack = false;
             StartCoroutine(AttackCooldown());
-
         }
     }
 
-    private IEnumerator AttackCooldown() {
-        
+    //Coroutine that manages the attack cooldown
+    private IEnumerator AttackCooldown() {   
         yield return new WaitForSeconds(attackCooldownTimer);
         Debug.Log("Preparese para la ostia");
         canAttack = true;
     }
+   
 }

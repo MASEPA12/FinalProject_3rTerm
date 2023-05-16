@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     //scripts conections
     GameManager gameManagerScript;
 
+    //Game Variables
+    private bool canDamage = true; //bool that indicate if the player can receive damage
+    private float invulnerabilityTime = 2.5f; //time once the player receive damages that is invulnerable
 
     //recollectable variables
     private int breadPoints = 1;
@@ -44,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     //power ups
     public int secondsToWaitAppleRed = 5;
 
-    //actual position
+    //Spawn variables
     public Vector3 spawnPos;
 
     //sphere
@@ -175,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isShooting", isShotting);
         animator.SetBool("isRunningBck", isRuningBack);
     }
+
     public void Scale(float num)
     {
         transform.localScale = new Vector3(num, num, num);
@@ -195,9 +199,9 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
 
             StartCoroutine(gameManagerScript.LocalScaleTransformer(secondsToWaitAppleRed));
-
         }
 
+        //if the player falls loses
         if (other.CompareTag("floor"))
         {
             gameManagerScript.IsGameOver();
@@ -222,12 +226,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Function that manages de damage done to the player
+    //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
-        gameManagerScript.UpdateLife(damage);
-        //Apply knockback
-        rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
-        //play auchh sound
+        
+        if (canDamage)
+        {
+            gameManagerScript.UpdateLife(damage);
+            //Apply knockback
+            rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
+                                                                      //play auchh sound
+        }
+        canDamage = false;
+        StartCoroutine(InvincibleTime());
     }
 
     private void OnTriggerExit(Collider other)
@@ -237,9 +248,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Function that restore player health
     public void restoreLife() {
         gameManagerScript.UpdateLife(1); //Restore 1 point
     }
 
+    //Coroutine that show the time the player is invincible
+    private IEnumerator InvincibleTime() {
+        //feedback to player
+        yield return new WaitForSeconds(invulnerabilityTime);
+        canDamage = true;
+    }
 }
 

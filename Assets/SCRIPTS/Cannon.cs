@@ -10,12 +10,12 @@ public class Cannon : MonoBehaviour
     public LayerMask playerLayer;
 
 
-    // Attack
+    // Attack Variables
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawn;
     private float attackCooldownTimer = 2f;
     private bool canAttack = true;
-    private float upAttackForce = 150f;
+    private float upAttackForce = 150f; //applied force to the bullet
     private float forwardAttackForce = 800f;
 
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class Cannon : MonoBehaviour
         Vector3 pos = transform.position;
         playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
 
-        if (playerInVisionRange) {
+        if (playerInVisionRange) { //Check if the player is in range
             lookAtPlayer();
         }
     }
@@ -42,12 +42,14 @@ public class Cannon : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, visionRange);
     }
 
+    //Function that rotates towards the player
     private void lookAtPlayer() {
         Vector3 lookAtPlayer = new Vector3(playerPos.position.x, transform.position.y, playerPos.position.z);
         transform.LookAt(lookAtPlayer);
         Attack();
     }
 
+    //Function that controls all attack realated instruccions
     private void Attack()
     {
         if (canAttack) {
@@ -60,6 +62,7 @@ public class Cannon : MonoBehaviour
         }
     }
 
+    //Coroutine that manages the attack cooldown
     private IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldownTimer);
