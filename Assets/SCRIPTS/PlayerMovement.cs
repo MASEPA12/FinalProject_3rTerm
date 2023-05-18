@@ -89,11 +89,11 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //CROUCH
-        if (Input.GetButton("Fire1")) //Fire1 = LCrt || 
+        if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
         {
             isSteady = false;
         }
-        else if(!Input.GetButton("Fire1") && canBeSteady)
+        else if(canBeSteady)
         {
             isSteady = true;
         }

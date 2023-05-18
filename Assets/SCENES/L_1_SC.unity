@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 98578030}
   - component: {fileID: 98578029}
   - component: {fileID: 98578028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RandomPowerUpZone(2) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1175,7 +1175,7 @@ GameObject:
   - component: {fileID: 260873918}
   - component: {fileID: 260873917}
   - component: {fileID: 260873916}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RandomPowerUpZone(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9286,6 +9286,7 @@ MonoBehaviour:
   playerHigh: 2
   boxColliderPlayer: {fileID: 185326720}
   isColliding: 0
+  somethingIsOn: 0
   playerMovementScript: {fileID: 0}
 --- !u!1001 &1857349211
 PrefabInstance:
@@ -9785,7 +9786,7 @@ GameObject:
   - component: {fileID: 2040690787}
   - component: {fileID: 2040690786}
   - component: {fileID: 2040690785}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RandomPowerUpZone(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

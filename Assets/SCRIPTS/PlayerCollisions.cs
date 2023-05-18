@@ -19,7 +19,7 @@ public class PlayerCollisions : MonoBehaviour
 
     //bool system
     public bool isColliding;
-    private bool somethingIsOn;
+    public bool somethingIsOn;
 
     //script references
     public PlayerMovement playerMovementScript;
@@ -32,7 +32,7 @@ public class PlayerCollisions : MonoBehaviour
         playerMovementScript = FindObjectOfType<PlayerMovement>();   
     }
 
-    void Update()
+    void FixedUpdate()
     {   //set the size of the capsule (posaré sa de abaix un pos més amunt pq no estigui tot es temps tocant enterra, pq s'enveoirment és tb ground) PENSAR A LLEVAR ES +0.5f
         centerCapsuleDwn = transform.position + Vector3.up * ( radiusCapsule + 0.5f);
         centerCapsuleUp = transform.position + ((boxColliderPlayer.size.y - radiusCapsule) * Vector3.up);
@@ -54,7 +54,7 @@ public class PlayerCollisions : MonoBehaviour
         if (somethingIsOn)
         {
             playerMovementScript.canJump = false;
-            if (!playerMovementScript.isSteady)
+            if (!playerMovementScript.isSteady || !playerMovementScript.canBeSteady)
             {
                 playerMovementScript.canBeSteady = false;
             }
@@ -65,7 +65,7 @@ public class PlayerCollisions : MonoBehaviour
         {
             playerMovementScript.canJump = true;
             playerMovementScript.canBeSteady = true;
-            Debug.Log("NOTHING ON THE PLAYER");
+            //Debug.Log("NOTHING ON THE PLAYER");
 
         }
     }
