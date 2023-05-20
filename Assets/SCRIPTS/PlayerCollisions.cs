@@ -34,12 +34,12 @@ public class PlayerCollisions : MonoBehaviour
 
     void FixedUpdate()
     {   //set the size of the capsule (posaré sa de abaix un pos més amunt pq no estigui tot es temps tocant enterra, pq s'enveoirment és tb ground) PENSAR A LLEVAR ES +0.5f
-        centerCapsuleDwn = transform.position + Vector3.up * ( radiusCapsule + 0.5f);
+        centerCapsuleDwn = transform.position + Vector3.up * ( radiusCapsule);
         centerCapsuleUp = transform.position + ((boxColliderPlayer.size.y - radiusCapsule) * Vector3.up);
 
         playerDirection = new Vector3(playerMovementScript.horizontalInput, 0, playerMovementScript.forwardInput).normalized;
 
-        isColliding = Physics.CapsuleCast(centerCapsuleDwn, centerCapsuleUp, radiusCapsule, playerDirection, maxDistance, layerMaskToCollide);
+        isColliding = Physics.CapsuleCast(centerCapsuleDwn, centerCapsuleUp, radiusCapsule, -playerDirection, maxDistance, layerMaskToCollide);
 
         if (isColliding)
         {
@@ -53,11 +53,9 @@ public class PlayerCollisions : MonoBehaviour
         somethingIsOn = Physics.Raycast(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f, maxDistance, layerMaskToCollide);
         if (somethingIsOn)
         {
+            playerMovementScript.canBeSteady = false;
             playerMovementScript.canJump = false;
-            if (!playerMovementScript.isSteady || !playerMovementScript.canBeSteady)
-            {
-                playerMovementScript.canBeSteady = false;
-            }
+            
            Debug.Log("SOMETHING IS ON THE PLAYER");
 
         }
@@ -81,6 +79,9 @@ public class PlayerCollisions : MonoBehaviour
         //COMPROVATION WHERE THE FORWARD OF THE PLAYER IS
         Gizmos.color = Color.green;
         Gizmos.DrawLine(centerCapsuleDwn + Vector3.forward * radiusCapsule, centerCapsuleUp + Vector3.forward * radiusCapsule);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(playerDirection, playerDirection + new Vector3 (0,0,1));
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f);

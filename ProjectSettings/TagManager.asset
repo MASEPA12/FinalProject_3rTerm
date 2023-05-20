@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Checkpoint
   - Trap
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - PlayerLayer
   - PowerUpLayer
-  - 
+  - EnviormentLayer
   - 
   - 
   - 

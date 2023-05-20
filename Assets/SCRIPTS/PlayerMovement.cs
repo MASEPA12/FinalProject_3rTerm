@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     //jumping bool
     public bool canJump;
-    public bool canBeSteady;
+    public bool canBeSteady = true;
 
     void Start()
     {
@@ -92,8 +92,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
         {
             isSteady = false;
+            Debug.Log("isSteady == false");
+
         }
-        else if(canBeSteady)
+        else if(canBeSteady == true)
         {
             isSteady = true;
         }
