@@ -15,8 +15,10 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     private float attackCooldownTimer = 2f;
     private bool canAttack = true;
+    /*
     private float upAttackForce = 150f; //applied force to the bullet
     private float forwardAttackForce = 800f;
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +55,10 @@ public class Cannon : MonoBehaviour
     private void Attack()
     {
         if (canAttack) {
-            Rigidbody rigidbody = Instantiate(bullet, bulletSpawn.position, Quaternion.identity).GetComponent<Rigidbody>(); //crear la bal y coger su rigidbody
-            rigidbody.AddForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
-            rigidbody.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
+            //Request bullet from BulletPool
+            GameObject bullet = BulletPool.Instance.RequestBullet();
+            //Get reposition of the bullet
+            bullet.transform.position = bulletSpawn.transform.position;
 
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
