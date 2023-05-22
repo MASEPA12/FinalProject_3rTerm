@@ -64,7 +64,7 @@ public class PlayerCollisions : MonoBehaviour
             playerMovementScript.canJump = true;
             playerMovementScript.canBeSteady = true;
             //Debug.Log("NOTHING ON THE PLAYER");
-
+            
         }
     }
 
