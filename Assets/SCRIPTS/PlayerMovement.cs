@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isSteady = true;
     private bool isRunning = false;
     private bool isRuningBack = false;
-    private bool isKicking = false;
     private bool isShotting = false;
 
     //scripts conections
@@ -65,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
     //jumping bool
     public bool canJump;
     public bool canBeSteady = true;
+
+    //Attack
+    public GameObject fireballPrefab;
+    public bool canAttack = true;
+    public float attackTimer = 1.5f;
 
     void Start()
     {
@@ -140,6 +144,10 @@ public class PlayerMovement : MonoBehaviour
             isRuningBack = false;
         }
 
+        if (Input.GetButtonDown("Fire2")) {
+            Attack();
+        }
+
     }
 
     private void FixedUpdate()
@@ -164,7 +172,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isSteady", isSteady);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumping", isJumping);
-        animator.SetBool("isPegando", isKicking);
         animator.SetBool("isShooting", isShotting);
         animator.SetBool("isRunningBck", isRuningBack);
     }
@@ -250,6 +257,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void changeSpeed(float newSpeed) {
         walkingForce = newSpeed;
+    }
+
+    private void Attack()
+    {
+        if (canAttack)
+        {
+            //Request bullet from BulletPool
+            GameObject fireball = FireballPool.Instance.Request();
+            //Get reposition of the bullet
+            fireball.transform.position = transform.position + Vector3.up*2 + Vector3.forward*1.5f;
+            canAttack = false;
+            StartCoroutine(AttackCooldown()); //Start attack cooldown
+        }
+    }
+
+    //Coroutine that manages the attack cooldown
+    private IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attackTimer);
+        canAttack = true;
     }
 }
 

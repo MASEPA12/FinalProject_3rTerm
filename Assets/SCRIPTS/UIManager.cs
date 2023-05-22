@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
-public class SceneManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
+    public void PlayScene(int sceneNumber) {
+        SceneManager.LoadScene(sceneNumber);
+    }
 
 }

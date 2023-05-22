@@ -1497,7 +1497,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6480435329323860246}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
@@ -1508,7 +1508,7 @@ Transform:
   - {fileID: 1253428984239191330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6137922820626234493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1560,11 +1560,15 @@ MonoBehaviour:
   rb: {fileID: 0}
   walkingForce: 5
   jumpingForce: 650
+  forwardInput: 0
+  horizontalInput: 0
   rotationSpeed: 50
   movement: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
+  isSteady: 1
   secondsToWaitAppleRed: 5
-  pos: {x: 0, y: 0, z: 0}
+  secondsToWaitAppleGreen: 5
+  spawnPos: {x: 0, y: 0, z: 0}
   sphereRadius1: 5
   sphereRadius2: 10
   isInTheSphere: 0
@@ -1574,6 +1578,8 @@ MonoBehaviour:
   powerUpsLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  canJump: 0
+  canBeSteady: 1
 --- !u!1 &6497366970271031885
 GameObject:
   m_ObjectHideFlags: 0
