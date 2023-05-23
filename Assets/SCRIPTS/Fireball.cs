@@ -7,7 +7,7 @@ public class Fireball : MonoBehaviour
 {
 
     //private float upAttackForce = 150f; //applied force to the bullet
-    private float forwardAttackForce = 300f;
+    private float forwardAttackForce = 250f;
 
     private float inactiveTimer = 1f; //time to set the gameobject to inactive
 
@@ -28,8 +28,12 @@ public class Fireball : MonoBehaviour
 
     private void SetInactive()
     {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        gameObject.SetActive(false);
     }
 }

@@ -51,8 +51,13 @@ public class Bullet : MonoBehaviour
     }
 
     private void SetInactive() {
+        
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        gameObject.SetActive(false);
     }
 }
