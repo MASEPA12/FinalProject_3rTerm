@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private int damage = -1; //Negative, indicates the damage done to the player
     private float knockback = 800f; //Knockback done to the player
 
-    private float upAttackForce = 150f; //applied force to the bullet
+    //private float upAttackForce = 150f; //applied force to the bullet
     private float forwardAttackForce = 800f;
 
     private float inactiveTimer = 1f; //time to set the gameobject to inactive
@@ -16,7 +16,13 @@ public class Bullet : MonoBehaviour
     private GameManager gameManager;
     private PlayerMovement playerCon;
 
-    
+    //Components
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();    
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +33,8 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = Vector3.zero; //reset
         //Applied Force
-        rigidbody.AddForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
+        rb.AddRelativeForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
         //rigidbody.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
         Invoke("SetInactive", inactiveTimer);
     }
@@ -47,6 +51,8 @@ public class Bullet : MonoBehaviour
     }
 
     private void SetInactive() {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
     }
 }

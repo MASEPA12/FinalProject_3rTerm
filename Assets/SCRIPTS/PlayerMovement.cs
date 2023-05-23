@@ -11,17 +11,19 @@ interaction with other object
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Constant
+    //C
     public const float INITIAL_SPEED = 5f;
     public Rigidbody rb;
     public float walkingForce = INITIAL_SPEED;
 
+    //Movement
     public float jumpingForce = 0.02f;
     private float gravityModifier = 1.7f;
 
     //Speed variables
     public float forwardInput; //Forward and backwar move
     public float horizontalInput; //Rotation movement
+    public float mouseX;
     public float rotationSpeed = 6.5f; //Rotation speed
 
     public Vector3 movement;
@@ -41,10 +43,6 @@ public class PlayerMovement : MonoBehaviour
     //Game Variables
     private bool canDamage = true; //bool that indicate if the player can receive damage
     private float invulnerabilityTime = 2.5f; //time once the player receive damages that is invulnerable
-
-    //recollectable variables
-    private int breadPoints = 1;
-    private int meatPoints = 5;
 
     //power ups
     public int secondsToWaitAppleRed = 5;
@@ -69,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject fireballPrefab;
     public bool canAttack = true;
     public float attackTimer = 1.5f;
+    [SerializeField] private Transform throwPos;
 
     void Start()
     {
@@ -92,6 +91,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
+        horizontalInput = Input.GetAxis("Horizontal"); //side movement
+        mouseX = Input.GetAxis("Mouse X");
         //CROUCH
         if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
         {
@@ -108,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && canJump)
         {
             isJumping = true;
-            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+            rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
         }
         else {
             isJumping = false;
@@ -152,19 +154,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
-        horizontalInput = Input.GetAxis("Horizontal"); //side movement
+        Vector3 dir = new Vector3(horizontalInput,0,forwardInput);
 
         if (forwardInput < 0 || !isSteady)
         {
-            rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
+            rb.AddRelativeForce(dir*walkingForce/2);
+            //rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
         }
         else {
-            rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+            rb.AddRelativeForce(dir*walkingForce);
+            //rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
         }
-        
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body
-                                                                                                                    //
+
+        if (isJumping) {
+            //rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+        }
+
+        rb.AddRelativeTorque(Vector3.up * mouseX *rotationSpeed);
+        //rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body                                                                                                                //
     }
 
     private void LateUpdate()
@@ -183,13 +190,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        string bread = "bread";
-        string meet = "meet";
         string appleRed = "appleRed";
         string appleGreen = "appleGreen";
-
-        gameManagerScript.DestroyRecollectable(other, meet, meatPoints);
-        gameManagerScript.DestroyRecollectable(other, bread, breadPoints);
+        
+        if (other.CompareTag("Collectable")) {
+            Destroy(other.gameObject);    
+        }
 
         if (other.CompareTag(appleRed) && powerUpScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
@@ -266,7 +272,8 @@ public class PlayerMovement : MonoBehaviour
             //Request bullet from BulletPool
             GameObject fireball = FireballPool.Instance.Request();
             //Get reposition of the bullet
-            fireball.transform.position = transform.position + Vector3.up*2 + Vector3.forward*1.5f;
+            fireball.transform.position = throwPos.position;
+            fireball.transform.rotation = throwPos.rotation;
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
         }

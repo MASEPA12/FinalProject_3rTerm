@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 1854374746755992291}
   m_Layer: 0
   m_Name: Steak
-  m_TagString: meet
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

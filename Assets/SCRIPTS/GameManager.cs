@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     //Coroutine that manages the hunger Gauge
     public IEnumerator LooseFoodTimer()
     {
-        while (!isGameOver || isWin) //Player has points
+        while (!isGameOver || !isWin) //Player has points
         {
             if (hunger > 0)
             { //Player still has points
@@ -111,52 +111,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*
-    public IEnumerator LocalScaleTransformer(int secondsToWait)
-    {
-        playerMovementScript.Scale(2);
-        appleRedIsOn = true;
-
-        counterSliderPanel.SetActive(true);
-
-        //play particles
-        //play power up red apple sound
-        //set active slider que mostra es temps que queda (posar value start corroutine que cada 1 segon en suma 1)
-
-        time = secondsToWait;
-
-        //StartCoroutine(powerUpScript.Counter(timeCounterPoweUpSlider,counterSliderPanel,1)); // posam enmarxa es contador enrrere
-
-        yield return new WaitForSeconds(secondsToWait);
-
-
-        Debug.Log("aaaaa");
-
-        appleRedIsOn = false;
-    }
-
-
-    private IEnumerator Counter()
-    {   //it displays the seconds 
-
-        timeCounterPoweUpSlider.maxValue = time;//posam que es valor màxim de slider sigui es temps que ha d'esperar
-
-        while (time > 0)
-        {
-            time -= 0.5f;
-            timeCounterPoweUpSlider.value = time;
-            if(time == 0)
-            {
-                counterSliderPanel.SetActive(false);
-                playerMovementScript.Scale(1.5f);
-
-            }
-            yield return new WaitForSeconds(0.5f); //sait 30 seconds to low the number
-        }
-
-    }
-    */
-
     //Function that manages lose condition
     public void IsGameOver() //funcition to revise if it's game over
     {
@@ -175,6 +129,12 @@ public class GameManager : MonoBehaviour
     public void IsHasWin() {
         isWin = true;
         //winPanel.SetActive(true);
+
+        /*
+        if (DataPersistence.sharedInstance.availableLevels =< currentLevel) {
+            DataPersistence.sharedInstance.availableLevels == currentLevel + 1; //can access next level
+        }
+        */
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
@@ -202,8 +162,12 @@ public class GameManager : MonoBehaviour
     public void ShowLife(int num) {
         for(int i = 0; i < maxLives; i++)
         {
-            if (i > num-1) {
+            if (i > num - 1)
+            {
                 hearts[i].gameObject.SetActive(false);
+            }
+            else {
+                hearts[i].gameObject.SetActive(true);
             }
 
         }
