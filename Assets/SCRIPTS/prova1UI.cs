@@ -13,7 +13,9 @@ public class prova1UI : MonoBehaviour
     public bool hasWonLev2;
     public bool hasWonLev3;
 
-    public int i;
+    //private Button locatorButtonLev1; --> no se si el necessitam, mirar-ho
+    private Button locatorButtonLev2;
+    private Button locatorButtonLev3;
 
     void Update()
     {
@@ -21,13 +23,15 @@ public class prova1UI : MonoBehaviour
         {
             //has to show 4 arrows
             StartCoroutine(showArrows(4));
+            locatorButtonLev2.gameObject.SetActive(true); //això ho hauriem de posar sa data persistance 
         }
         if(hasWonLev2 == true)
         {
             //has to show 4 arrows
             StartCoroutine(showArrows(9));
+            locatorButtonLev3.gameObject.SetActive(true);
         }
-        if(hasWonLev3 == true)
+        if (hasWonLev3 == true)
         {
             //has to show all the arrows
             StartCoroutine(showArrows(arrowArray.Length));
