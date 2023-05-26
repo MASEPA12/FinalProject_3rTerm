@@ -184,7 +184,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1146282820485489882}
-  - {fileID: 3929467375614870910}
+  - {fileID: 8737183607988115076}
   m_Father: {fileID: 1146282819174561937}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,17 +382,54 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1001 &1146282820112451166
+--- !u!1001 &4620862369391842724
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1146282819592912759}
     m_Modifications:
+    - target: {fileID: 171036500493517125, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_text
+      value: 'MAIN
+
+        MENU'
+      objectReference: {fileID: 0}
+    - target: {fileID: 171036500493517125, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 171036500493517125, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 783389808339298637, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_text
+      value: PLAY
+      objectReference: {fileID: 0}
+    - target: {fileID: 783389808339298637, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 783389808339298637, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915299696488355102, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_Name
+      value: mainMenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2001439442377379556, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
       propertyPath: m_Name
-      value: horizontalInputPause
+      value: horizontalInputLevelPlay
       objectReference: {fileID: 0}
     - target: {fileID: 3910275634992688797, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
@@ -524,6 +561,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5385969099614117582, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_Name
+      value: playButton
+      objectReference: {fileID: 0}
     - target: {fileID: 7029251850320585215, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -533,6 +575,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7029251850320585215, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7029251850320585215, guid: e6d4bbdc42eddb548a0a5c71e2576047,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7029251850320585215, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
@@ -566,9 +618,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d4bbdc42eddb548a0a5c71e2576047, type: 3}
---- !u!224 &3929467375614870910 stripped
+--- !u!224 &8737183607988115076 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4134357116790850336, guid: e6d4bbdc42eddb548a0a5c71e2576047,
     type: 3}
-  m_PrefabInstance: {fileID: 1146282820112451166}
+  m_PrefabInstance: {fileID: 4620862369391842724}
   m_PrefabAsset: {fileID: 0}

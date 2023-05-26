@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class prova1UI : MonoBehaviour
+public class LevelPanelScript : MonoBehaviour
 {
     public Image[] arrowArray;
     public Image[] girlIcon;
