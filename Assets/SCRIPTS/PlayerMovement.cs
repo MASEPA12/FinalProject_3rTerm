@@ -152,7 +152,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire2")) {
             Attack();
         }
-
     }
 
     private void FixedUpdate()

@@ -6,20 +6,21 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //Function to load desired level to play
     public void PlayScene(int sceneNumber) {
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    //Function to return to main menu
+    public void ReturnMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    //Restart current level
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
