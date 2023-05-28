@@ -4961,7 +4961,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  sphereRadius: 4
+  sphereRadius: 8
   points: 10
   hunger: 5
   heal: 0
