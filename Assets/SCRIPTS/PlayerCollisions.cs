@@ -20,6 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     //bool system
     public bool isColliding;
     public bool somethingIsOn;
+    public bool onFloor;
 
     //script references
     public PlayerMovement playerMovementScript;
@@ -32,7 +33,7 @@ public class PlayerCollisions : MonoBehaviour
         playerMovementScript = FindObjectOfType<PlayerMovement>();   
     }
 
-    void FixedUpdate()
+    void Update()
     {   //set the size of the capsule (posaré sa de abaix un pos més amunt pq no estigui tot es temps tocant enterra, pq s'enveoirment és tb ground) PENSAR A LLEVAR ES +0.5f
         centerCapsuleDwn = transform.position + Vector3.up * ( radiusCapsule);
         centerCapsuleUp = transform.position + ((boxColliderPlayer.size.y - radiusCapsule) * Vector3.up);
@@ -53,18 +54,21 @@ public class PlayerCollisions : MonoBehaviour
         somethingIsOn = Physics.Raycast(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f, maxDistance, layerMaskToCollide);
         if (somethingIsOn)
         {
-            playerMovementScript.canBeSteady = false;
-            playerMovementScript.canJump = false;
-            
+            playerMovementScript.canBeSteady = false;            
            Debug.Log("SOMETHING IS ON THE PLAYER");
 
         }
         else
         {
-            playerMovementScript.canJump = true;
-            playerMovementScript.canBeSteady = true;
-            //Debug.Log("NOTHING ON THE PLAYER");
-            
+            playerMovementScript.canBeSteady = true;   
+        }
+
+        RaycastHit hit;
+        onFloor = Physics.Raycast(transform.position,-transform.up, out hit,boxColliderPlayer.size.y/2*0.1f);
+        if (onFloor)
+        {
+            Debug.Log("onFloor");
+            playerMovementScript.CanJump(true);
         }
     }
 

@@ -9,16 +9,16 @@ public class MusicManager : MonoBehaviour
 
     
     //Sound effect
-    private AudioClip jumpSound;
-    private AudioClip recollectSound;
-    private AudioClip powerUpSound1;
-    private AudioClip powerUpSound2;
-    private AudioClip fireballSound;
-    private AudioClip damageSound;
-    private AudioClip restoreSound;
-    private AudioClip hungrySound;
-    private AudioClip winSound;
-    private AudioClip loseSound;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip recollectSound;
+    [SerializeField] private AudioClip powerUpSound1;
+    [SerializeField] private AudioClip powerUpSound2;
+    [SerializeField] private AudioClip fireballSound;
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip restoreSound;
+    [SerializeField] private AudioClip hungrySound;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
 
     //Background music
     public AudioClip[] backgroundSound;
@@ -26,8 +26,8 @@ public class MusicManager : MonoBehaviour
     private AudioSource _audioSource;
 
     //volumen
-    public float backgroundVol;
-    public float effectsVol;
+    public float backgroundVol = 1f;
+    public float effectsVol = 1f;
 
 
     // Start is called before the first frame update
@@ -45,13 +45,32 @@ public class MusicManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySound(AudioClip sound, float volumen )
+    public void PlaySong(AudioClip sound)
     {
         _audioSource.clip = sound;
         _audioSource.Play();
     }
 
+    private void PlaySoundEffect(AudioClip sound, float volumen) {
+        _audioSource.PlayOneShot(sound, volumen);
+    }
+
     public void changeVolumen(float volumen) {
-        _audioSource.volume = volumen;
+        backgroundVol = volumen;
+        _audioSource.volume = backgroundVol;
+    }
+
+    public void changeEffectVolumen(float value)
+    {
+        effectsVol = value;
+    }
+
+    public void JumpSound() {
+        PlaySoundEffect(jumpSound,effectsVol);
+    }
+
+    public void RecollectSound()
+    {
+        PlaySoundEffect(recollectSound, effectsVol);
     }
 }

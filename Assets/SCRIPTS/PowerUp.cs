@@ -89,15 +89,12 @@ public class PowerUp : MonoBehaviour
 
         yield return new WaitForSeconds(secondsToWait);
 
-
-        Debug.Log("aaaaa");
-
         appleRedIsOn = false;
     }
 
     public IEnumerator SpeedPowerUp(float speed, float durationOfPowerUp)
     {
-        playerMovementScript.changeSpeed(speed); //double up the speed
+        playerMovementScript.ChangeSpeed(speed); //double up the speed
         appleGreenIsOn = true;
         sliderPanelGreen.SetActive(true);
 

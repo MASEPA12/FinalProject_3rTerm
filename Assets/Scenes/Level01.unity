@@ -2330,8 +2330,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281272184}
-  m_LocalRotation: {x: -0.0000000026537974, y: 0.9880345, z: -0.1542333, w: -0.000000017000497}
-  m_LocalPosition: {x: 0, y: 5.3999996, z: 10.46}
+  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
+  m_LocalPosition: {x: 0, y: 5.6, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12327,8 +12327,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270492080}
-  m_LocalRotation: {x: -0.0000000026537974, y: 0.9880345, z: -0.1542333, w: -0.000000017000497}
-  m_LocalPosition: {x: 0, y: 5.3999996, z: 10.46}
+  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
+  m_LocalPosition: {x: 0, y: 5.6, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16735,11 +16735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f9490821b45a614186c5fafd5d83edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sharedInstance: {fileID: 0}
   hunger: 25
   foodCounterSlider: {fileID: 1969945203}
   hungerTimer: 2.5
   score: 0
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 7217122822924353878}
   time: 0
   timeCounterPoweUpSlider: {fileID: 210816610}
   counterSliderPanel: {fileID: 1560686595}
@@ -16756,10 +16757,6 @@ MonoBehaviour:
   shootedAudioclip: {fileID: 0}
   audioSource: {fileID: 0}
   jumpingParticles: {fileID: 0}
-  powerUpZone1: {fileID: 0}
-  powerUpArray:
-  - {fileID: 8668346941501899866, guid: 1772ea394dcea5946ba1533eef80d0d5, type: 3}
-  - {fileID: 57663020457992583, guid: 1f2075aef9405c54196d5406312da4e2, type: 3}
   hearts:
   - {fileID: 413431058}
   - {fileID: 1027850394}
@@ -16927,12 +16924,12 @@ PrefabInstance:
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.46
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
@@ -18489,6 +18486,7 @@ MonoBehaviour:
   boxColliderPlayer: {fileID: 185326720}
   isColliding: 0
   somethingIsOn: 0
+  onFloor: 0
   playerMovementScript: {fileID: 0}
 --- !u!1001 &1845405663
 PrefabInstance:
@@ -23029,6 +23027,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f289864e7d5208c44a8d42a632a04b6e, type: 3}
+--- !u!114 &7217122822924353878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4676124184417993736, guid: f289864e7d5208c44a8d42a632a04b6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7217122822924353877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7909446852256478851
 PrefabInstance:
   m_ObjectHideFlags: 0

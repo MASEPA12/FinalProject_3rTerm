@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public GameManager sharedInstance;
+
     //CONSTANTS
     private const int MAX_RETRIES = 3; // number of retry before game_over
     private const int INITIAL_HUNGER = 25;
@@ -53,23 +56,35 @@ public class GameManager : MonoBehaviour
     //particles
     public ParticleSystem jumpingParticles;
 
-    //random power ups in a random place of an especific zone
-    public BoxCollider powerUpZone1;
-    public GameObject[] powerUpArray;
 
     //UI
     public Image[] hearts;
 
+    //Scene played
+    Scene currentScene;
+    
+    private void Awake()
+    {
+        if (sharedInstance == null)
+        {
+            sharedInstance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Start()
     {
-        //Reset values
-        maxLives = INITIAL_LIVES;
-        lives = maxLives;
-
+        InitiateValues();
+        score = 0;
         audioSource = GetComponent<AudioSource>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
+        currentScene = SceneManager.GetActiveScene();
     }
 
 
@@ -77,7 +92,6 @@ public class GameManager : MonoBehaviour
     private void UpdateFoodCounter()
     {
         foodCounterSlider.value = hunger;
-        Debug.Log($"{hunger}");
     }
 
 
@@ -122,6 +136,7 @@ public class GameManager : MonoBehaviour
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
         //Time.timeScale = 0;
+        SceneManager.LoadScene(5, LoadSceneMode.Additive);
         Debug.Log("YOUR HAVE LOST");
 
     }
@@ -129,13 +144,10 @@ public class GameManager : MonoBehaviour
     //Function that manages win condition
     public void IsHasWin() {
         isWin = true;
-        //winPanel.SetActive(true);
 
-        /*
-        if (DataPersistence.sharedInstance.availableLevels =< currentLevel) {
-            DataPersistence.sharedInstance.availableLevels == currentLevel + 1; //can access next level
+        if (DataPersistence.sharedInstance.completedLevels <= currentScene.buildIndex) {
+            DataPersistence.sharedInstance.completedLevels = currentScene.buildIndex;
         }
-        */
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
@@ -153,7 +165,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (lives <= 0){
-            IsGameOver();
+            DoRetry();
         }
         
         Debug.Log($" Lifepoints: {lives}");
@@ -177,14 +189,33 @@ public class GameManager : MonoBehaviour
     //Function that updates score information
     public void UpdateScore(int points) {
         score += points;
-        //scoreText.text() = score
+        scoreText.text = $"SCORE\n{score}";
     }
 
     //Function that update hunger information
     public void UpdateHunger(int hungerPoints) {
         hunger += hungerPoints;
         foodCounterSlider.value = hunger;
-        Debug.Log($"{hunger}");
     }
 
+    private void DoRetry() {
+        if (retry > 0)
+        {
+            retry--;
+            InitiateValues();
+            ShowLife(lives);
+            playerMovementScript.ResetPosition();
+        }
+        else {
+            IsGameOver();
+        }
+    }
+
+    private void InitiateValues()
+    {
+        //Reset values
+        maxLives = INITIAL_LIVES;
+        lives = maxLives;
+        hunger = INITIAL_HUNGER;
+    }
 }

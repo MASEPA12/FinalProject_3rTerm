@@ -491,16 +491,19 @@ MonoBehaviour:
   player: {fileID: 0}
   visionRange: 10
   playerInVisionRange: 0
-  canAttack: 1
+  damage: -1
   attackCooldownTimer: 3
   attackRange: 1
   playerInAttackRange: 0
+  knockback: 150
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   nextPoint: 0
   totalWaypoints: 0
+  speedPatrol: 3.5
+  speedChase: 4.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

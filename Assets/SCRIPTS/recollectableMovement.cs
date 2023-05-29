@@ -12,9 +12,9 @@ public class recollectableMovement : MonoBehaviour
     public int sphereRadius = 3;
 
     //Points variables
-    public int points;
-    public int hunger;
-    public int heal = 0;
+    [SerializeField] private int points;
+    [SerializeField] private int hunger;
+    [SerializeField] private int heal = 0;
 
     //Scripts connections
     public PlayerMovement playerMovement;
@@ -52,6 +52,7 @@ public class recollectableMovement : MonoBehaviour
 
     private void OnDestroy()
     {
+        MusicManager.sharedInstance.RecollectSound();
         gameManagerScript.UpdateScore(points);
         gameManagerScript.UpdateHunger(hunger);
         gameManagerScript.UpdateLife(heal);

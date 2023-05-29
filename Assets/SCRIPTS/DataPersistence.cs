@@ -7,7 +7,7 @@ public class DataPersistence : MonoBehaviour
 {
     public static DataPersistence sharedInstance;
     public string username;
-    public int availableLevels = 1;
+    public int completedLevels = 0;
 
 
 

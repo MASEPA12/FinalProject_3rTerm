@@ -3,7 +3,17 @@ guid: b78e92a994a35f040a6abef7e988a8a5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - jumpSound: {instanceID: 0}
+  - recollectSound: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  - powerUpSound1: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
+  - powerUpSound2: {instanceID: 0}
+  - fireballSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  - damageSound: {instanceID: 0}
+  - restoreSound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  - hungrySound: {instanceID: 0}
+  - winSound: {instanceID: 0}
+  - loseSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

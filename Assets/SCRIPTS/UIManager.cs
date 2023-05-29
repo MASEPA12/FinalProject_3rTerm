@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
     public void SaveWithPlayerPrefs()
     {
         PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
-        PlayerPrefs.SetInt("LEVELS", DataPersistence.sharedInstance.availableLevels);
+        PlayerPrefs.SetInt("LEVELS", DataPersistence.sharedInstance.completedLevels);
         PlayerPrefs.SetFloat("GENERALVOL", MusicManager.sharedInstance.backgroundVol);
         PlayerPrefs.SetFloat("EFFECTVOL", MusicManager.sharedInstance.effectsVol);
     }

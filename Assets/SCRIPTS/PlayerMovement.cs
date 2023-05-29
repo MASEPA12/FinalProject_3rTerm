@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         gameManagerScript.appleRedIsOn = false;
 
         gameManagerScript.isBig = false;
+        canJump = true;
 
         spawnPos = transform.position; //set spawn position at the start of the level;
 
@@ -114,6 +115,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = true;
             rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+            
+            Debug.Log($"canJump = {canJump}");
         }
         else {
             isJumping = false;
@@ -168,9 +171,6 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
         }
 
-        if (isJumping) {
-            //rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-        }
 
         //rb.AddRelativeTorque(Vector3.up * mouseX *rotationForce);
         rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body                                                                                                                //
@@ -183,6 +183,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isJumping", isJumping);
         animator.SetBool("isShooting", isShotting);
         animator.SetBool("isRunningBck", isRuningBack);
+
+        if (isJumping) {
+            canJump = false;
+        }
     }
 
     public void Scale(float num)
@@ -201,7 +205,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag(appleRed) && powerUpScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
-            Debug.Log("entre");
             Destroy(other.gameObject);
 
             StartCoroutine(powerUpScript.LocalScaleTransformer(secondsToWaitAppleRed));
@@ -209,7 +212,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.CompareTag(appleGreen) && powerUpScript.appleGreenIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
-            Debug.Log("entre");
             Destroy(other.gameObject);
 
             StartCoroutine(powerUpScript.SpeedPowerUp(walkingForce*2,secondsToWaitAppleGreen));
@@ -223,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("YOU HAVE LOST");
         }
 
-        //If player
+        //If player arrives in the finish line
         if (other.CompareTag("Finish")){//&& points >= 100) {
             gameManagerScript.IsHasWin();
         }
@@ -263,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
         canDamage = true;
     }
 
-    public void changeSpeed(float newSpeed) {
+    public void ChangeSpeed(float newSpeed) {
         walkingForce = newSpeed;
     }
 
@@ -288,6 +290,15 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(attackTimer);
         canAttack = true;
+    }
+
+    public void CanJump(bool state) {
+        canJump = state;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = spawnPos;
     }
 }
 

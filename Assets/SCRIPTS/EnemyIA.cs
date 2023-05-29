@@ -12,20 +12,20 @@ public class EnemyIA : MonoBehaviour
     public bool playerInVisionRange;
 
     //Attack Variables
-    public bool canAttack = true;
-    public int damage = -1; //damage that does the enemy
+    private bool canAttack = true;
+    [SerializeField] private int damage = -1; //damage that does the enemy
     public float attackCooldownTimer;
     public float attackRange;
     public bool playerInAttackRange;
-    
+    [SerializeField] private float knockback = 200f;
     //Waypoints Variables
     public Transform[] waypoints;
     public int nextPoint;
     public int totalWaypoints;
 
     //Speed Variables
-    [SerializeField] float speedPatrol = 3.5f;
-    [SerializeField] float speedChase = 4.5f;
+    [SerializeField] private float speedPatrol = 3.5f;
+    [SerializeField] private float speedChase = 4.5f;
 
     //Mask
     public LayerMask playerLayer;
@@ -125,7 +125,7 @@ public class EnemyIA : MonoBehaviour
             //knockback dirrection
             Vector3 pushAway = (collision.gameObject.transform.position - transform.position).normalized; //Get direction back to be pushed
             //Update hearts
-            playerCon.takeDamage(damage, 700f, pushAway);
+            playerCon.takeDamage(damage, knockback, pushAway);
         }
     }
 

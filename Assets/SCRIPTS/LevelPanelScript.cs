@@ -33,6 +33,7 @@ public class LevelPanelScript : MonoBehaviour
     }
     void Update()
     {
+        /*
         //if the player has not won any level, the default will be the girl icon in the level 1
         if(hasWonLev1 == true && arrowsAreShowing1 == false)
         {
@@ -62,6 +63,39 @@ public class LevelPanelScript : MonoBehaviour
 
             //has to show all the arrows
             StartCoroutine(showArrows(arrowArray.Length-1));
+            arrowsAreShowing3 = true;
+        }
+        */
+
+        //if the player has not won any level, the default will be the girl icon in the level 1
+        if (DataPersistence.sharedInstance.completedLevels>=1 && arrowsAreShowing1 == false)
+        {
+            girlIcon[0].gameObject.SetActive(false);
+            //has to show 4 arrows
+            StartCoroutine(showArrows(4));
+            locatorButtonLev2.gameObject.SetActive(true); //això ho hauriem de posar sa data persistance 
+
+            girlIcon[1].gameObject.SetActive(true);
+            arrowsAreShowing1 = true;
+        }
+        if (DataPersistence.sharedInstance.completedLevels >= 2 && arrowsAreShowing2 == false)
+        {
+            girlIcon[1].gameObject.SetActive(false);
+
+            //has to show 4 arrows
+            StartCoroutine(showArrows(9));
+            locatorButtonLev3.gameObject.SetActive(true);
+
+            girlIcon[2].gameObject.SetActive(true);
+            arrowsAreShowing2 = true;
+        }
+        if (DataPersistence.sharedInstance.completedLevels >= 3 && arrowsAreShowing3 == false)
+        {
+            girlIcon[2].gameObject.SetActive(false);
+            girlIcon[3].gameObject.SetActive(true);
+
+            //has to show all the arrows
+            StartCoroutine(showArrows(arrowArray.Length - 1));
             arrowsAreShowing3 = true;
         }
     }
