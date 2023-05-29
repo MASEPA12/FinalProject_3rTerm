@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         //Applied Force
-        rb.AddRelativeForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
+        //rb.AddRelativeForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
         //rigidbody.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
         Invoke("SetInactive", inactiveTimer);
     }
@@ -55,9 +55,11 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /*
     private void OnDisable()
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
+    */
 }

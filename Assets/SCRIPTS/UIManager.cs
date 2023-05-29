@@ -6,6 +6,9 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public TMP_InputField inputField;
+    private string existingUsername;
+
     //Function to load desired level to play
     public void PlayScene(int sceneNumber) {
         SceneManager.LoadScene(sceneNumber);
@@ -23,4 +26,35 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+
+    public void SaveUsername() {
+        string inputText = inputField.text;
+
+        if (inputText == "")
+        {
+            DataPersistence.sharedInstance.username = inputField.placeholder.GetComponent<TextMeshProUGUI>().text;
+        }
+        else {
+            DataPersistence.sharedInstance.username = inputText;
+        }
+    }
+
+    public void SaveUsernameWithPlayerPrefs() {
+        PlayerPrefs.SetString("Username", DataPersistence.sharedInstance.username);
+    }
+
+    public void SaveWithPlayerPrefs()
+    {
+        PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
+        PlayerPrefs.SetInt("LEVELS", DataPersistence.sharedInstance.availableLevels);
+        PlayerPrefs.SetFloat("GENERALVOL", MusicManager.sharedInstance.backgroundVol);
+        PlayerPrefs.SetFloat("EFFECTVOL", MusicManager.sharedInstance.effectsVol);
+    }
+
+    public void getUsername() {
+        existingUsername = PlayerPrefs.GetString("USERNAME");
+        if (existingUsername != "") {
+            inputField.placeholder.GetComponent<TextMeshProUGUI>().text = existingUsername;
+        }
+    }
 }

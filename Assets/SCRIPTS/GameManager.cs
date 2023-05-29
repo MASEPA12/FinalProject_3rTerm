@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /* script that controlls ...
  */
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
-        //Time.timeScale = 0;
+        SceneManager.LoadScene(4, LoadSceneMode.Additive);
         Debug.Log("You Won");
         //Return level menu
     }

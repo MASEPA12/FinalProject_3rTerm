@@ -274,8 +274,10 @@ public class PlayerMovement : MonoBehaviour
             //Request bullet from BulletPool
             GameObject fireball = FireballPool.Instance.Request();
             //Get reposition of the bullet
-            fireball.transform.position = throwPos.position;
+            fireball.transform.position = throwPos.position;         
             fireball.transform.rotation = throwPos.rotation;
+            fireball.GetComponent<Rigidbody>().AddForce(transform.forward * 250, ForceMode.Impulse);
+        
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
         }

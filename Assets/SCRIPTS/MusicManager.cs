@@ -9,21 +9,25 @@ public class MusicManager : MonoBehaviour
 
     
     //Sound effect
-    public AudioClip jumpSound;
-    public AudioClip recollectSound;
-    public AudioClip powerUpSound1;
-    public AudioClip powerUpSound2;
-    public AudioClip fireballSound;
-    public AudioClip damageSound;
-    public AudioClip restoreSound;
-    public AudioClip hungrySound;
-    public AudioClip winSound;
-    public AudioClip loseSound;
+    private AudioClip jumpSound;
+    private AudioClip recollectSound;
+    private AudioClip powerUpSound1;
+    private AudioClip powerUpSound2;
+    private AudioClip fireballSound;
+    private AudioClip damageSound;
+    private AudioClip restoreSound;
+    private AudioClip hungrySound;
+    private AudioClip winSound;
+    private AudioClip loseSound;
 
     //Background music
     public AudioClip[] backgroundSound;
 
     private AudioSource _audioSource;
+
+    //volumen
+    public float backgroundVol;
+    public float effectsVol;
 
 
     // Start is called before the first frame update
@@ -41,12 +45,7 @@ public class MusicManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        
-    }
-
-    public void PlaySound(AudioClip sound)
+    public void PlaySound(AudioClip sound, float volumen )
     {
         _audioSource.clip = sound;
         _audioSource.Play();

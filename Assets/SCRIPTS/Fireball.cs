@@ -17,11 +17,15 @@ public class Fireball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
+    private void Start()
+    {
+        //rb.AddForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
+    }
 
     private void OnEnable()
     {
         //Applied Force
-        rb.AddRelativeForce(transform.forward * forwardAttackForce,ForceMode.Impulse);
+        //rb.AddForce(transform.forward * forwardAttackForce,ForceMode.Impulse);
         //rigidbody.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
         Invoke("SetInactive", inactiveTimer);
     }
@@ -31,9 +35,12 @@ public class Fireball : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /*
     private void OnDisable()
     {
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+        //transform.rotation = Quaternion.identity;
     }
+    */
 }

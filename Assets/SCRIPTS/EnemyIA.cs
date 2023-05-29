@@ -86,6 +86,7 @@ public class EnemyIA : MonoBehaviour
     //Function that manages enemy patrol 
     private void Patrol() {
         _agent.speed = speedPatrol;
+        Debug.Log("pATROL");
         if (Vector3.Distance(transform.position, waypoints[nextPoint].position) < 2.5) {
             nextPoint++;
             if (nextPoint == totalWaypoints) {
@@ -99,6 +100,7 @@ public class EnemyIA : MonoBehaviour
 
     //Function that manages enemy chase
     private void Chase() {
+        Debug.Log("CHASE");
         _agent.speed = speedChase;
         _agent.SetDestination(playerCon.transform.position);
         transform.LookAt(playerCon.transform);
@@ -107,6 +109,7 @@ public class EnemyIA : MonoBehaviour
     //Function that manages enemy Attack
     private void Attack() {
         if (canAttack) {
+            Debug.Log("ATTACK");
             //Play attack animation
             Debug.Log("Fuiste atacado");
             canAttack = false;

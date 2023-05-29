@@ -60,7 +60,7 @@ public class Cannon : MonoBehaviour
             //Get reposition of the bullet
             bullet.transform.position = bulletSpawn.position;
             bullet.transform.rotation = bulletSpawn.rotation;
-
+            bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * 800, ForceMode.Impulse);
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
         }
