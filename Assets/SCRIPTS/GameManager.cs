@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public bool isNormalScale;
     public bool isGameOver = false;
     public bool isWin = false;
+    private bool isGamePause = false;
 
     //Life variables
     public int maxLives = INITIAL_LIVES;
@@ -47,7 +48,6 @@ public class GameManager : MonoBehaviour
 
     //script conections
     public PlayerMovement playerMovementScript;
-    public PostProcesingManager postProcesingManager;
 
     //particles
     public ParticleSystem jumpingParticles;
@@ -76,10 +76,10 @@ public class GameManager : MonoBehaviour
     {
         InitiateValues();
         score = 0;
-
+        isGameOver = false;
+        isWin = false;
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
-        postProcesingManager = FindObjectOfType<PostProcesingManager>();
         currentScene = SceneManager.GetActiveScene();
         MusicManager.sharedInstance.LevelMusic(currentScene.buildIndex);
     }
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     //Coroutine that manages the hunger Gauge
     public IEnumerator LooseFoodTimer()
     {
-        while (!isGameOver || !isWin) //Player has points
+        while (!IsFinished()) //While Game hasn't finish
         {
             if (hunger > 0)
             { //Player still has points
@@ -128,9 +128,7 @@ public class GameManager : MonoBehaviour
     //Function that manages lose condition
     public void IsGameOver() //funcition to revise if it's game over
     {
-
         isGameOver = true;
-        //gameOverPanel.SetActive(true);
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
@@ -155,9 +153,14 @@ public class GameManager : MonoBehaviour
         //Return level menu
     }
 
+    //Check if the game is already over
+    public bool IsFinished() {
+        return isWin || isGameOver;
+    }
+
     //Function that updates life information
     public void UpdateLife(int num) { //
-        if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
+        if (lives > 0 && lives < maxLives) //5 has to be a variable MAX_lifes
         {
             lives += num;
             ShowLife(lives);    
@@ -220,5 +223,17 @@ public class GameManager : MonoBehaviour
         InitiateValues();
         ShowLife(lives);
         playerMovementScript.ResetPosition();
+    }
+
+    private void TogglePauseGame() {
+        isGamePause = !isGamePause;
+        if (isGamePause)
+        {
+            Time.timeScale = 0f;
+        }
+        else {
+            Time.timeScale = 0f;
+        }
+        
     }
 }

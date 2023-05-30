@@ -74,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        gameManagerScript = FindObjectOfType<GameManager>();
         powerUpScript = FindObjectOfType<PowerUp>();
 
         animator = GetComponent<Animator>();
@@ -82,112 +81,122 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
 
-        gameManagerScript.counterSliderPanel.SetActive(false);
-        gameManagerScript.appleRedIsOn = false;
+        GameManager.sharedInstance.counterSliderPanel.SetActive(false);
+        GameManager.sharedInstance.appleRedIsOn = false;
+        GameManager.sharedInstance.isBig = false;
 
-        gameManagerScript.isBig = false;
         canJump = true;
 
         spawnPos = transform.position; //set spawn position at the start of the level;
 
-        StartCoroutine(gameManagerScript.LooseFoodTimer());
+        StartCoroutine(GameManager.sharedInstance.LooseFoodTimer());
     }
 
     private void Update()
     {
-        forwardInput = Input.GetAxis("Vertical"); //movement front/back 
-        horizontalInput = Input.GetAxis("Horizontal"); //side movement
-        mouseX = Input.GetAxis("Mouse X");
-
-        //CROUCH
-        if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
-        {
-            isSteady = false;
-            Debug.Log("isSteady == false");
-
-        }
-        else if(canBeSteady == true)
-        {
-            isSteady = true;
-        }
-
-        //JUMPING [if the jump input is not equal to 0, it's jumping]
-        if (Input.GetButtonDown("Jump") && canJump)
-        {
-            isJumping = true;
-            rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+        if (!GameManager.sharedInstance.IsFinished()) {
             
-            Debug.Log($"canJump = {canJump}");
-        }
-        else {
-            isJumping = false;
+            forwardInput = Input.GetAxis("Vertical"); //movement front/back 
+            horizontalInput = Input.GetAxis("Horizontal"); //side movement
+            mouseX = Input.GetAxis("Mouse X");
+
+            //CROUCH
+            if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
+            {
+                isSteady = false;
+                Debug.Log("isSteady == false");
+
+            }
+            else if(canBeSteady == true)
+            {
+                isSteady = true;
+            }
+
+            //JUMPING [if the jump input is not equal to 0, it's jumping]
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                isJumping = true;
+                rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
+            
+                Debug.Log($"canJump = {canJump}");
+            }
+            else {
+                isJumping = false;
+            }
+
+            //RUNNING [if its a positive value, is going forwards]
+            if (Input.GetAxis("Vertical") >0)
+            {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
+
+            //SHOOTING
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                isShotting = true;
+            }
+            else
+            {
+                isShotting = false;
+            }
+
+            //RUNNING BCK [if its a negative value, is going backwards]
+            if (Input.GetAxis("Vertical") < 0) 
+            {
+                isRuningBack = true;
+            }
+            else
+            {
+                isRuningBack = false;
+            }
+
+            if (Input.GetButtonDown("Fire2")) {
+                Attack();
+            }
         }
 
-        //RUNNING [if its a positive value, is going forwards]
-        if (Input.GetAxis("Vertical") >0)
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
-        //SHOOTING
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            isShotting = true;
-        }
-        else
-        {
-            isShotting = false;
-        }
-
-        //RUNNING BCK [if its a negative value, is going backwards]
-        if (Input.GetAxis("Vertical") < 0) 
-        {
-            isRuningBack = true;
-        }
-        else
-        {
-            isRuningBack = false;
-        }
-
-        if (Input.GetButtonDown("Fire2")) {
-            Attack();
-        }
     }
 
     private void FixedUpdate()
     {
-        Vector3 dir = new Vector3(horizontalInput,0,forwardInput);
-
-        if (forwardInput < 0 || !isSteady)
+        if (!GameManager.sharedInstance.IsFinished())
         {
-            //rb.AddRelativeForce(dir*movementForceB);
-            rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
-        }
-        else {
-            //rb.AddRelativeForce(dir*movementForce);
-            rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
-        }
+            Vector3 dir = new Vector3(horizontalInput, 0, forwardInput);
 
-
-        //rb.AddRelativeTorque(Vector3.up * mouseX *rotationForce);
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up* rotationSpeed * horizontalInput*Time.deltaTime));//rotate body                                                                                                                //
+            if (forwardInput < 0 || !isSteady)
+            {
+                //rb.AddRelativeForce(dir*movementForceB);
+                rb.MovePosition(transform.position + (walkingForce / 2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
+            }
+            else
+            {
+                //rb.AddRelativeForce(dir*movementForce);
+                rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
+            }
+            //rb.AddRelativeTorque(Vector3.up * mouseX *rotationForce);
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * rotationSpeed * horizontalInput * Time.deltaTime));//rotate body   
+        }
     }
 
     private void LateUpdate()
     {
-        animator.SetBool("isSteady", isSteady);
-        animator.SetBool("isRunning", isRunning);
-        animator.SetBool("isJumping", isJumping);
-        animator.SetBool("isShooting", isShotting);
-        animator.SetBool("isRunningBck", isRuningBack);
+        if (!GameManager.sharedInstance.IsFinished())
+        {
+            animator.SetBool("isSteady", isSteady);
+            animator.SetBool("isRunning", isRunning);
+            animator.SetBool("isJumping", isJumping);
+            animator.SetBool("isShooting", isShotting);
+            animator.SetBool("isRunningBck", isRuningBack);
 
-        if (isJumping) {
-            canJump = false;
+            if (isJumping) {
+                canJump = false;
+            }
         }
+
     }
 
     public void Scale(float num)
@@ -222,13 +231,13 @@ public class PlayerMovement : MonoBehaviour
         //if the player falls loses
         if (other.CompareTag("floor"))
         {
-            gameManagerScript.CheckRetry();
+            GameManager.sharedInstance.CheckRetry();
             //set active the game over panel
         }
 
         //If player arrives in the finish line
         if (other.CompareTag("Finish")){//&& points >= 100) {
-            gameManagerScript.IsHasWin();
+            GameManager.sharedInstance.IsHasWin();
         }
     }
 
@@ -237,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (canDamage)
         {
-            gameManagerScript.UpdateLife(damage);
+            GameManager.sharedInstance.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
             rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
@@ -256,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Function that restore player health
     public void restoreLife() {
-        gameManagerScript.UpdateLife(1); //Restore 1 point
+        GameManager.sharedInstance.UpdateLife(1); //Restore 1 point
     }
 
     //Coroutine that show the time the player is invincible
@@ -304,10 +313,5 @@ public class PlayerMovement : MonoBehaviour
         transform.position = spawnPos;
     }
 
-    /*
-    private IEnumerator PushAwayTime()
-    {
-        yield return new WaitForSeconds(2);
-    }*/
 }
 

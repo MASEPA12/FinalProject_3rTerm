@@ -31,7 +31,6 @@ public class EnemyIA : MonoBehaviour
     public LayerMask playerLayer;
 
     //Scripts connections
-    private GameManager gameManager;
     private PlayerMovement playerCon;
 
     //Item
@@ -49,7 +48,6 @@ public class EnemyIA : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
         playerCon = FindObjectOfType<PlayerMovement>();
         totalWaypoints = waypoints.Length;
         nextPoint = 1;
@@ -58,7 +56,7 @@ public class EnemyIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.isGameOver || gameManager.isWin)
+        if (!GameManager.sharedInstance.IsFinished())
         {
             Vector3 pos = transform.position;
             playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);

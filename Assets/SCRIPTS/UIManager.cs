@@ -65,12 +65,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /*
     //Function that loads de progress
     public void LoadProgres() {
         if (inputField.text == "" && inputField.placeholder.GetComponent<TextMeshProUGUI>().text == PlayerPrefs.GetString("USERNAME")) {
             DataPersistence.sharedInstance.completedLevels = PlayerPrefs.GetInt("LEVELS");
         }
     }
+    */
 
     //Function that Quits the Game
     public void ExitGame() {

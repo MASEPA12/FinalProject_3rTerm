@@ -1560,12 +1560,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  walkingForce: 500
-  jumpingForce: 250
+  walkingForce: 6
+  jumpingForce: 300
   forwardInput: 0
   horizontalInput: 0
   mouseX: 0
-  rotationSpeed: 150
+  rotationSpeed: 200
   movement: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   isSteady: 1
@@ -1611,6 +1611,7 @@ MonoBehaviour:
   boxColliderPlayer: {fileID: 6137922821281739731}
   isColliding: 0
   somethingIsOn: 0
+  onFloor: 0
   playerMovementScript: {fileID: 0}
 --- !u!1 &6497366970271031885
 GameObject:
