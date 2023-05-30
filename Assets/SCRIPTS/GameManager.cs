@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-/* script that controlls ...
+/* 
+ * script that controlls ...
  */
 
 public class GameManager : MonoBehaviour
@@ -46,12 +47,7 @@ public class GameManager : MonoBehaviour
 
     //script conections
     public PlayerMovement playerMovementScript;
-
-    //sounds
-    public AudioClip gameOverAudioClip; //renou de quan perd
-    public AudioClip jumpAudioclip; //renou de quan bota
-    public AudioClip shootedAudioclip;//renou de quan li han pegat
-    public AudioSource audioSource;
+    public PostProcesingManager postProcesingManager;
 
     //particles
     public ParticleSystem jumpingParticles;
@@ -80,11 +76,12 @@ public class GameManager : MonoBehaviour
     {
         InitiateValues();
         score = 0;
-        audioSource = GetComponent<AudioSource>();
 
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         playerMovementScript = FindObjectOfType<PlayerMovement>();
+        postProcesingManager = FindObjectOfType<PostProcesingManager>();
         currentScene = SceneManager.GetActiveScene();
+        MusicManager.sharedInstance.LevelMusic(currentScene.buildIndex);
     }
 
 
@@ -103,9 +100,11 @@ public class GameManager : MonoBehaviour
             if (hunger > 0)
             { //Player still has points
                 UpdateHunger(-1);
+               
             }
             else { //Check if the player is Hungry
                 UpdateLife(-1); //Lose Life
+                postProcesingManager.VignetteOn(0.5f, Color.red);
             }
             yield return new WaitForSeconds(hungerTimer); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
         }
@@ -189,7 +188,7 @@ public class GameManager : MonoBehaviour
     //Function that updates score information
     public void UpdateScore(int points) {
         score += points;
-        scoreText.text = $"SCORE\n{score}";
+        scoreText.text = $"{score}";
     }
 
     //Function that update hunger information
@@ -198,7 +197,7 @@ public class GameManager : MonoBehaviour
         foodCounterSlider.value = hunger;
     }
 
-    private void DoRetry() {
+    public void DoRetry() {
         if (retry > 0)
         {
             retry--;

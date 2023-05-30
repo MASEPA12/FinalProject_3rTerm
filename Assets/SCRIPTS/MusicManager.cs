@@ -45,19 +45,32 @@ public class MusicManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySong(AudioClip sound)
+    private void Start()
+    {
+        MenuMusic();
+    }
+
+    private void PlaySong(AudioClip sound)
     {
         _audioSource.clip = sound;
         _audioSource.Play();
     }
 
-    private void PlaySoundEffect(AudioClip sound, float volumen) {
-        _audioSource.PlayOneShot(sound, volumen);
-    }
-
     public void changeVolumen(float volumen) {
         backgroundVol = volumen;
         _audioSource.volume = backgroundVol;
+    }
+
+    public void MenuMusic() {
+        PlaySong(backgroundSound[0]);
+    }
+
+    public void LevelMusic(int level) {
+        PlaySong(backgroundSound[level]);
+    }
+
+    private void PlaySoundEffect(AudioClip sound, float volumen) {
+        _audioSource.PlayOneShot(sound, volumen);
     }
 
     public void changeEffectVolumen(float value)
@@ -73,4 +86,15 @@ public class MusicManager : MonoBehaviour
     {
         PlaySoundEffect(recollectSound, effectsVol);
     }
+
+    public void GiantSound()
+    {
+        PlaySoundEffect(powerUpSound1, effectsVol);
+    }
+
+    public void FastSound()
+    {
+        PlaySoundEffect(powerUpSound2, effectsVol);
+    }
+
 }

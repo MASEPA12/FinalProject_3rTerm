@@ -52,7 +52,7 @@ public class recollectableMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        MusicManager.sharedInstance.RecollectSound();
+        //MusicManager.sharedInstance.RecollectSound();
         gameManagerScript.UpdateScore(points);
         gameManagerScript.UpdateHunger(hunger);
         gameManagerScript.UpdateLife(heal);

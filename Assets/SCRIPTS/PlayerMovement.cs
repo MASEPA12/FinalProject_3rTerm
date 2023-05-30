@@ -200,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
         string appleGreen = "appleGreen";
         
         if (other.CompareTag("Collectable")) {
+            MusicManager.sharedInstance.RecollectSound();
             Destroy(other.gameObject);    
         }
 
@@ -220,9 +221,8 @@ public class PlayerMovement : MonoBehaviour
         //if the player falls loses
         if (other.CompareTag("floor"))
         {
-            gameManagerScript.IsGameOver();
+            gameManagerScript.DoRetry();
             //set active the game over panel
-            Debug.Log("YOU HAVE LOST");
         }
 
         //If player arrives in the finish line
@@ -269,6 +269,7 @@ public class PlayerMovement : MonoBehaviour
         walkingForce = newSpeed;
     }
 
+
     private void Attack()
     {
         if (canAttack)
@@ -291,6 +292,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(attackTimer);
         canAttack = true;
     }
+
 
     public void CanJump(bool state) {
         canJump = state;

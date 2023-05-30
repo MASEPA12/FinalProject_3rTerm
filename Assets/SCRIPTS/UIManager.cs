@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    private void Start()
+    {
+        getUsername();
+    }
 
     public void SaveUsername() {
         string inputText = inputField.text;
@@ -40,7 +44,9 @@ public class UIManager : MonoBehaviour
     }
 
     public void SaveUsernameWithPlayerPrefs() {
-        PlayerPrefs.SetString("Username", DataPersistence.sharedInstance.username);
+        PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
+        Debug.Log($"Existe? {PlayerPrefs.HasKey("USERNAME")}");
+        Debug.Log($"{PlayerPrefs.GetString("USERNAME")}");
     }
 
     public void SaveWithPlayerPrefs()
