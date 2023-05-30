@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - bread
-  - meet
   - appleRed
   - appleGreen
   - appleGREEN
@@ -14,6 +12,7 @@ TagManager:
   - Checkpoint
   - Trap
   - Collectable
+  - Projectile
   layers:
   - Default
   - TransparentFX

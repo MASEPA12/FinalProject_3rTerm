@@ -34,6 +34,8 @@ public class EnemyIA : MonoBehaviour
     private GameManager gameManager;
     private PlayerMovement playerCon;
 
+    //Item
+    [SerializeField] private GameObject item;
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();   
@@ -127,6 +129,13 @@ public class EnemyIA : MonoBehaviour
             //Update hearts
             playerCon.takeDamage(damage, knockback, pushAway);
         }
+
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            //play particle explosion
+            DropItem();
+            Destroy(gameObject); //Destroy enemy
+        }
     }
 
     //Coroutine that manages the attack cooldown
@@ -135,5 +144,12 @@ public class EnemyIA : MonoBehaviour
         Debug.Log("Preparese para la ostia");
         canAttack = true;
     }
-   
+
+    private void DropItem() {
+        float prob = Random.Range(0f, 1f);
+        Vector3 itemSpawn= new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        if (prob > 0.3f) {
+            Instantiate(item, itemSpawn, Quaternion.identity);
+        }
+    }
 }

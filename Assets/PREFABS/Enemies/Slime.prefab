@@ -507,6 +507,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  item: {fileID: 98779272697355120, guid: 9aec31248de864b47ab2ef5f511d38e6, type: 3}
 --- !u!1 &2876886486610328839
 GameObject:
   m_ObjectHideFlags: 0

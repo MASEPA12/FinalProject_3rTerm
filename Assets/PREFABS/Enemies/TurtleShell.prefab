@@ -287,11 +287,11 @@ MonoBehaviour:
   player: {fileID: 0}
   visionRange: 10
   playerInVisionRange: 0
-  canAttack: 1
   damage: -2
   attackCooldownTimer: 3
   attackRange: 1
   playerInAttackRange: 0
+  knockback: 200
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -302,6 +302,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  item: {fileID: 98779272697355120, guid: 9aec31248de864b47ab2ef5f511d38e6, type: 3}
 --- !u!54 &2052894797228528419
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpingForce = 0.02f;
     private float gravityModifier = 1.7f;
     private float movementForce = 500f;
+    private float movementForceB = 350f;
     private float rotationForce= 250f;
 
     //Speed variables
@@ -163,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (forwardInput < 0 || !isSteady)
         {
-            //rb.AddRelativeForce(dir*movementForce/2);
+            //rb.AddRelativeForce(dir*movementForceB);
             rb.MovePosition(transform.position + (walkingForce/2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
         }
         else {

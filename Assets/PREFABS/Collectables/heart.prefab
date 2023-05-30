@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca345ce07c065cb4c8a61cb26a434709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recollectableParticles: {fileID: 0}
+  recollectableParticles: {fileID: 6299108190274687714}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
