@@ -30,17 +30,10 @@ public class PowerUp : MonoBehaviour
     public bool appleGreenIsOn = false;
     public GameObject sliderPanelGreen;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameManagerScript = FindObjectOfType<GameManager>();
         playerMovementScript = FindObjectOfType<PlayerMovement>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator Counter(Slider slider, GameObject panelOfTheSlider, int numOfPowerUp)

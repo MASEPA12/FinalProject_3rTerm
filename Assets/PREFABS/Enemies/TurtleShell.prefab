@@ -258,7 +258,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270670845733561637}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 1479372276
   m_Radius: 0.5
   m_Speed: 2
   m_Acceleration: 8
@@ -303,6 +303,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   item: {fileID: 98779272697355120, guid: 9aec31248de864b47ab2ef5f511d38e6, type: 3}
+  enemyAnimator: {fileID: 0}
 --- !u!54 &2052894797228528419
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -239,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameManagerScript.UpdateLife(damage);
             //Apply knockback
-            rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
             rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
                                                                       //play auchh sound
         }
@@ -303,5 +303,11 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = spawnPos;
     }
+
+    /*
+    private IEnumerator PushAwayTime()
+    {
+        yield return new WaitForSeconds(2);
+    }*/
 }
 

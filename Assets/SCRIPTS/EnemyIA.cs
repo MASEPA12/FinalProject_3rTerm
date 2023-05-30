@@ -36,9 +36,14 @@ public class EnemyIA : MonoBehaviour
 
     //Item
     [SerializeField] private GameObject item;
+
+    //
+    public Animator enemyAnimator;
+
     private void Awake()
     {
-        _agent = GetComponent<NavMeshAgent>();   
+        _agent = GetComponent<NavMeshAgent>();
+        enemyAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -86,7 +91,10 @@ public class EnemyIA : MonoBehaviour
     }
 
     //Function that manages enemy patrol 
-    private void Patrol() {
+    private void Patrol() 
+    {
+        enemyAnimator.SetBool("playerOutOfRange",true);
+
         _agent.speed = speedPatrol;
         Debug.Log("pATROL");
         if (Vector3.Distance(transform.position, waypoints[nextPoint].position) < 2.5) {
@@ -101,7 +109,10 @@ public class EnemyIA : MonoBehaviour
     }
 
     //Function that manages enemy chase
-    private void Chase() {
+    private void Chase() 
+    {
+        enemyAnimator.SetBool("playerOnChaseRange", true);
+
         Debug.Log("CHASE");
         _agent.speed = speedChase;
         _agent.SetDestination(playerCon.transform.position);
@@ -109,7 +120,10 @@ public class EnemyIA : MonoBehaviour
     }
 
     //Function that manages enemy Attack
-    private void Attack() {
+    private void Attack() 
+    {
+        enemyAnimator.SetBool("playerOnAttakRange", true);
+
         if (canAttack) {
             Debug.Log("ATTACK");
             //Play attack animation
@@ -132,6 +146,8 @@ public class EnemyIA : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            enemyAnimator.SetBool("isDead", true);
+
             //play particle explosion
             DropItem();
             Destroy(gameObject); //Destroy enemy
@@ -152,4 +168,5 @@ public class EnemyIA : MonoBehaviour
             Instantiate(item, itemSpawn, Quaternion.identity);
         }
     }
+
 }
