@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public GameManager sharedInstance;
+    public static GameManager sharedInstance;
 
     //CONSTANTS
     private const int MAX_RETRIES = 3; // number of retry before game_over
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
             }
             else { //Check if the player is Hungry
                 UpdateLife(-1); //Lose Life
-                postProcesingManager.VignetteOn(0.5f, Color.red);
+                //postProcesingManager.VignetteOn(0.5f, Color.red);
             }
             yield return new WaitForSeconds(hungerTimer); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
         }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (lives <= 0){
-            DoRetry();
+            CheckRetry();
         }
         
         Debug.Log($" Lifepoints: {lives}");
@@ -197,13 +197,11 @@ public class GameManager : MonoBehaviour
         foodCounterSlider.value = hunger;
     }
 
-    public void DoRetry() {
+    public void CheckRetry() {
         if (retry > 0)
         {
             retry--;
-            InitiateValues();
-            ShowLife(lives);
-            playerMovementScript.ResetPosition();
+            Invoke("SetRetry", 2f);
         }
         else {
             IsGameOver();
@@ -216,5 +214,11 @@ public class GameManager : MonoBehaviour
         maxLives = INITIAL_LIVES;
         lives = maxLives;
         hunger = INITIAL_HUNGER;
+    }
+
+    public void SetRetry() { 
+        InitiateValues();
+        ShowLife(lives);
+        playerMovementScript.ResetPosition();
     }
 }

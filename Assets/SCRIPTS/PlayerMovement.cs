@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
         //if the player falls loses
         if (other.CompareTag("floor"))
         {
-            gameManagerScript.DoRetry();
+            gameManagerScript.CheckRetry();
             //set active the game over panel
         }
 

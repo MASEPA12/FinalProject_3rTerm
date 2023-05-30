@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        getUsername();
+        GetUsername();
     }
 
     public void SaveUsername() {
@@ -57,10 +57,23 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetFloat("EFFECTVOL", MusicManager.sharedInstance.effectsVol);
     }
 
-    public void getUsername() {
+    //Function that load username
+    public void GetUsername() {
         existingUsername = PlayerPrefs.GetString("USERNAME");
         if (existingUsername != "") {
             inputField.placeholder.GetComponent<TextMeshProUGUI>().text = existingUsername;
         }
+    }
+
+    //Function that loads de progress
+    public void LoadProgres() {
+        if (inputField.text == "" && inputField.placeholder.GetComponent<TextMeshProUGUI>().text == PlayerPrefs.GetString("USERNAME")) {
+            DataPersistence.sharedInstance.completedLevels = PlayerPrefs.GetInt("LEVELS");
+        }
+    }
+
+    //Function that Quits the Game
+    public void ExitGame() {
+        Application.Quit();
     }
 }

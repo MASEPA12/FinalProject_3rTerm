@@ -20,6 +20,24 @@ public class PostProcesingManager : MonoBehaviour
         volumen.profile.TryGet(out vignette);
     }
 
+    private void LateUpdate()
+    {
+        if (!GameManager.sharedInstance.isGameOver || !GameManager.sharedInstance.isWin) {
+
+            if (GameManager.sharedInstance.lives <= 3 && GameManager.sharedInstance.lives > 0)
+            {
+                VignetteOn(1f / GameManager.sharedInstance.lives, Color.red);
+            }
+            else if (GameManager.sharedInstance.lives == 0) {
+                VignetteOn(1f, Color.red);
+            }
+            else
+            {
+                vignette.active = false;
+            }
+        }   
+    }
+
     public void VignetteOn(float value, Color color) {
         vignette.active = true;
         vignette.intensity.value = value;

@@ -97,4 +97,27 @@ public class MusicManager : MonoBehaviour
         PlaySoundEffect(powerUpSound2, effectsVol);
     }
 
+    public void ThrowSound() {
+        PlaySoundEffect(fireballSound, effectsVol);
+    }
+
+    public void DamageSound()
+    {
+        PlaySoundEffect(damageSound, effectsVol);
+    }
+
+    public void RestoreSound()
+    {
+        PlaySoundEffect(restoreSound, effectsVol);
+    }
+
+    public void WinSound()
+    {
+        PlaySoundEffect(winSound, effectsVol);
+    }
+
+    public void LoseSound()
+    {
+        PlaySoundEffect(loseSound, effectsVol);
+    }
 }
