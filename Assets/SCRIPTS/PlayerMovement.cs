@@ -20,17 +20,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpingForce = 250f;
     private float gravityModifier = 1.7f;
     private Vector3 gravityForce = new Vector3(0, -9.8f, 0);
-    private float movementForce = 500f;
-    private float movementForceB = 350f;
-    private float rotationForce= 250f;
 
     //Speed variables
     public float forwardInput; //Forward and backwar move
     public float horizontalInput; //Rotation movement
-    private float mouseX;
+
     [SerializeField] private float rotationSpeed = 6.5f; //Rotation speed
 
-    public Vector3 movement;
+
     private Animator animator;
 
     //Animation Booleans
@@ -55,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
     //Spawn variables
     private Vector3 spawnPos;
 
-    //sphere
-    //public float sphereRadius1 = 5;
-    //private float sphereRadius2 = 10;
-
-    public bool isInTheSphere = false;
     [SerializeField] private LayerMask recollectableLayerMask;
     [SerializeField] private LayerMask powerUpsLayerMask;
 
@@ -97,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
             
             forwardInput = Input.GetAxis("Vertical"); //movement front/back 
             horizontalInput = Input.GetAxis("Horizontal"); //side movement
-            mouseX = Input.GetAxis("Mouse X");
 
             //CROUCH
             if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
@@ -160,15 +151,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (forwardInput < 0 || !isSteady)
             {
-                //rb.AddRelativeForce(dir*movementForceB);
                 rb.MovePosition(transform.position + (walkingForce / 2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
             }
             else
             {
-                //rb.AddRelativeForce(dir*movementForce);
                 rb.MovePosition(transform.position + walkingForce * Time.deltaTime * forwardInput * transform.forward); //Move forward
             }
-            //rb.AddRelativeTorque(Vector3.up * mouseX *rotationForce);
             rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * rotationSpeed * horizontalInput * Time.deltaTime));//rotate body   
         }
     }

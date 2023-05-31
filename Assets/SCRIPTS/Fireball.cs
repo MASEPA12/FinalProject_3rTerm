@@ -5,10 +5,6 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-
-    //private float upAttackForce = 150f; //applied force to the bullet
-    private float forwardAttackForce = 250f;
-
     private float inactiveTimer = 1f; //time to set the gameobject to inactive
 
     //Components

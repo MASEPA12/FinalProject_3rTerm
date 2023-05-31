@@ -5,33 +5,16 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-/* 
- * script that controlls ...
- */
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager sharedInstance;
 
-        //Score variables
+    //Score variables
     public int score = 0; //INITIAL VALOR TO FACILITE THE PLAYER 
     public TextMeshProUGUI scoreText;
-    
 
-    /*
-    //counter power ups
-    public float time;
-    public Slider timeCounterPoweUpSlider;
-    public GameObject counterSliderPanel;
-    */
-
-    /*
-    //power up bools
-    public bool appleRedIsOn;
-    public bool isBig;
-    public bool isNormalScale;
-    */
 
     public bool isGameOver = false;
     public bool isWin = false;
