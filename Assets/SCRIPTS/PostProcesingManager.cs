@@ -9,6 +9,9 @@ public class PostProcesingManager : MonoBehaviour
     private Volume volumen;
     private Vignette vignette;
 
+    //Scripts Connections
+    private PlayerLife playerLife;
+
     private void Awake()
     {
         volumen = GetComponent<Volume>();   
@@ -17,6 +20,7 @@ public class PostProcesingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerLife = FindObjectOfType<PlayerLife>();
         volumen.profile.TryGet(out vignette);
     }
 
@@ -24,11 +28,11 @@ public class PostProcesingManager : MonoBehaviour
     {
         if (!GameManager.sharedInstance.isGameOver || !GameManager.sharedInstance.isWin) {
 
-            if (GameManager.sharedInstance.lives <= 3 && GameManager.sharedInstance.lives > 0)
+            if (playerLife.lives <= 3 && playerLife.lives > 0)
             {
-                VignetteOn(1f / GameManager.sharedInstance.lives, Color.red);
+                VignetteOn(1f / playerLife.lives, Color.red);
             }
-            else if (GameManager.sharedInstance.lives == 0) {
+            else if (playerLife.lives == 0) {
                 VignetteOn(1f, Color.red);
             }
             else

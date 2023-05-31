@@ -94,7 +94,6 @@ public class EnemyIA : MonoBehaviour
         enemyAnimator.SetBool("playerOutOfRange",true);
 
         _agent.speed = speedPatrol;
-        Debug.Log("pATROL");
         if (Vector3.Distance(transform.position, waypoints[nextPoint].position) < 2.5) {
             nextPoint++;
             if (nextPoint == totalWaypoints) {
@@ -111,7 +110,6 @@ public class EnemyIA : MonoBehaviour
     {
         enemyAnimator.SetBool("playerOnChaseRange", true);
 
-        Debug.Log("CHASE");
         _agent.speed = speedChase;
         _agent.SetDestination(playerCon.transform.position);
         transform.LookAt(playerCon.transform);
@@ -123,9 +121,7 @@ public class EnemyIA : MonoBehaviour
         enemyAnimator.SetBool("playerOnAttakRange", true);
 
         if (canAttack) {
-            Debug.Log("ATTACK");
             //Play attack animation
-            Debug.Log("Fuiste atacado");
             canAttack = false;
             StartCoroutine(AttackCooldown());
         }

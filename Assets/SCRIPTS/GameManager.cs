@@ -14,47 +14,28 @@ public class GameManager : MonoBehaviour
 
     public static GameManager sharedInstance;
 
-    //CONSTANTS
-    private const int MAX_RETRIES = 3; // number of retry before game_over
-    private const int INITIAL_HUNGER = 25;
-    private const int INITIAL_LIVES = 5;
-
-    //Hunger gauge variables
-    public int hunger = INITIAL_HUNGER; //INITIAL VALOR TO FACILITE THE PLAYER 
-    public Slider foodCounterSlider;
-    public float hungerTimer = 2.5f;
-
-    //Score variables
+        //Score variables
     public int score = 0; //INITIAL VALOR TO FACILITE THE PLAYER 
     public TextMeshProUGUI scoreText;
+    
 
+    /*
     //counter power ups
     public float time;
     public Slider timeCounterPoweUpSlider;
     public GameObject counterSliderPanel;
+    */
 
+    /*
     //power up bools
     public bool appleRedIsOn;
     public bool isBig;
     public bool isNormalScale;
+    */
+
     public bool isGameOver = false;
     public bool isWin = false;
     private bool isGamePause = false;
-
-    //Life variables
-    public int maxLives = INITIAL_LIVES;
-    public int lives = 5;
-    private int retry = MAX_RETRIES;
-
-    //script conections
-    public PlayerMovement playerMovementScript;
-
-    //particles
-    public ParticleSystem jumpingParticles;
-
-
-    //UI
-    public Image[] hearts;
 
     //Scene played
     Scene currentScene;
@@ -64,7 +45,7 @@ public class GameManager : MonoBehaviour
         if (sharedInstance == null)
         {
             sharedInstance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -74,55 +55,13 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        InitiateValues();
+        //InitiateValues();
         score = 0;
         isGameOver = false;
         isWin = false;
-        foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
-        playerMovementScript = FindObjectOfType<PlayerMovement>();
+        //foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         currentScene = SceneManager.GetActiveScene();
         MusicManager.sharedInstance.LevelMusic(currentScene.buildIndex);
-    }
-
-
-    //Function that updates the value of hunger gauge
-    private void UpdateFoodCounter()
-    {
-        foodCounterSlider.value = hunger;
-    }
-
-
-    //Coroutine that manages the hunger Gauge
-    public IEnumerator LooseFoodTimer()
-    {
-        while (!IsFinished()) //While Game hasn't finish
-        {
-            if (hunger > 0)
-            { //Player still has points
-                UpdateHunger(-1);
-               
-            }
-            else { //Check if the player is Hungry
-                UpdateLife(-1); //Lose Life
-                //postProcesingManager.VignetteOn(0.5f, Color.red);
-            }
-            yield return new WaitForSeconds(hungerTimer); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
-        }
-    }
-
-
-    public void DestroyRecollectable(Collider other1,string recollectableName,int pointsToSum)
-    {
-        if (other1.CompareTag(recollectableName))
-        {
-            Destroy(other1.gameObject); //destroy bread prefab
-            //score = score + pointsToSum; //update food score
-
-            //play animation de quan menja 
-            // particles play
-                
-            UpdateFoodCounter();
-        }
     }
 
     //Function that manages lose condition
@@ -158,71 +97,10 @@ public class GameManager : MonoBehaviour
         return isWin || isGameOver;
     }
 
-    //Function that updates life information
-    public void UpdateLife(int num) { //
-        if (lives > 0 && lives < maxLives) //5 has to be a variable MAX_lifes
-        {
-            lives += num;
-            ShowLife(lives);    
-        }
-
-        if (lives <= 0){
-            CheckRetry();
-        }
-        
-        Debug.Log($" Lifepoints: {lives}");
-    }
-
-    //Function that updates life UI
-    public void ShowLife(int num) {
-        for(int i = 0; i < maxLives; i++)
-        {
-            if (i > num - 1)
-            {
-                hearts[i].gameObject.SetActive(false);
-            }
-            else {
-                hearts[i].gameObject.SetActive(true);
-            }
-
-        }
-    }
-
     //Function that updates score information
     public void UpdateScore(int points) {
         score += points;
         scoreText.text = $"{score}";
-    }
-
-    //Function that update hunger information
-    public void UpdateHunger(int hungerPoints) {
-        hunger += hungerPoints;
-        foodCounterSlider.value = hunger;
-    }
-
-    public void CheckRetry() {
-        if (retry > 0)
-        {
-            retry--;
-            Invoke("SetRetry", 2f);
-        }
-        else {
-            IsGameOver();
-        }
-    }
-
-    private void InitiateValues()
-    {
-        //Reset values
-        maxLives = INITIAL_LIVES;
-        lives = maxLives;
-        hunger = INITIAL_HUNGER;
-    }
-
-    public void SetRetry() { 
-        InitiateValues();
-        ShowLife(lives);
-        playerMovementScript.ResetPosition();
     }
 
     private void TogglePauseGame() {
@@ -234,6 +112,5 @@ public class GameManager : MonoBehaviour
         else {
             Time.timeScale = 0f;
         }
-        
     }
 }

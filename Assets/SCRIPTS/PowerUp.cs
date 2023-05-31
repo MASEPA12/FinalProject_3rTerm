@@ -12,7 +12,6 @@ public class PowerUp : MonoBehaviour
     public GameObject[] powerUpArray;
 
     //scripts conections
-    GameManager gameManagerScript;
     public PlayerMovement playerMovementScript;
 
     //counter power ups
@@ -32,7 +31,6 @@ public class PowerUp : MonoBehaviour
 
     void Start()
     {
-        gameManagerScript = FindObjectOfType<GameManager>();
         playerMovementScript = FindObjectOfType<PlayerMovement>();
     }
 

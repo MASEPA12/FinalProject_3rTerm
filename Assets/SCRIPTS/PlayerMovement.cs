@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
     public float walkingForce = INITIAL_SPEED;
 
     //Movement
-    public float jumpingForce = 0.02f;
+    public float jumpingForce = 250f;
     private float gravityModifier = 1.7f;
+    private Vector3 gravityForce = new Vector3(0, -9.8f, 0);
     private float movementForce = 500f;
     private float movementForceB = 350f;
     private float rotationForce= 250f;
@@ -40,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isShotting = false;
 
     //scripts conections
-    private GameManager gameManagerScript;
+    private PlayerLife playerLife;
     private PowerUp powerUpScript;
 
     //Game Variables
@@ -75,21 +76,22 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         powerUpScript = FindObjectOfType<PowerUp>();
-
+        playerLife = FindObjectOfType<PlayerLife>();
         animator = GetComponent<Animator>();
-        Physics.gravity *= gravityModifier;
+
+        Physics.gravity = gravityForce*gravityModifier;//
+        Debug.Log(Physics.gravity);
+
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
 
-        GameManager.sharedInstance.counterSliderPanel.SetActive(false);
-        GameManager.sharedInstance.appleRedIsOn = false;
-        GameManager.sharedInstance.isBig = false;
+        powerUpScript.counterSliderPanel.SetActive(false);
+        powerUpScript.appleRedIsOn = false;
+        powerUpScript.isBig = false;
 
         canJump = true;
 
         spawnPos = transform.position; //set spawn position at the start of the level;
-
-        StartCoroutine(GameManager.sharedInstance.LooseFoodTimer());
     }
 
     private void Update()
@@ -231,7 +233,7 @@ public class PlayerMovement : MonoBehaviour
         //if the player falls loses
         if (other.CompareTag("floor"))
         {
-            GameManager.sharedInstance.CheckRetry();
+            
             //set active the game over panel
         }
 
@@ -246,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (canDamage)
         {
-            GameManager.sharedInstance.UpdateLife(damage);
+            playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
             rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
@@ -265,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Function that restore player health
     public void restoreLife() {
-        GameManager.sharedInstance.UpdateLife(1); //Restore 1 point
+        playerLife.UpdateLife(1); //Restore 1 point
     }
 
     //Coroutine that show the time the player is invincible

@@ -1483,7 +1483,8 @@ GameObject:
   - component: {fileID: 6137922820626234493}
   - component: {fileID: 6137922820626234490}
   - component: {fileID: 6137922820626234488}
-  - component: {fileID: 5295474765540423142}
+  - component: {fileID: 3483601922851690455}
+  - component: {fileID: 4232578523053368123}
   m_Layer: 6
   m_Name: GIRL
   m_TagString: Player
@@ -1587,7 +1588,7 @@ MonoBehaviour:
   canAttack: 1
   attackTimer: 1.5
   throwPos: {fileID: 6508654154523738191}
---- !u!114 &5295474765540423142
+--- !u!114 &3483601922851690455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1604,7 +1605,7 @@ MonoBehaviour:
   radiusCapsule: 0.25
   layerMaskToCollide:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   maxDistance: 1
   playerDirection: {x: 0, y: 0, z: 0}
   playerHigh: 2
@@ -1612,6 +1613,30 @@ MonoBehaviour:
   isColliding: 0
   somethingIsOn: 0
   onFloor: 0
+  playerMovementScript: {fileID: 0}
+--- !u!114 &4232578523053368123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6480435329323860246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10019906d330f44b851407658f90607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 25
+  foodCounterSlider: {fileID: 0}
+  hungerTimer: 2.5
+  maxLives: 5
+  lives: 5
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerMovementScript: {fileID: 0}
 --- !u!1 &6497366970271031885
 GameObject:

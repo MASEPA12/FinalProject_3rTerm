@@ -18,10 +18,12 @@ public class recollectableMovement : MonoBehaviour
 
     //Scripts connections
     public PlayerMovement playerMovement;
+    private PlayerLife playerLife;
 
     void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
+        playerLife = FindObjectOfType<PlayerLife>();
     }
 
     void Update()
@@ -52,8 +54,8 @@ public class recollectableMovement : MonoBehaviour
     {
         //MusicManager.sharedInstance.RecollectSound();
         GameManager.sharedInstance.UpdateScore(points);
-        GameManager.sharedInstance.UpdateHunger(hunger);
-        GameManager.sharedInstance.UpdateLife(heal);
+        playerLife.UpdateHunger(hunger);
+        playerLife.UpdateLife(heal);
     }
 
 }
