@@ -29,12 +29,15 @@ public class Cannon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
+        if (!GameManager.sharedInstance.IsFinished()) {
+            Vector3 pos = transform.position;
+            playerInVisionRange = Physics.CheckSphere(pos, visionRange, playerLayer);
 
-        if (playerInVisionRange) { //Check if the player is in range
-            lookAtPlayer();
+            if (playerInVisionRange) { //Check if the player is in range
+                lookAtPlayer();
+            }
         }
+
     }
 
 

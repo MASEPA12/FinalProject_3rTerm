@@ -80,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         Physics.gravity = gravityForce*gravityModifier;//
-        Debug.Log(Physics.gravity);
 
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
@@ -245,9 +244,10 @@ public class PlayerMovement : MonoBehaviour
 
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
-        
+        Debug.Log("in takedamage");
         if (canDamage)
         {
+            Debug.Log("canDamage = true so recevie attack");
             playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);

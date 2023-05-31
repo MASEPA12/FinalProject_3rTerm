@@ -60,7 +60,7 @@ public class PlayerLife : MonoBehaviour
     //Function that updates life information
     public void UpdateLife(int num)
     { //
-        if (lives > 0 && lives < maxLives) //5 has to be a variable MAX_lifes
+        if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
         {
             lives += num;
             ShowLife(lives);
