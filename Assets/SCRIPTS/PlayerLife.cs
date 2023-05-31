@@ -56,7 +56,7 @@ public class PlayerLife : MonoBehaviour
                 UpdateLife(-1); //Lose Life
                 //postProcesingManager.VignetteOn(0.5f, Color.red);
             }
-            yield return new WaitForSeconds(hungerTimer); //every 5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
+            yield return new WaitForSeconds(hungerTimer); //every 2.5 seconds, looses a point (the player is hungry) ***WHEN POINTS = 0, Loses lifepoints
         }
     }
 

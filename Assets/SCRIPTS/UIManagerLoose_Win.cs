@@ -26,14 +26,27 @@ public class UIManagerLoose_Win : MonoBehaviour
             winText.text = $"{DataPersistence.sharedInstance.username}, you won!!";
         }
     }
-    public void ReturnToScene(int index)
+    public void ReturnMainMenu()
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene(0);
     }
 
     public void RetryButton()
     {
-        SceneManager.LoadScene(DataPersistence.sharedInstance.completedLevels);
+        SceneManager.LoadScene(currentScene.buildIndex);
+    }
 
+    public void NextLevel()
+    {
+        int nextLevel;
+        if (currentScene.buildIndex < 3) {
+            nextLevel = currentScene.buildIndex + 1;
+        }
+        else
+        {
+            nextLevel = 0;
+        }
+        
+        SceneManager.LoadScene(nextLevel);
     }
 }
