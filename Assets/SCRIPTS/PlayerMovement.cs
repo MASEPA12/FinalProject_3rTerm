@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
                 canJump = false;
-                Debug.Log($"canJump = {canJump}");
+                MusicManager.sharedInstance.JumpSound();
             }
             else {
                 isJumping = false;
@@ -133,15 +133,6 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = false;
             }
 
-            //SHOOTING
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                isShotting = true;
-            }
-            else
-            {
-                isShotting = false;
-            }
 
             //RUNNING BCK [if its a negative value, is going backwards]
             if (Input.GetAxis("Vertical") < 0) 
@@ -153,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
                 isRuningBack = false;
             }
 
+            //Shooting
             if (Input.GetButtonDown("Fire2")) {
                 Attack();
             }
@@ -254,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
             rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
-                                                                      //play auchh sound
+            MusicManager.sharedInstance.DamageSound();
         }
         canDamage = false;
         StartCoroutine(InvincibleTime());
@@ -265,11 +257,6 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Checkpoint")) {
             spawnPos = transform.position; //update to new spawn position;
         }
-    }
-
-    //Function that restore player health
-    public void restoreLife() {
-        playerLife.UpdateLife(1); //Restore 1 point
     }
 
     //Coroutine that show the time the player is invincible
@@ -298,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
             fireball.transform.position = throwPos.position;         
             fireball.transform.rotation = throwPos.rotation;
             fireball.GetComponent<Rigidbody>().AddForce(transform.forward * 250, ForceMode.Impulse);
-        
+            MusicManager.sharedInstance.ThrowSound();
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
         }

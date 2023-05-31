@@ -4,16 +4,17 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - jumpSound: {instanceID: 0}
+  - jumpSound: {fileID: 8300000, guid: 9ba7b83ed17f61c4a8a6f50674f57c21, type: 3}
   - recollectSound: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
   - powerUpSound1: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
-  - powerUpSound2: {instanceID: 0}
+  - powerUpSound2: {fileID: 8300000, guid: 6ae2e0d6390fa47459a8eaa35b0e05cd, type: 3}
   - fireballSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  - damageSound: {instanceID: 0}
+  - damageSound: {fileID: 8300000, guid: 885a889ddbde552409f65e5406b0df97, type: 3}
   - restoreSound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
-  - hungrySound: {instanceID: 0}
-  - winSound: {instanceID: 0}
-  - loseSound: {instanceID: 0}
+  - appearSound: {fileID: 8300000, guid: 78fbe7b6a13c202429aad2a1f2a95ca4, type: 3}
+  - winSound: {fileID: 8300000, guid: 7d5cf7cd891c7ee46acdcf0694356802, type: 3}
+  - loseSound: {fileID: 8300000, guid: 76a7ee09e0591d04d819955a03d8c8cd, type: 3}
+  - clickSound: {fileID: 8300000, guid: 4c1b821744709e640aae614cc61a2c2a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

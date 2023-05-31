@@ -25,10 +25,8 @@ public class PowerUpInstanciator : MonoBehaviour
         if (!GameManager.sharedInstance.IsFinished()) {
             if (Physics.CheckBox(transform.position, boxColliderBiggerSize, Quaternion.identity, playerLayer) && itHasInstantiateAPowerUp == false)
             {
-                Debug.Log("is instantiating a power up");
-
                 Instantiate(powerUpArray[Random.Range(0, powerUpArray.Length)], RandomPosInZone(boxCollidersObject), Quaternion.identity);
-
+                MusicManager.sharedInstance.AppearSound();
                 itHasInstantiateAPowerUp = true;
             }
         }

@@ -16,9 +16,10 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioClip fireballSound;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip restoreSound;
-    [SerializeField] private AudioClip hungrySound;
+    [SerializeField] private AudioClip appearSound;
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
+    [SerializeField] private AudioClip clickSound;
 
     //Background music
     public AudioClip[] backgroundSound;
@@ -119,5 +120,15 @@ public class MusicManager : MonoBehaviour
     public void LoseSound()
     {
         PlaySoundEffect(loseSound, effectsVol);
+    }
+
+    public void AppearSound()
+    {
+        PlaySoundEffect(appearSound, effectsVol);
+    }
+
+    public void ClickSound()
+    {
+        PlaySoundEffect(clickSound, effectsVol);
     }
 }

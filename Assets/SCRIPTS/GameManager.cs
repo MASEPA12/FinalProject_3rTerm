@@ -68,9 +68,7 @@ public class GameManager : MonoBehaviour
     public void IsGameOver() //funcition to revise if it's game over
     {
         isGameOver = true;
-
-        //audiosource.audiclip = gameOverSound;
-        //audiosource.Play()
+        MusicManager.sharedInstance.LoseSound();
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
         Debug.Log("YOU HAVE LOST");
 
@@ -84,8 +82,7 @@ public class GameManager : MonoBehaviour
             DataPersistence.sharedInstance.completedLevels = currentScene.buildIndex;
         }
 
-        //audiosource.audiclip = gameOverSound;
-        //audiosource.Play()
+        MusicManager.sharedInstance.WinSound();
         SceneManager.LoadScene(4, LoadSceneMode.Additive);
         Debug.Log("You Won");
         //Return level menu

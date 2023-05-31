@@ -726,16 +726,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78e92a994a35f040a6abef7e988a8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 9ba7b83ed17f61c4a8a6f50674f57c21, type: 3}
   recollectSound: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
   powerUpSound1: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
-  powerUpSound2: {fileID: 0}
+  powerUpSound2: {fileID: 8300000, guid: 6ae2e0d6390fa47459a8eaa35b0e05cd, type: 3}
   fireballSound: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 885a889ddbde552409f65e5406b0df97, type: 3}
   restoreSound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
-  hungrySound: {fileID: 0}
-  winSound: {fileID: 0}
-  loseSound: {fileID: 0}
+  appearSound: {fileID: 8300000, guid: 78fbe7b6a13c202429aad2a1f2a95ca4, type: 3}
+  winSound: {fileID: 8300000, guid: 7d5cf7cd891c7ee46acdcf0694356802, type: 3}
+  loseSound: {fileID: 8300000, guid: 76a7ee09e0591d04d819955a03d8c8cd, type: 3}
+  clickSound: {fileID: 8300000, guid: 4c1b821744709e640aae614cc61a2c2a, type: 3}
   backgroundSound:
   - {fileID: 8300000, guid: 76890aaad47e24f45a9d00cbd9d138dd, type: 3}
   - {fileID: 8300000, guid: e1546e6032d7e4c41832a90b1a15c1ae, type: 3}

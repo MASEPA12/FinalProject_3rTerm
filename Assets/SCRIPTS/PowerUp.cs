@@ -60,8 +60,9 @@ public class PowerUp : MonoBehaviour
     public IEnumerator LocalScaleTransformer(int secondsToWait)
     {
         playerMovementScript.Scale(2);
-        appleRedIsOn = true;
+        MusicManager.sharedInstance.GiantSound();
 
+        appleRedIsOn = true;
         counterSliderPanel.SetActive(true);
 
         //play particles
@@ -80,6 +81,8 @@ public class PowerUp : MonoBehaviour
     public IEnumerator SpeedPowerUp(float speed, float durationOfPowerUp)
     {
         playerMovementScript.ChangeSpeed(speed); //double up the speed
+        MusicManager.sharedInstance.FastSound();
+
         appleGreenIsOn = true;
         sliderPanelGreen.SetActive(true);
 
