@@ -1228,42 +1228,42 @@ PrefabInstance:
     - target: {fileID: 5980486761578022200, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980486761578022200, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980486761578022200, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980486761578022200, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -951.98334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762942204148131973, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762942204148131973, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762942204148131973, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 58.299988
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6762942204148131973, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876275468712188, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
@@ -1273,7 +1273,7 @@ PrefabInstance:
     - target: {fileID: 7754876275468712188, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7754876275468712189, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
@@ -1383,42 +1383,99 @@ PrefabInstance:
     - target: {fileID: 7754876275600673229, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876275600673229, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876275600673229, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876275600673229, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128.01666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876276137102077, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876276137102077, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876276137102077, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7754876276137102077, guid: d0eb930027b4aa64eb4feb995d0a97c6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -540
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_text
+      value: 'assets
+
+        unityAssetStore
+
+
+        animations
+
+        mixamo
+
+
+        fonts
+
+        dafont
+
+
+        music
+
+        Pixelland
+        by Kevin MacLeod | https://incompetech.com/ - Music promoted by https://www.chosic.com/free-music/all/
+        - https://creativecommons.org/licenses/by/3.0/ -  Space Jazz by Kevin  MacLeod
+        | https://incompetech.com/ -  Ale and Anecdotes by Darren Curtis | https://www.darrencurtismusic.com/
+        - Creative Commons Attribution 3.0 Unported (CC BY 3.0)
+
+
+        made by:
+        Jerson Santillan i Marina Serra'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dbe32ed9d0f78444aba8eb9bc751a895,
+        type: 2}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8813262697765163172, guid: dbe32ed9d0f78444aba8eb9bc751a895,
+        type: 2}
+    - target: {fileID: 7754876276137102078, guid: d0eb930027b4aa64eb4feb995d0a97c6,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0eb930027b4aa64eb4feb995d0a97c6, type: 3}
