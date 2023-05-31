@@ -43,6 +43,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void SoundVol(float volume)
+    {
+        MusicManager.sharedInstance.changeVolumen(volume);
+    }
+
+    public void EffectVol(float volume)
+    {
+        MusicManager.sharedInstance.changeEffectVolumen(volume);
+    }
+
     public void SaveUsernameWithPlayerPrefs() {
         PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
         Debug.Log($"Existe? {PlayerPrefs.HasKey("USERNAME")}");
@@ -78,4 +88,6 @@ public class UIManager : MonoBehaviour
     public void ExitGame() {
         Application.Quit();
     }
+
+
 }

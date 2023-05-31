@@ -488,6 +488,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 1146282820485489884, guid: 6c2b1c98a0140d44e9744be9baa7dbbc,
+        type: 3}
+      propertyPath: m_text
+      value: Level
+      objectReference: {fileID: 0}
     - target: {fileID: 2426440223468532827, guid: 6c2b1c98a0140d44e9744be9baa7dbbc,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -937,8 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3658b3180017b4c912f52dfe93dc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  looseText: {fileID: 0}
-  winText: {fileID: 1507976694}
+  resultText: {fileID: 0}
 --- !u!4 &1359589251
 Transform:
   m_ObjectHideFlags: 0

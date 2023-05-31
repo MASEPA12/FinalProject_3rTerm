@@ -5,12 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SettingsPanel : MonoBehaviour
 {
+    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI;
+
+    private void Start()
+    {
+        GameIsPaused = false;
+        Hide();
+    }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel") || Input.GetKeyDown(KeyCode.Q)) {
-            Debug.Log("No hace nada");
-            Show();
+        if (Input.GetButtonDown("Cancel")) {
+            if (GameIsPaused)
+            {
+                Hide();
+                GameIsPaused = false;
+            }
+            else {
+                Show();
+                GameIsPaused = true;
+            }
         }    
     }
 
@@ -23,13 +38,12 @@ public class SettingsPanel : MonoBehaviour
     }
 
     public void Hide() {
-        gameObject.SetActive(false);
-        Time.timeScale = 1f;
-        
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;    
     }
 
     public void Show() {
-        gameObject.SetActive(true);
+        pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
     }
 

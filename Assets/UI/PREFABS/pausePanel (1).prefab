@@ -91,7 +91,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 403764742907364080}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
         m_MethodName: SoundVol
         m_Mode: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 403764742907364080}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
         m_MethodName: EffectVol
         m_Mode: 0
@@ -996,7 +996,6 @@ GameObject:
   - component: {fileID: 6826818876576950691}
   - component: {fileID: 1650038945651013926}
   - component: {fileID: 8558162477836553700}
-  - component: {fileID: 403764742907364080}
   m_Layer: 5
   m_Name: pausePanel (1)
   m_TagString: Untagged
@@ -1066,18 +1065,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &403764742907364080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970122772439958850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f40a67734e56c24a9c5ed066abf6b20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7989048586112683604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1394,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 403764742907364080}
+      objectReference: {fileID: 0}
     - target: {fileID: 3057714871932664753, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1547,7 +1534,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 403764742907364080}
+      objectReference: {fileID: 0}
     - target: {fileID: 5323736791391235222, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1582,7 +1569,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 403764742907364080}
+      objectReference: {fileID: 0}
     - target: {fileID: 9222425771372303157, guid: e6d4bbdc42eddb548a0a5c71e2576047,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

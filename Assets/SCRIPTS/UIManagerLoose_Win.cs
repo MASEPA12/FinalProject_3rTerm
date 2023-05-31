@@ -9,8 +9,7 @@ using UnityEngine.SceneManagement;
 /*script for change the player name's when looses*/
 public class UIManagerLoose_Win : MonoBehaviour
 {
-    public TextMeshProUGUI looseText;
-    public TextMeshProUGUI winText;
+    public TextMeshProUGUI resultText;
 
     private Scene currentScene;
     void Start()
@@ -19,11 +18,11 @@ public class UIManagerLoose_Win : MonoBehaviour
         //if the scene  were we are is the loose scene (buildIndex = 4)
         if (currentScene.buildIndex == 5)
         {
-            looseText.text = $"{DataPersistence.sharedInstance.username}, you have lost";
+            resultText.text = $"{DataPersistence.sharedInstance.username}, you have lost";
         }
         else if(currentScene.buildIndex == 4) //otherwise, if we are in the win scene
         {
-            winText.text = $"{DataPersistence.sharedInstance.username}, you won!!";
+            resultText.text = $"{DataPersistence.sharedInstance.username}, you won!!";
         }
     }
     public void ReturnMainMenu()

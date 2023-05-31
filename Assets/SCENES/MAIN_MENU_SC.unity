@@ -226,6 +226,21 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 700067827986119098, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2114031928}
+    - target: {fileID: 700067827986119098, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SoundVol
+      objectReference: {fileID: 0}
+    - target: {fileID: 700067827986119098, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 720101587778419432, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -244,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 720101587778419432, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 412.62497
+      value: 278.82498
       objectReference: {fileID: 0}
     - target: {fileID: 720101587778419432, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
@@ -394,7 +409,7 @@ PrefabInstance:
     - target: {fileID: 3237605307068110656, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3237605307068110656, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
@@ -409,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 3436581748274717976, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4458698584418944587, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
@@ -440,6 +455,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711801868112085370, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2114031928}
+    - target: {fileID: 5711801868112085370, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EffectVol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711801868112085370, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5719802157910327399, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
@@ -671,6 +701,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8057175411316101787, guid: 819374a2014d58d40a93e111f92dff2f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8208881279393184959, guid: 819374a2014d58d40a93e111f92dff2f,
         type: 3}
       propertyPath: m_IsActive
@@ -686,7 +721,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 403764742907364080, guid: 819374a2014d58d40a93e111f92dff2f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 819374a2014d58d40a93e111f92dff2f, type: 3}
 --- !u!1 &80114234 stripped
 GameObject:
@@ -2667,8 +2703,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "You have losted, but your brother hansel has left bread all the way home.
-    Follow the bread way\_to\_return\_home"
+  m_text: "You are lost, but your brother hansel has left bread all the way home.
+    Follow the bread way\_to\_return\_home."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbe32ed9d0f78444aba8eb9bc751a895, type: 2}
   m_sharedMaterial: {fileID: 8813262697765163172, guid: dbe32ed9d0f78444aba8eb9bc751a895,

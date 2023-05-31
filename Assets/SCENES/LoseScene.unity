@@ -267,8 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3658b3180017b4c912f52dfe93dc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  looseText: {fileID: 1652841974}
-  winText: {fileID: 0}
+  resultText: {fileID: 1652841974}
 --- !u!4 &219166004
 Transform:
   m_ObjectHideFlags: 0
