@@ -11,13 +11,13 @@ interaction with other object
 
 public class PlayerMovement : MonoBehaviour
 {
-    //C
-    public const float INITIAL_SPEED = 5f;
-    public Rigidbody rb;
-    public float walkingForce = INITIAL_SPEED;
-
+    //Consta
+    private const float INITIAL_SPEED = 5f;
+    
     //Movement
-    public float jumpingForce = 250f;
+    private Rigidbody rb;
+    private float walkingForce = INITIAL_SPEED;
+    [SerializeField] private float jumpingForce = 250f;
     private float gravityModifier = 1.7f;
     private Vector3 gravityForce = new Vector3(0, -9.8f, 0);
     private float movementForce = 500f;
@@ -27,11 +27,11 @@ public class PlayerMovement : MonoBehaviour
     //Speed variables
     public float forwardInput; //Forward and backwar move
     public float horizontalInput; //Rotation movement
-    public float mouseX;
-    public float rotationSpeed = 6.5f; //Rotation speed
+    private float mouseX;
+    [SerializeField] private float rotationSpeed = 6.5f; //Rotation speed
 
     public Vector3 movement;
-    public Animator animator;
+    private Animator animator;
 
     //Animation Booleans
     private bool isJumping = false;
@@ -49,28 +49,27 @@ public class PlayerMovement : MonoBehaviour
     private float invulnerabilityTime = 2.5f; //time once the player receive damages that is invulnerable
 
     //power ups
-    public int secondsToWaitAppleRed = 5;
-    public int secondsToWaitAppleGreen = 5;
+    private int secondsToWaitAppleRed = 5;
+    private int secondsToWaitAppleGreen = 5;
 
     //Spawn variables
-    public Vector3 spawnPos;
+    private Vector3 spawnPos;
 
     //sphere
-    public float sphereRadius1 = 5;
-    public float sphereRadius2 = 10;
+    //public float sphereRadius1 = 5;
+    //private float sphereRadius2 = 10;
 
     public bool isInTheSphere = false;
-    public LayerMask recollectableLayerMask;
-    public LayerMask powerUpsLayerMask;
+    [SerializeField] private LayerMask recollectableLayerMask;
+    [SerializeField] private LayerMask powerUpsLayerMask;
 
     //jumping bool
-    public bool canJump = true;
+    [SerializeField] private bool canJump = true;
     public bool canBeSteady = true;
 
     //Attack
-    public GameObject fireballPrefab;
-    public bool canAttack = true;
-    public float attackTimer = 1.5f;
+    private bool canAttack = true;
+    private float attackTimer = 1.5f;
     [SerializeField] private Transform throwPos;
 
     void Start()
@@ -86,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
 
         powerUpScript.counterSliderPanel.SetActive(false);
         powerUpScript.appleRedIsOn = false;
-        powerUpScript.isBig = false;
 
         canJump = true;
 
@@ -118,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isJumping = true;
                 rb.AddRelativeForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-            
+                canJump = false;
                 Debug.Log($"canJump = {canJump}");
             }
             else {
@@ -192,10 +190,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", isJumping);
             animator.SetBool("isShooting", isShotting);
             animator.SetBool("isRunningBck", isRuningBack);
-
+            
+            /*
             if (isJumping) {
                 canJump = false;
             }
+            */
         }
 
     }
@@ -242,15 +242,14 @@ public class PlayerMovement : MonoBehaviour
         //if the player collides with the pink spikes
         if (collision.gameObject.CompareTag("deathObstacles")|| collision.gameObject.CompareTag("floor"))
         {
-            GameManager.sharedInstance.IsGameOver(); //gameOver
+            playerLife.CheckRetry(); //Retry or game over
         }
     }
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
-        Debug.Log("in takedamage");
+
         if (canDamage)
         {
-            Debug.Log("canDamage = true so recevie attack");
             playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
@@ -284,6 +283,10 @@ public class PlayerMovement : MonoBehaviour
         walkingForce = newSpeed;
     }
 
+    public void SetInitialSpeed() {
+        walkingForce = INITIAL_SPEED;
+    }
+
 
     private void Attack()
     {
@@ -308,11 +311,12 @@ public class PlayerMovement : MonoBehaviour
         canAttack = true;
     }
 
-
+    //Function that
     public void CanJump(bool state) {
         canJump = state;
     }
 
+    //Function that moves the player to the spawnPosition
     public void ResetPosition()
     {
         transform.position = spawnPos;

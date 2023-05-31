@@ -7,27 +7,20 @@ using UnityEngine.UI;
 
 public class PowerUp : MonoBehaviour
 {
-    //random power ups in a random place of an especific zone
-    public BoxCollider powerUpZone1;
-    public GameObject[] powerUpArray;
-
     //scripts conections
     public PlayerMovement playerMovementScript;
 
     //counter power ups
-    public float time;
-    public Slider timeCounterPoweUpSlider;
-    public GameObject counterSliderPanel;
+    private float time;
+    [SerializeField] private Slider timeCounterPoweUpSlider;
+    [SerializeField] public GameObject counterSliderPanel;
 
     //power up bools
     public bool appleRedIsOn;
-    public bool isBig;
-    public bool isNormalScale;
-    public bool isGameOver = false;
 
     //power up apple green variables
     public bool appleGreenIsOn = false;
-    public GameObject sliderPanelGreen;
+    [SerializeField] private GameObject sliderPanelGreen;
 
     void Start()
     {
@@ -54,7 +47,7 @@ public class PowerUp : MonoBehaviour
                 }
                 if (numOfPowerUp == 2)
                 {
-                    playerMovementScript.walkingForce = 5f; //restablish the speed
+                    playerMovementScript.SetInitialSpeed(); //restablish the speed
                 }
 
             }
@@ -63,6 +56,7 @@ public class PowerUp : MonoBehaviour
 
     }
 
+    //Coroutine that manages ScaleTransformer power up
     public IEnumerator LocalScaleTransformer(int secondsToWait)
     {
         playerMovementScript.Scale(2);
@@ -72,7 +66,6 @@ public class PowerUp : MonoBehaviour
 
         //play particles
         //play power up red apple sound
-        //set active slider que mostra es temps que queda (posar value start corroutine que cada 1 segon en suma 1)
 
         time = secondsToWait;
 
@@ -83,6 +76,7 @@ public class PowerUp : MonoBehaviour
         appleRedIsOn = false;
     }
 
+    //Coroutine that manages SpeedBoost power up
     public IEnumerator SpeedPowerUp(float speed, float durationOfPowerUp)
     {
         playerMovementScript.ChangeSpeed(speed); //double up the speed

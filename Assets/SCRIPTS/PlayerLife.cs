@@ -13,14 +13,16 @@ public class PlayerLife : MonoBehaviour
     private const int INITIAL_LIVES = 5;
 
     //Hunger gauge variables
-    public int hunger = INITIAL_HUNGER; //INITIAL VALOR TO FACILITE THE PLAYER 
-    public Slider foodCounterSlider;
-    public float hungerTimer = 2.5f;
+    [SerializeField] private int hunger = INITIAL_HUNGER; //INITIAL VALOR TO FACILITE THE PLAYER 
+    [SerializeField] private Slider foodCounterSlider;
+     private float hungerTimer = 2.5f;
 
     //Life variables
-    public int maxLives = INITIAL_LIVES;
+    private int maxLives = INITIAL_LIVES;
     public int lives = 5;
     private int retry = MAX_RETRIES;
+    [SerializeField] private TextMeshProUGUI retryText;
+
     //UI
     public Image[] hearts;
 
@@ -32,6 +34,7 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerMovementScript = FindObjectOfType<PlayerMovement>();
         retry = MAX_RETRIES;
         InitiateValues();
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
@@ -98,12 +101,13 @@ public class PlayerLife : MonoBehaviour
         foodCounterSlider.value = hunger;
     }
 
+    //Function that check if can retry or if is gameover
     public void CheckRetry()
     {
         if (retry > 0)
         {
             retry--;
-            Invoke("SetRetry", 2f);
+            Invoke("SetRetry", 1f);
         }
         else
         {
@@ -111,6 +115,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    //Function that initiate values
     private void InitiateValues()
     {
         //Reset values
@@ -119,6 +124,7 @@ public class PlayerLife : MonoBehaviour
         hunger = INITIAL_HUNGER;
     }
 
+    //Function that reset position and health values
     public void SetRetry()
     {
         InitiateValues();
