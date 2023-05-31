@@ -71,9 +71,8 @@ public class GameManager : MonoBehaviour
 
         //audiosource.audiclip = gameOverSound;
         //audiosource.Play()
-        //Time.timeScale = 0;
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
-        Debug.Log("YOUR HAVE LOST");
+        Debug.Log("YOU HAVE LOST");
 
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - Trap
   - Collectable
   - Projectile
+  - deathObstacles
   layers:
   - Default
   - TransparentFX

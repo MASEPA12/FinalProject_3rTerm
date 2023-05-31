@@ -1047,6 +1047,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1 &98578027
@@ -1198,6 +1203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -1357,6 +1367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -2252,6 +2267,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &270473238
@@ -2397,8 +2417,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281272184}
-  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
-  m_LocalPosition: {x: 0, y: 5.6, z: 5}
+  m_LocalRotation: {x: 0, y: 0.9880345, z: -0.15423322, w: -1e-45}
+  m_LocalPosition: {x: 0, y: 34.1, z: -165.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2626,6 +2646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -4628,6 +4653,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!4 &584642348 stripped
@@ -5380,6 +5410,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &651373111
@@ -5538,6 +5573,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -6081,7 +6121,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736620666}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 224.71124, y: 1, z: 499.46585}
@@ -6695,6 +6735,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &863162945
@@ -7036,6 +7081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -8031,6 +8081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -9300,6 +9355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &1132065139
@@ -10178,6 +10238,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &1209962518
@@ -10425,6 +10490,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -11028,8 +11098,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270492080}
-  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
-  m_LocalPosition: {x: 0, y: 5.6, z: 5}
+  m_LocalRotation: {x: 0, y: 0.9880345, z: -0.15423322, w: -1e-45}
+  m_LocalPosition: {x: 0, y: 34.1, z: -165.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12629,6 +12699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &1424047210
@@ -13130,6 +13205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -14114,6 +14194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!4 &1542889651 stripped
@@ -14641,6 +14726,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1 &1682026199
@@ -14704,7 +14794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337263f36e0587b4db235a5f02cba800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpZone1: {fileID: 0}
+  powerUpZone1: {fileID: 2040690786}
   powerUpArray: []
   playerMovementScript: {fileID: 0}
   time: 0
@@ -14954,6 +15044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &1708390575
@@ -15006,12 +15101,12 @@ PrefabInstance:
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 30.5
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -170.7
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
@@ -15166,6 +15261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
@@ -18715,6 +18815,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spikes1 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}
 --- !u!1001 &2141374826
@@ -19152,6 +19257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883619232103797545, guid: 5c305dd9f756bad47a51ca5ee776d1b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: deathObstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c305dd9f756bad47a51ca5ee776d1b5, type: 3}

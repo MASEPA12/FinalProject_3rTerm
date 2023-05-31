@@ -229,19 +229,22 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(powerUpScript.SpeedPowerUp(walkingForce*2,secondsToWaitAppleGreen));
         }
 
-        //if the player falls loses
-        if (other.CompareTag("floor"))
-        {
-            
-            //set active the game over panel
-        }
-
+        
         //If player arrives in the finish line
         if (other.CompareTag("Finish")){//&& points >= 100) {
             GameManager.sharedInstance.IsHasWin();
         }
-    }
 
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if the player collides with the pink spikes
+        if (collision.gameObject.CompareTag("deathObstacles")|| collision.gameObject.CompareTag("floor"))
+        {
+            GameManager.sharedInstance.IsGameOver(); //gameOver
+        }
+    }
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
         Debug.Log("in takedamage");
