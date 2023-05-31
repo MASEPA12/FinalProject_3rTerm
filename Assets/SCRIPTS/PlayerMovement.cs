@@ -232,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //if the player collides with the pink spikes
-        if (collision.gameObject.CompareTag("deathObstacles")|| collision.gameObject.CompareTag("floor"))
+        if (collision.gameObject.CompareTag("deathObstacles"))
         {
             playerLife.CheckRetry(); //Retry or game over
         }
@@ -256,6 +256,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("Checkpoint")) {
             spawnPos = transform.position; //update to new spawn position;
+        }
+
+        if (other.CompareTag("floor")){
+            playerLife.CheckRetry();
         }
     }
 
