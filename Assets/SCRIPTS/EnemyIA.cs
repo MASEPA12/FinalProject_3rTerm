@@ -8,36 +8,38 @@ public class EnemyIA : MonoBehaviour
     //Range Variables
     private NavMeshAgent _agent;
     public Transform player;
-    public float visionRange;
-    public bool playerInVisionRange;
+    [SerializeField] private float visionRange;
+    private bool playerInVisionRange;
 
     //Attack Variables
     private bool canAttack = true;
     [SerializeField] private int damage = -1; //damage that does the enemy
-    public float attackCooldownTimer;
-    public float attackRange;
-    public bool playerInAttackRange;
+    private float attackCooldownTimer;
+    [SerializeField] private float attackRange;
+    private bool playerInAttackRange;
     [SerializeField] private float knockback = 200f;
+
     //Waypoints Variables
-    public Transform[] waypoints;
-    public int nextPoint;
-    public int totalWaypoints;
+    [SerializeField] private Transform[] waypoints;
+    private int nextPoint;
+    private int totalWaypoints;
 
     //Speed Variables
     [SerializeField] private float speedPatrol = 3.5f;
     [SerializeField] private float speedChase = 4.5f;
 
     //Mask
-    public LayerMask playerLayer;
+    [SerializeField] private LayerMask playerLayer;
 
     //Scripts connections
     private PlayerMovement playerCon;
 
     //Item
     [SerializeField] private GameObject item;
+    [SerializeField] private Transform itemSpawnPos;
 
     //
-    public Animator enemyAnimator;
+    private Animator enemyAnimator;
 
     private void Awake()
     {
@@ -158,7 +160,7 @@ public class EnemyIA : MonoBehaviour
 
     private void DropItem() {
         float prob = Random.Range(0f, 1f);
-        Vector3 itemSpawn= new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        Vector3 itemSpawn = new Vector3(itemSpawnPos.transform.position.x, itemSpawnPos.transform.position.y, itemSpawnPos.transform.position.z);
         if (prob > 0.3f) {
             Instantiate(item, itemSpawn, Quaternion.identity);
         }

@@ -240,7 +240,7 @@ public class PlayerMovement : MonoBehaviour
             playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
-            rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
+            rb.AddRelativeForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
             MusicManager.sharedInstance.DamageSound();
         }
         canDamage = false;
@@ -282,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject fireball = FireballPool.Instance.Request();
             //Get reposition of the bullet
             fireball.transform.position = throwPos.position;         
-            fireball.transform.rotation = throwPos.rotation;
+            //fireball.transform.rotation = throwPos.rotation;
             fireball.GetComponent<Rigidbody>().AddForce(transform.forward * 250, ForceMode.Impulse);
             MusicManager.sharedInstance.ThrowSound();
             canAttack = false;
