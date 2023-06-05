@@ -1090,7 +1090,6 @@ MonoBehaviour:
   powerUpArray:
   - {fileID: 57663020457992583, guid: 1f2075aef9405c54196d5406312da4e2, type: 3}
   - {fileID: 8668346941501899866, guid: 1772ea394dcea5946ba1533eef80d0d5, type: 3}
-  gameManagerScript: {fileID: 0}
   itHasInstantiateAPowerUp: 0
   boxCollidersObject: {fileID: 98578029}
   boxColliderBiggerSize: {x: 0, y: 0, z: 0}
@@ -2091,7 +2090,6 @@ MonoBehaviour:
   powerUpArray:
   - {fileID: 57663020457992583, guid: 1f2075aef9405c54196d5406312da4e2, type: 3}
   - {fileID: 8668346941501899866, guid: 1772ea394dcea5946ba1533eef80d0d5, type: 3}
-  gameManagerScript: {fileID: 0}
   itHasInstantiateAPowerUp: 0
   boxCollidersObject: {fileID: 260873917}
   boxColliderBiggerSize: {x: 0, y: 0, z: 0}
@@ -2386,7 +2384,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281272184}
-  m_LocalRotation: {x: -0.0000000029670353, y: 0.9880345, z: -0.15423332, w: -0.000000019007132}
+  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
   m_LocalPosition: {x: 0, y: 5.72, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4824,11 +4822,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894620994}
     m_Modifications:
-    - target: {fileID: 1385438532086841828, guid: aa6bb2c28e275524196e53b8566ff141,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2630845413383522790, guid: aa6bb2c28e275524196e53b8566ff141,
         type: 3}
       propertyPath: m_Name
@@ -11139,7 +11132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270492080}
-  m_LocalRotation: {x: -0.0000000029670353, y: 0.9880345, z: -0.15423332, w: -0.000000019007132}
+  m_LocalRotation: {x: 0.0000000029670353, y: 0.9880345, z: -0.15423332, w: 0.000000019007132}
   m_LocalPosition: {x: 0, y: 5.72, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15091,6 +15084,16 @@ PrefabInstance:
       propertyPath: timeCounterPoweUpSlider
       value: 
       objectReference: {fileID: 210816610}
+    - target: {fileID: 3483601922851690455, guid: 06e34804d0f9a2c43a643b00b3dff529,
+        type: 3}
+      propertyPath: maxDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232578523053368123, guid: 06e34804d0f9a2c43a643b00b3dff529,
+        type: 3}
+      propertyPath: retryText
+      value: 
+      objectReference: {fileID: 7217122822924353880}
     - target: {fileID: 4232578523053368123, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: foodCounterSlider
@@ -15149,7 +15152,7 @@ PrefabInstance:
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
@@ -15159,7 +15162,7 @@ PrefabInstance:
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5955149814953794476, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
@@ -18216,7 +18219,6 @@ MonoBehaviour:
   powerUpArray:
   - {fileID: 57663020457992583, guid: 1f2075aef9405c54196d5406312da4e2, type: 3}
   - {fileID: 8668346941501899866, guid: 1772ea394dcea5946ba1533eef80d0d5, type: 3}
-  gameManagerScript: {fileID: 0}
   itHasInstantiateAPowerUp: 0
   boxCollidersObject: {fileID: 2040690786}
   boxColliderBiggerSize: {x: 0, y: 0, z: 0}
@@ -20859,6 +20861,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7217122822924353880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7163299067802595085, guid: f289864e7d5208c44a8d42a632a04b6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7217122822924353877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7909446852256478851

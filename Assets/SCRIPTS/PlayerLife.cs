@@ -37,6 +37,8 @@ public class PlayerLife : MonoBehaviour
         playerMovementScript = FindObjectOfType<PlayerMovement>();
         retry = MAX_RETRIES;
         InitiateValues();
+
+        retryText.text = $"x{retry}";
         foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         StartCoroutine(LooseFoodTimer());
     }
@@ -107,9 +109,11 @@ public class PlayerLife : MonoBehaviour
         if (retry > 0)
         {
             retry--;
+            retryText.text = $"x{retry}"; //Update text
             Invoke("SetRetry", 1f);
         }
-        else
+
+        if(retry <=0)
         {
             GameManager.sharedInstance.IsGameOver();
         }

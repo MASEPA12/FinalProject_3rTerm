@@ -192,6 +192,12 @@ public class PlayerMovement : MonoBehaviour
         
         if (other.CompareTag("Collectable")) {
             MusicManager.sharedInstance.RecollectSound();
+            RecollectableMovement collectable = other.GetComponent<RecollectableMovement>(); //Get recollectable information
+
+            GameManager.sharedInstance.UpdateScore(collectable.points);
+            playerLife.UpdateHunger(collectable.hunger);
+            playerLife.UpdateLife(collectable.heal);
+
             Destroy(other.gameObject);    
         }
 
@@ -225,6 +231,7 @@ public class PlayerMovement : MonoBehaviour
             playerLife.CheckRetry(); //Retry or game over
         }
     }
+
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
 

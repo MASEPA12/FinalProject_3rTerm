@@ -5,26 +5,16 @@ using UnityEngine;
 /*this script will move the recollectables and the particle effects 
 as well as instantiate some recollectables in random spots */
 
-public class recollectableMovement : MonoBehaviour
+public class RecollectableMovement : MonoBehaviour
 {
     public ParticleSystem recollectableParticles;
     public LayerMask playerLayer;
     public int sphereRadius = 3;
 
     //Points variables
-    [SerializeField] private int points;
-    [SerializeField] private int hunger;
-    [SerializeField] private int heal = 0;
-
-    //Scripts connections
-    public PlayerMovement playerMovement;
-    private PlayerLife playerLife;
-
-    void Start()
-    {
-        playerMovement = FindObjectOfType<PlayerMovement>();
-        playerLife = FindObjectOfType<PlayerLife>();
-    }
+    [SerializeField] public int points;
+    [SerializeField] public int hunger;
+    [SerializeField] public int heal = 0;
 
     void Update()
     {
@@ -50,12 +40,14 @@ public class recollectableMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
 
+    /*
     private void OnDestroy()
     {
+
         //MusicManager.sharedInstance.RecollectSound();
         GameManager.sharedInstance.UpdateScore(points);
         playerLife.UpdateHunger(hunger);
         playerLife.UpdateLife(heal);
     }
-
+    */
 }

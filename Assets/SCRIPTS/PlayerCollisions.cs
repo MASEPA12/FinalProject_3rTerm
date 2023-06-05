@@ -64,7 +64,7 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         RaycastHit hit;
-        onFloor = Physics.Raycast(transform.position,-transform.up, out hit,boxColliderPlayer.size.y/2*0.1f);
+        onFloor = Physics.Raycast(transform.position,Vector3.down, out hit,boxColliderPlayer.size.y/2*0.2f);
         if (onFloor)
         {
             Debug.Log("onFloor");
@@ -89,5 +89,9 @@ public class PlayerCollisions : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f);
+
+        //
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down*boxColliderPlayer.size.y / 2 * 0.2f);
     }
 }
