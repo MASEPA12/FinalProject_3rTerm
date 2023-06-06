@@ -55,14 +55,18 @@ public class UIManager : MonoBehaviour
 
     public void SaveUsernameWithPlayerPrefs() {
         PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
-        Debug.Log($"Existe? {PlayerPrefs.HasKey("USERNAME")}");
-        Debug.Log($"{PlayerPrefs.GetString("USERNAME")}");
     }
 
     public void SaveWithPlayerPrefs()
     {
         PlayerPrefs.SetString("USERNAME", DataPersistence.sharedInstance.username);
         PlayerPrefs.SetInt("LEVELS", DataPersistence.sharedInstance.completedLevels);
+        PlayerPrefs.SetFloat("GENERALVOL", MusicManager.sharedInstance.backgroundVol);
+        PlayerPrefs.SetFloat("EFFECTVOL", MusicManager.sharedInstance.effectsVol);
+    }
+
+    public void SaveSoundWithPlayerPrefs()
+    {
         PlayerPrefs.SetFloat("GENERALVOL", MusicManager.sharedInstance.backgroundVol);
         PlayerPrefs.SetFloat("EFFECTVOL", MusicManager.sharedInstance.effectsVol);
     }

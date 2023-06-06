@@ -16,10 +16,10 @@ public class PowerUp : MonoBehaviour
     [SerializeField] public GameObject counterSliderPanel;
 
     //power up bools
-    public bool appleRedIsOn;
+    public bool isBig = false; //Powerup that makes big the player
 
     //power up apple green variables
-    public bool appleGreenIsOn = false;
+    public bool isFast = false; //Powerup that speed up the player
     [SerializeField] private GameObject sliderPanelGreen;
 
     void Start()
@@ -62,7 +62,7 @@ public class PowerUp : MonoBehaviour
         playerMovementScript.Scale(2);
         MusicManager.sharedInstance.GiantSound();
 
-        appleRedIsOn = true;
+        isBig = true;
         counterSliderPanel.SetActive(true);
 
         //play particles
@@ -74,7 +74,7 @@ public class PowerUp : MonoBehaviour
 
         yield return new WaitForSeconds(secondsToWait);
 
-        appleRedIsOn = false;
+        isBig = false;
     }
 
     //Coroutine that manages SpeedBoost power up
@@ -83,7 +83,7 @@ public class PowerUp : MonoBehaviour
         playerMovementScript.ChangeSpeed(speed); //double up the speed
         MusicManager.sharedInstance.FastSound();
 
-        appleGreenIsOn = true;
+        isFast = true;
         sliderPanelGreen.SetActive(true);
 
         time = durationOfPowerUp;
@@ -91,6 +91,6 @@ public class PowerUp : MonoBehaviour
 
         yield return new WaitForSeconds(durationOfPowerUp);
  
-        appleGreenIsOn = false;
+        isFast = false;
     }
 }

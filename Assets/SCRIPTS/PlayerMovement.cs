@@ -75,9 +75,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
 
-        powerUpScript.counterSliderPanel.SetActive(false);
-        powerUpScript.appleRedIsOn = false;
-
         canJump = true;
 
         spawnPos = transform.position; //set spawn position at the start of the level;
@@ -170,12 +167,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", isJumping);
             animator.SetBool("isShooting", isShotting);
             animator.SetBool("isRunningBck", isRuningBack);
-            
-            /*
-            if (isJumping) {
-                canJump = false;
-            }
-            */
         }
 
     }
@@ -201,14 +192,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);    
         }
 
-        if (other.CompareTag(appleRed) && powerUpScript.appleRedIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
+        if (other.CompareTag(appleRed) && !powerUpScript.isBig) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
             Destroy(other.gameObject);
 
             StartCoroutine(powerUpScript.LocalScaleTransformer(secondsToWaitAppleRed));
         }
 
-        if (other.CompareTag(appleGreen) && powerUpScript.appleGreenIsOn == false) //si ja te es power up de sa poma vermella on, no n'agafa més
+        if (other.CompareTag(appleGreen) && !powerUpScript.isFast) //si ja te es power up de sa poma vermella on, no n'agafa més
         {
             Destroy(other.gameObject);
 
@@ -235,11 +226,11 @@ public class PlayerMovement : MonoBehaviour
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
 
-        if (canDamage)
+        if (canDamage || powerUpScript.isBig)
         {
             playerLife.UpdateLife(damage);
             //Apply knockback
-            rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+            rb.AddForce(Vector3.up, ForceMode.Impulse);
             rb.AddRelativeForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
             MusicManager.sharedInstance.DamageSound();
         }

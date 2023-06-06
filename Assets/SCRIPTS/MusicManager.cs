@@ -48,6 +48,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
+        SetVolumen();
         MenuMusic();
     }
 
@@ -130,5 +131,13 @@ public class MusicManager : MonoBehaviour
     public void ClickSound()
     {
         PlaySoundEffect(clickSound, effectsVol);
+    }
+
+    //Function that gets volumen from PlayerPrefs, else set it to 1
+    private void SetVolumen()
+    {
+        backgroundVol = PlayerPrefs.GetFloat("GENERALVOL",1);
+        _audioSource.volume = backgroundVol;
+        effectsVol = PlayerPrefs.GetFloat("EFFECTVOL", 1);
     }
 }

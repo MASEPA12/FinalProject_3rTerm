@@ -67,8 +67,10 @@ public class PlayerLife : MonoBehaviour
     { //
         if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
         {
-            lives += num;
-            ShowLife(lives);
+            if (!(num > 0 && lives == maxLives)) {
+                lives += num;
+                ShowLife(lives);
+            }
         }
 
         if (lives <= 0)

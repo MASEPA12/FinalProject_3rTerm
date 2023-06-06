@@ -40,14 +40,4 @@ public class RecollectableMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
 
-    /*
-    private void OnDestroy()
-    {
-
-        //MusicManager.sharedInstance.RecollectSound();
-        GameManager.sharedInstance.UpdateScore(points);
-        playerLife.UpdateHunger(hunger);
-        playerLife.UpdateLife(heal);
-    }
-    */
 }
