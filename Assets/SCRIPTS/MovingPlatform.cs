@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Sales");
-            other.transform.SetParent(transform);
+            Debug.Log("Entras");
+            other.transform.parent.SetParent(transform);
         }
             
     }
@@ -20,12 +21,12 @@ public class MovingPlatform : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Sales");
-            other.transform.SetParent(null);
+            other.transform.parent.SetParent(null);
         }
     }
-    */
+    
 
- 
+ /*
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -43,5 +44,5 @@ public class MovingPlatform : MonoBehaviour
             collision.transform.SetParent(transform);
         }
     }
-
+ */
 }

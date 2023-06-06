@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int damage = -1; //Negative, indicates the damage done to the player
-    private float knockback = 800f; //Knockback done to the player
+    private float knockback = 400f; //Knockback done to the player
 
     private float inactiveTimer = 1f; //time to set the gameobject to inactive
     

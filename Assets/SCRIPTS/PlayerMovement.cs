@@ -192,6 +192,12 @@ public class PlayerMovement : MonoBehaviour
         
         if (other.CompareTag("Collectable")) {
             MusicManager.sharedInstance.RecollectSound();
+            RecollectableMovement collectable = other.GetComponent<RecollectableMovement>(); //Get recollectable information
+
+            GameManager.sharedInstance.UpdateScore(collectable.points);
+            playerLife.UpdateHunger(collectable.hunger);
+            playerLife.UpdateLife(collectable.heal);
+
             Destroy(other.gameObject);    
         }
 
@@ -225,6 +231,7 @@ public class PlayerMovement : MonoBehaviour
             playerLife.CheckRetry(); //Retry or game over
         }
     }
+
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
 
@@ -233,7 +240,7 @@ public class PlayerMovement : MonoBehaviour
             playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up * 1, ForceMode.Impulse);
-            rb.AddForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
+            rb.AddRelativeForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
             MusicManager.sharedInstance.DamageSound();
         }
         canDamage = false;
@@ -275,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject fireball = FireballPool.Instance.Request();
             //Get reposition of the bullet
             fireball.transform.position = throwPos.position;         
-            fireball.transform.rotation = throwPos.rotation;
+            //fireball.transform.rotation = throwPos.rotation;
             fireball.GetComponent<Rigidbody>().AddForce(transform.forward * 250, ForceMode.Impulse);
             MusicManager.sharedInstance.ThrowSound();
             canAttack = false;

@@ -5,25 +5,24 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     //capsule 
-    public Vector3 centerCapsuleUp;
-    public Vector3 centerCapsuleDwn;
-    public float radiusCapsule;
+    private Vector3 centerCapsuleUp;
+    private Vector3 centerCapsuleDwn;
+    private float radiusCapsule;
     public LayerMask layerMaskToCollide;
-    public float maxDistance;
+    [SerializeField] private float maxDistance = 0.1f;
 
-    public Vector3 playerDirection;
-    public float playerHigh;
+    private Vector3 playerDirection;
 
     //box collider refernce
     public BoxCollider boxColliderPlayer;
 
     //bool system
-    public bool isColliding;
-    public bool somethingIsOn;
-    public bool onFloor;
+    private bool isColliding;
+    private bool somethingIsOn;
+    private bool onFloor;
 
     //script references
-    public PlayerMovement playerMovementScript;
+    private PlayerMovement playerMovementScript;
 
     //collisions
     private Vector3 previousPos;
@@ -64,7 +63,7 @@ public class PlayerCollisions : MonoBehaviour
         }
 
         RaycastHit hit;
-        onFloor = Physics.Raycast(transform.position,-transform.up, out hit,boxColliderPlayer.size.y/2*0.1f);
+        onFloor = Physics.Raycast(transform.position,Vector3.down, out hit,boxColliderPlayer.size.y/2*0.2f);
         if (onFloor)
         {
             Debug.Log("onFloor");
@@ -89,5 +88,9 @@ public class PlayerCollisions : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f);
+
+        //
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down*boxColliderPlayer.size.y / 2 * 0.2f);
     }
 }
