@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private float startBound;
-    private float endBound;
+    //private float startBound;
+    //private float endBound;
     private Rigidbody rb;
-    [SerializeField] private float force;
+    [SerializeField] private float force = 1f;
     private Vector3 direction;
     [SerializeField] private Transform[] pointsArray;
     [SerializeField] private bool isGoingToEnd = false;
@@ -16,8 +16,21 @@ public class MovingPlatform : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Start()
+    {
+        rb.velocity = transform.forward * force;
+        rb.AddForce(transform.forward, ForceMode.Impulse);
+    }
+
     private void FixedUpdate()
     {
+        if (isGoingToEnd)
+        {
+            rb.AddForce(transform.right*force, ForceMode.Impulse);
+        }
+        else {
+            rb.AddForce(-transform.right*force, ForceMode.Impulse);
+        }
         
     }
 
@@ -36,14 +49,16 @@ public class MovingPlatform : MonoBehaviour
             other.transform.parent.SetParent(transform);
         }
 
-        if (other.gameObject.name.Contains("start")) 
+        if (other.gameObject.name.Contains("Start")) 
         {
-            isGoingToEnd = true;
+            rb.velocity = Vector3.zero;
+            isGoingToEnd = false;
         }
 
-        if (other.gameObject.name.Contains("end"))
+        if (other.gameObject.name.Contains("End"))
         {
-            isGoingToEnd = false;
+            rb.velocity = Vector3.zero;
+            isGoingToEnd = true;
         }
 
     }
@@ -56,26 +71,5 @@ public class MovingPlatform : MonoBehaviour
             other.transform.parent.SetParent(null);
         }
     }
-
-
-    /*
-       private void OnCollisionExit(Collision collision)
-       {
-           if (collision.gameObject.CompareTag("Player"))
-           {
-               Debug.Log("Sales");
-               collision.transform.SetParent(null);
-           }
-       }
-
-       private void OnCollisionEnter(Collision collision)
-       {
-           if (collision.gameObject.CompareTag("Player"))
-           {
-               Debug.Log("Entras");
-               collision.transform.SetParent(transform);
-           }
-       }
-    */
 
 }

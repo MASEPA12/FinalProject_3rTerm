@@ -7,7 +7,7 @@ public class PlayerCollisions : MonoBehaviour
     //capsule 
     private Vector3 centerCapsuleUp;
     private Vector3 centerCapsuleDwn;
-    private float radiusCapsule;
+    private float radiusCapsule = 1f;
     public LayerMask layerMaskToCollide;
     [SerializeField] private float maxDistance = 0.1f;
 
