@@ -30,7 +30,7 @@ public class PowerUp : MonoBehaviour
     private IEnumerator Counter(Slider slider, GameObject panelOfTheSlider, int numOfPowerUp)
     {   //it displays the seconds
 
-        slider.maxValue = time;//posam que es valor màxim de slider sigui es temps que ha d'esperar
+        slider.maxValue = time;//we set the value as the time
 
         while (time > 0)
         {
@@ -65,9 +65,6 @@ public class PowerUp : MonoBehaviour
         isBig = true;
         counterSliderPanel.SetActive(true);
 
-        //play particles
-        //play power up red apple sound
-
         time = secondsToWait;
 
         StartCoroutine(Counter(timeCounterPoweUpSlider, counterSliderPanel, 1));
@@ -87,7 +84,7 @@ public class PowerUp : MonoBehaviour
         sliderPanelGreen.SetActive(true);
 
         time = durationOfPowerUp;
-        StartCoroutine(Counter(timeCounterPoweUpSlider, sliderPanelGreen, 2)); //--> ja està dins s'escript de power up (modificada!!!)
+        StartCoroutine(Counter(timeCounterPoweUpSlider, sliderPanelGreen, 2));
 
         yield return new WaitForSeconds(durationOfPowerUp);
  

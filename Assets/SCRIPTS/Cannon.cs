@@ -15,10 +15,9 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Transform bulletSpawn;
     private float attackCooldownTimer = 2f;
     private bool canAttack = true;
-    /*
-    private float upAttackForce = 150f; //applied force to the bullet
-    private float forwardAttackForce = 800f;
-    */
+    [SerializeField] private float bulletForce = 800f;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +61,8 @@ public class Cannon : MonoBehaviour
             GameObject bullet = BulletPool.Instance.RequestBullet();
             //Get reposition of the bullet
             bullet.transform.position = bulletSpawn.position;
-            bullet.transform.rotation = bulletSpawn.rotation;
-            bullet.GetComponent<Rigidbody>().AddRelativeForce(bullet.transform.forward * 800, ForceMode.Impulse);
+            bullet.transform.rotation = transform.rotation;
+            bullet.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * bulletForce, ForceMode.Impulse);
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown
         }

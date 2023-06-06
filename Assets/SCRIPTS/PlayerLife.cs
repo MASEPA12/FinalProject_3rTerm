@@ -67,18 +67,17 @@ public class PlayerLife : MonoBehaviour
     { //
         if (lives > 0 && lives <= maxLives) //5 has to be a variable MAX_lifes
         {
-            if (!(num > 0 && lives == maxLives)) {
+            if (!(num > 0 && lives == maxLives)) { //Avoid to restore heart when lives == maxLives
                 lives += num;
                 ShowLife(lives);
             }
         }
 
         if (lives <= 0)
-        {
+        {   
             CheckRetry();
         }
 
-        Debug.Log($" Lifepoints: {lives}");
     }
 
     //Function that updates life UI

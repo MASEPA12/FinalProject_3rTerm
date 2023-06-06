@@ -7,7 +7,7 @@ public class PlayerCollisions : MonoBehaviour
     //capsule 
     private Vector3 centerCapsuleUp;
     private Vector3 centerCapsuleDwn;
-    private float radiusCapsule = 1f;
+    private float radiusCapsule = 0.15f;
     public LayerMask layerMaskToCollide;
     [SerializeField] private float maxDistance = 0.1f;
 
@@ -33,7 +33,7 @@ public class PlayerCollisions : MonoBehaviour
     }
 
     void Update()
-    {   //set the size of the capsule (posaré sa de abaix un pos més amunt pq no estigui tot es temps tocant enterra, pq s'enveoirment és tb ground) PENSAR A LLEVAR ES +0.5f
+    {   //set the size of the capsule
         centerCapsuleDwn = transform.position + Vector3.up * ( radiusCapsule);
         centerCapsuleUp = transform.position + ((boxColliderPlayer.size.y - radiusCapsule) * Vector3.up);
 
@@ -50,6 +50,7 @@ public class PlayerCollisions : MonoBehaviour
             previousPos = transform.position;
         }
 
+        //Check if there is something over the player
         somethingIsOn = Physics.Raycast(transform.position + Vector3.up * boxColliderPlayer.size.y, (transform.position + Vector3.up * boxColliderPlayer.size.y) + Vector3.up * 0.25f, maxDistance, layerMaskToCollide);
         if (somethingIsOn)
         {
@@ -62,6 +63,7 @@ public class PlayerCollisions : MonoBehaviour
             playerMovementScript.canBeSteady = true;   
         }
 
+        //Check if player hitted the floor
         RaycastHit hit;
         onFloor = Physics.Raycast(transform.position,Vector3.down, out hit,boxColliderPlayer.size.y/2*0.2f);
         if (onFloor)

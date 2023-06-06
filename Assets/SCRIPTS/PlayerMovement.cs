@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     //Attack
     private bool canAttack = true;
     private float attackTimer = 1.5f;
+    [SerializeField] private float attackForce = 250f;
     [SerializeField] private Transform throwPos;
 
     void Start()
@@ -70,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         playerLife = FindObjectOfType<PlayerLife>();
         animator = GetComponent<Animator>();
 
-        Physics.gravity = gravityForce*gravityModifier;//
+        Physics.gravity = gravityForce*gravityModifier;
 
         rb = GetComponent<Rigidbody>();
         animator.SetBool("isSteady", isSteady);
@@ -91,8 +92,6 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Fire1") || (!Input.GetButton("Fire1") && !canBeSteady)) //Fire1 = LCrt || 
             {
                 isSteady = false;
-                Debug.Log("isSteady == false");
-
             }
             else if(canBeSteady == true)
             {
@@ -144,8 +143,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.sharedInstance.IsFinished())
         {
-            Vector3 dir = new Vector3(horizontalInput, 0, forwardInput);
-
             if (forwardInput < 0 || !isSteady)
             {
                 rb.MovePosition(transform.position + (walkingForce / 2) * Time.deltaTime * forwardInput * transform.forward); //Move forward
@@ -168,7 +165,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isShooting", isShotting);
             animator.SetBool("isRunningBck", isRuningBack);
         }
-
     }
 
     public void Scale(float num)
@@ -192,14 +188,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);    
         }
 
-        if (other.CompareTag(appleRed) && !powerUpScript.isBig) //si ja te es power up de sa poma vermella on, no n'agafa més
+        if (other.CompareTag(appleRed) && !powerUpScript.isBig) //if already has powerup cant get another until finish
         {
             Destroy(other.gameObject);
 
             StartCoroutine(powerUpScript.LocalScaleTransformer(secondsToWaitAppleRed));
         }
 
-        if (other.CompareTag(appleGreen) && !powerUpScript.isFast) //si ja te es power up de sa poma vermella on, no n'agafa més
+        if (other.CompareTag(appleGreen) && !powerUpScript.isFast) //if already has powerup cant get another until finish
         {
             Destroy(other.gameObject);
 
@@ -274,7 +270,7 @@ public class PlayerMovement : MonoBehaviour
             //Get reposition of the bullet
             fireball.transform.position = throwPos.position;         
             //fireball.transform.rotation = throwPos.rotation;
-            fireball.GetComponent<Rigidbody>().AddForce(transform.forward * 250, ForceMode.Impulse);
+            fireball.GetComponent<Rigidbody>().AddForce(transform.forward * attackForce, ForceMode.Impulse);
             MusicManager.sharedInstance.ThrowSound();
             canAttack = false;
             StartCoroutine(AttackCooldown()); //Start attack cooldown

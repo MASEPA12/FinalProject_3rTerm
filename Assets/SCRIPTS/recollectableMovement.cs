@@ -21,7 +21,6 @@ public class RecollectableMovement : MonoBehaviour
         if (Physics.CheckSphere(transform.position, sphereRadius, playerLayer)) //if the player is near the recollectable, the recollectable rotates and particles play
         {
             transform.Rotate(Vector3.up);
-            //play sound de que hi ha un panesito per recollir
 
             if (!recollectableParticles.isPlaying) //Play only if not already playing
             {

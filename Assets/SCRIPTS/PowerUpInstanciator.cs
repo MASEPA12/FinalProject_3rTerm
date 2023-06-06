@@ -13,8 +13,8 @@ public class PowerUpInstanciator : MonoBehaviour
 
     private void Start()
     {
-        boxColliderBiggerSize = new Vector3(boxCollidersObject.size.x, boxCollidersObject.size.y, boxCollidersObject.size.z * 2);//guardam una mida ampliada de es box collider
-        boxCollidersObject.center = new Vector3(0, 0, 0); //posam que es centre sigui sempre 0, així serà de sa mateix size
+        boxColliderBiggerSize = new Vector3(boxCollidersObject.size.x, boxCollidersObject.size.y, boxCollidersObject.size.z * 2);//Store an amplified box collider
+        boxCollidersObject.center = Vector3.zero; //center always at 0
     }
 
     private void Update()

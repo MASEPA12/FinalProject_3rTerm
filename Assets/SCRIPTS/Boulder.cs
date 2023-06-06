@@ -13,7 +13,6 @@ public class Boulder : MonoBehaviour
     private Rigidbody rb;
 
     //Script connections
-    private GameManager gameManager;
     private PlayerMovement playerCon;
 
     private void Awake()
@@ -25,16 +24,18 @@ public class Boulder : MonoBehaviour
     void Start()
     {
         initialPos = transform.position; //Store boulder initial position
-        gameManager = FindObjectOfType<GameManager>();
         playerCon = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        if (transform.position.y < -15) { //Boulder falls out of the play field
-            RandomSpawnPosition();
+    {
+        if (!GameManager.sharedInstance.IsFinished()) {
+            if (transform.position.y < -15) { //Boulder falls out of the play field
+                RandomSpawnPosition();
+            }
         }
+
     }
 
     //Function that spawn the boulder in a random X position

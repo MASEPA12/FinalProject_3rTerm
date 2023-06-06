@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2972759049634711523}
   - component: {fileID: -3330771266251822338}
   - component: {fileID: 6829315606139656618}
-  - component: {fileID: -7747943283699744107}
+  - component: {fileID: 2030385019020093404}
+  - component: {fileID: 8462357544787554597}
   m_Layer: 0
   m_Name: blockMoving
   m_TagString: Untagged
@@ -112,22 +113,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89b130e7e99a1640bcee0e4711fe760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0
-  pointsArray: []
-  isGoingToEnd: 0
---- !u!54 &-7747943283699744107
-Rigidbody:
+--- !u!65 &2030385019020093404
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3621352505534948918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Size: {x: 10.540613, y: 2.2607913, z: 10.756722}
+  m_Center: {x: 4.7703066, y: 2.8537, z: 4.878362}
+--- !u!95 &8462357544787554597
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3621352505534948918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 717797de83c77ea449bb97b373354349, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

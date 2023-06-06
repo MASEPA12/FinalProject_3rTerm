@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     public bool isGameOver = false;
     public bool isWin = false;
-    private bool isGamePause = false;
 
     //Scene played
     Scene currentScene;
@@ -28,7 +27,6 @@ public class GameManager : MonoBehaviour
         if (sharedInstance == null)
         {
             sharedInstance = this;
-            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -38,11 +36,9 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        //InitiateValues();
         score = 0;
         isGameOver = false;
         isWin = false;
-        //foodCounterSlider.interactable = false; //we lock the interactable option of the food counter slider
         currentScene = SceneManager.GetActiveScene();
         MusicManager.sharedInstance.LevelMusic(currentScene.buildIndex);
     }
@@ -82,14 +78,4 @@ public class GameManager : MonoBehaviour
         scoreText.text = $"{score}";
     }
 
-    private void TogglePauseGame() {
-        isGamePause = !isGamePause;
-        if (isGamePause)
-        {
-            Time.timeScale = 0f;
-        }
-        else {
-            Time.timeScale = 0f;
-        }
-    }
 }

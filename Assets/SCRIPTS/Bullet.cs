@@ -28,9 +28,6 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        //Applied Force
-        //rb.AddRelativeForce(transform.forward * forwardAttackForce, ForceMode.Impulse);
-        //rigidbody.AddForce(transform.up * upAttackForce, ForceMode.Impulse);
         Invoke("SetInactive", inactiveTimer);
     }
 
@@ -41,8 +38,6 @@ public class Bullet : MonoBehaviour
             Vector3 pushAway = (collision.gameObject.transform.position - transform.position).normalized; //Get direction back to be pushed
             playerCon.takeDamage(damage, knockback, pushAway);
         }
-
-        //gameObject.SetActive(false); //set inactive if collides
     }
 
     private void SetInactive() {

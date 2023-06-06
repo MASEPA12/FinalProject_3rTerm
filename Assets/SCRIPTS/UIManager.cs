@@ -79,14 +79,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*
     //Function that loads de progress
     public void LoadProgres() {
-        if (inputField.text == "" && inputField.placeholder.GetComponent<TextMeshProUGUI>().text == PlayerPrefs.GetString("USERNAME")) {
-            DataPersistence.sharedInstance.completedLevels = PlayerPrefs.GetInt("LEVELS");
-        }
+         DataPersistence.sharedInstance.completedLevels = PlayerPrefs.GetInt("LEVELS",0);
+
     }
-    */
 
     //Function that Quits the Game
     public void ExitGame() {
