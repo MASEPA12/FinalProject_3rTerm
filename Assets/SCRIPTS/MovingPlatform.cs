@@ -10,7 +10,6 @@ public class MovingPlatform : MonoBehaviour
         Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Entras");
             other.transform.parent.SetParent(transform);
         }
     }
@@ -19,7 +18,6 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Sales");
             other.transform.parent.SetParent(null);
         }
     }

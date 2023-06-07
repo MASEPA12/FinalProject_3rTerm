@@ -38,5 +38,4 @@ public class RecollectableMovement : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
     }
-
 }

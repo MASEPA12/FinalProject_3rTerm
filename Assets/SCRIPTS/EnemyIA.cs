@@ -38,7 +38,6 @@ public class EnemyIA : MonoBehaviour
     [SerializeField] private GameObject item;
     [SerializeField] private Transform itemSpawnPos;
 
-    //
     private Animator enemyAnimator;
 
     private void Awake()
@@ -144,7 +143,6 @@ public class EnemyIA : MonoBehaviour
         {
             enemyAnimator.SetBool("isDead", true);
 
-            //play particle explosion
             DropItem();
             Destroy(gameObject); //Destroy enemy
         }
@@ -153,13 +151,13 @@ public class EnemyIA : MonoBehaviour
     //Coroutine that manages the attack cooldown
     private IEnumerator AttackCooldown() {   
         yield return new WaitForSeconds(attackCooldownTimer);
-        Debug.Log("Preparese para la ostia");
         canAttack = true;
     }
 
     private void DropItem() {
         float prob = Random.Range(0f, 1f);
         Vector3 itemSpawn = new Vector3(itemSpawnPos.transform.position.x, itemSpawnPos.transform.position.y, itemSpawnPos.transform.position.z);
+        //Probability that the item drops
         if (prob > 0.3f) {
             Instantiate(item, itemSpawn, Quaternion.identity);
         }
