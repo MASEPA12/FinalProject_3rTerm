@@ -6537,7 +6537,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timeCounterPoweUpSlider
       value: 
-      objectReference: {fileID: 1225243394}
+      objectReference: {fileID: 1205330827}
     - target: {fileID: 4232578523053368123, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: retryText
@@ -8559,7 +8559,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940482986}
-  m_LocalRotation: {x: -0.0000000049861373, y: 0.95709205, z: -0.28978413, w: -0.000000016468093}
+  m_LocalRotation: {x: 0.000000004986136, y: 0.95709205, z: -0.28978413, w: 0.00000001646809}
   m_LocalPosition: {x: 0, y: 6.65, z: 18.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9855,9 +9855,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1876807199}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1225243394 stripped
+--- !u!114 &1205330827 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7217122823118360375, guid: f289864e7d5208c44a8d42a632a04b6e,
+  m_CorrespondingSourceObject: {fileID: 4901637744311606739, guid: f289864e7d5208c44a8d42a632a04b6e,
     type: 3}
   m_PrefabInstance: {fileID: 1023807610}
   m_PrefabAsset: {fileID: 0}
@@ -12772,7 +12772,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038318121}
-  m_LocalRotation: {x: -0.0000000049861373, y: 0.95709205, z: -0.28978413, w: -0.000000016468093}
+  m_LocalRotation: {x: 0.000000004986136, y: 0.95709205, z: -0.28978413, w: 0.00000001646809}
   m_LocalPosition: {x: 0, y: 6.65, z: 18.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

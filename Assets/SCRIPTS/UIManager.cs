@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GetUsername();
+        MusicManager.sharedInstance.MenuMusic();
     }
 
     public void SaveUsername() {

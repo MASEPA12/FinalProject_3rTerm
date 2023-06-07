@@ -8,18 +8,17 @@ using UnityEngine.UI;
 public class PowerUp : MonoBehaviour
 {
     //scripts conections
-    public PlayerMovement playerMovementScript;
+    private PlayerMovement playerMovementScript;
 
     //counter power ups
     private float time;
     [SerializeField] private Slider timeCounterPoweUpSlider;
-    [SerializeField] public GameObject counterSliderPanel;
+    [SerializeField] private GameObject counterSliderPanel;
 
     //power up bools 
     public bool hasPowerUp = false; //checks if player already has a powerup
     public bool isBig = false; //Powerup that makes big the player
     public bool isFast = false; //Powerup that speed up the player
-    [SerializeField] private GameObject sliderPanelGreen;
 
     void Start()
     {
@@ -83,10 +82,10 @@ public class PowerUp : MonoBehaviour
 
         hasPowerUp = true;
         isFast = true;
-        sliderPanelGreen.SetActive(true);
+        counterSliderPanel.SetActive(true);
 
         time = durationOfPowerUp;
-        StartCoroutine(Counter(timeCounterPoweUpSlider, sliderPanelGreen, 2));
+        StartCoroutine(Counter(timeCounterPoweUpSlider, counterSliderPanel, 2));
 
         yield return new WaitForSeconds(durationOfPowerUp);
 

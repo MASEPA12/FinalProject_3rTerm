@@ -2076,18 +2076,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2019819647}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &210816610 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7217122823118360375, guid: f289864e7d5208c44a8d42a632a04b6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 7217122822924353877}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &232132340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7582377218348700135, guid: 68504f81517ebc347b26cd82f3775b9c,
@@ -16019,7 +16007,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timeCounterPoweUpSlider
       value: 
-      objectReference: {fileID: 210816610}
+      objectReference: {fileID: 7217122822924353881}
     - target: {fileID: 3483601922851690455, guid: 06e34804d0f9a2c43a643b00b3dff529,
         type: 3}
       propertyPath: maxDistance
@@ -21536,6 +21524,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 550344071}
     m_Modifications:
+    - target: {fileID: 3226056999031457887, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044403226787200562, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044403226787200562, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217122822233723410, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7217122822233723410, guid: f289864e7d5208c44a8d42a632a04b6e,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -21821,6 +21829,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8131858029315693745, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255119684751355759, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.4999847
+      objectReference: {fileID: 0}
+    - target: {fileID: 8912366907202954630, guid: f289864e7d5208c44a8d42a632a04b6e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f289864e7d5208c44a8d42a632a04b6e, type: 3}
 --- !u!114 &7217122822924353878 stripped
@@ -21857,6 +21880,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7217122822924353881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4901637744311606739, guid: f289864e7d5208c44a8d42a632a04b6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7217122822924353877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7909446852256478851
