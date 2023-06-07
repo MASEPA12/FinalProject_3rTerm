@@ -27,7 +27,7 @@ public class PlayerLife : MonoBehaviour
     public Image[] hearts;
 
     //script conections
-    public PlayerMovement playerMovementScript;
+    private PlayerMovement playerMovementScript;
 
     
 

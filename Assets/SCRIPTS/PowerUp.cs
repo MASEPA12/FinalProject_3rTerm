@@ -37,7 +37,7 @@ public class PowerUp : MonoBehaviour
             slider.value = time;
 
             //as soon as the time is over, restablish the values
-            if (time == 0)
+            if (time <= 0)
             {
                 panelOfTheSlider.SetActive(false);
                 if (numOfPowerUp == 1)
