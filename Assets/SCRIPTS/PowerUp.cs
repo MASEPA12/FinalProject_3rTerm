@@ -23,6 +23,7 @@ public class PowerUp : MonoBehaviour
     void Start()
     {
         playerMovementScript = FindObjectOfType<PlayerMovement>();
+        counterSliderPanel.SetActive(false);
     }
 
     private IEnumerator Counter(Slider slider, GameObject panelOfTheSlider, int numOfPowerUp)
