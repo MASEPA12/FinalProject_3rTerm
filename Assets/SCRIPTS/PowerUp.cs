@@ -15,10 +15,9 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private Slider timeCounterPoweUpSlider;
     [SerializeField] public GameObject counterSliderPanel;
 
-    //power up bools
+    //power up bools 
+    public bool hasPowerUp = false; //checks if player already has a powerup
     public bool isBig = false; //Powerup that makes big the player
-
-    //power up apple green variables
     public bool isFast = false; //Powerup that speed up the player
     [SerializeField] private GameObject sliderPanelGreen;
 
@@ -62,6 +61,7 @@ public class PowerUp : MonoBehaviour
         playerMovementScript.Scale(2);
         MusicManager.sharedInstance.GiantSound();
 
+        hasPowerUp = true;
         isBig = true;
         counterSliderPanel.SetActive(true);
 
@@ -71,6 +71,7 @@ public class PowerUp : MonoBehaviour
 
         yield return new WaitForSeconds(secondsToWait);
 
+        hasPowerUp = false;
         isBig = false;
     }
 
@@ -80,6 +81,7 @@ public class PowerUp : MonoBehaviour
         playerMovementScript.ChangeSpeed(speed); //double up the speed
         MusicManager.sharedInstance.FastSound();
 
+        hasPowerUp = true;
         isFast = true;
         sliderPanelGreen.SetActive(true);
 
@@ -87,7 +89,8 @@ public class PowerUp : MonoBehaviour
         StartCoroutine(Counter(timeCounterPoweUpSlider, sliderPanelGreen, 2));
 
         yield return new WaitForSeconds(durationOfPowerUp);
- 
+
+        hasPowerUp = false;
         isFast = false;
     }
 }

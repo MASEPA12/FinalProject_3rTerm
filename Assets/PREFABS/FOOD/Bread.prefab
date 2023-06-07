@@ -4870,7 +4870,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4808568890018017546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca345ce07c065cb4c8a61cb26a434709, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb26f3a0198e704c8796b0227e55ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   recollectableParticles: {fileID: 104641786}
@@ -4879,7 +4879,7 @@ MonoBehaviour:
     m_Bits: 64
   sphereRadius: 3
   points: 5
-  hunger: 3
+  hunger: 2
   heal: 0
 --- !u!1 &5754038989627921846
 GameObject:

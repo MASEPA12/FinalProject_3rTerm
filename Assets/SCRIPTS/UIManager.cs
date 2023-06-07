@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -79,10 +80,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    //Function that loads de progress
-    public void LoadProgres() {
+    //Function that loads de level progress
+    public void LoadProgress() {
          DataPersistence.sharedInstance.completedLevels = PlayerPrefs.GetInt("LEVELS",0);
-
     }
 
     //Function that Quits the Game

@@ -4954,18 +4954,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6465062048504382544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca345ce07c065cb4c8a61cb26a434709, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb26f3a0198e704c8796b0227e55ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   recollectableParticles: {fileID: 4301421569734601108}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  sphereRadius: 8
+  sphereRadius: 3
   points: 10
   hunger: 5
   heal: 0
-  playerMovement: {fileID: 0}
 --- !u!1 &7476188577537242881
 GameObject:
   m_ObjectHideFlags: 0

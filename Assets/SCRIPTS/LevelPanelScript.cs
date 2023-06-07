@@ -25,6 +25,10 @@ public class LevelPanelScript : MonoBehaviour
 
         locatorButtonLev2.gameObject.SetActive(false);
         locatorButtonLev3.gameObject.SetActive(false);
+
+        arrowsAreShowing1 = false;
+        arrowsAreShowing2 = false;
+        arrowsAreShowing3 = false;
     }
     void Update()
     {

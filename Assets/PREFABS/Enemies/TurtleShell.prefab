@@ -289,7 +289,7 @@ MonoBehaviour:
   visionRange: 10
   damage: -2
   attackRange: 1
-  knockback: 200
+  knockback: 350
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -300,6 +300,7 @@ MonoBehaviour:
     m_Bits: 64
   item: {fileID: 98779272697355120, guid: 9aec31248de864b47ab2ef5f511d38e6, type: 3}
   itemSpawnPos: {fileID: 4738915871949648293}
+  enemyPoints: 30
 --- !u!54 &2052894797228528419
 Rigidbody:
   m_ObjectHideFlags: 0

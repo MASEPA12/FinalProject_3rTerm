@@ -5,7 +5,7 @@ using UnityEngine;
 /*this script will move the recollectables and the particle effects 
 as well as instantiate some recollectables in random spots */
 
-public class RecollectableMovement : MonoBehaviour
+public class Recollectable : MonoBehaviour
 {
     public ParticleSystem recollectableParticles;
     public LayerMask playerLayer;

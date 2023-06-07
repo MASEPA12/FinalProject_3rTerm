@@ -55,8 +55,6 @@ public class PlayerCollisions : MonoBehaviour
         if (somethingIsOn)
         {
             playerMovementScript.canBeSteady = false;            
-           Debug.Log("SOMETHING IS ON THE PLAYER");
-
         }
         else
         {
@@ -68,7 +66,6 @@ public class PlayerCollisions : MonoBehaviour
         onFloor = Physics.Raycast(transform.position,Vector3.down, out hit,boxColliderPlayer.size.y/2*0.2f);
         if (onFloor)
         {
-            Debug.Log("onFloor");
             playerMovementScript.CanJump(true);
         }
     }

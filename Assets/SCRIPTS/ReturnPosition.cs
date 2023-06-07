@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ Script that returns some object to their initial position when they fall off
+ */
 public class ReturnPosition : MonoBehaviour
 {
     private Vector3 initialPos;

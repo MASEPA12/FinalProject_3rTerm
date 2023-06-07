@@ -38,6 +38,9 @@ public class EnemyIA : MonoBehaviour
     [SerializeField] private GameObject item;
     [SerializeField] private Transform itemSpawnPos;
 
+    //Points
+    [SerializeField] private int enemyPoints = 15;
+
     private Animator enemyAnimator;
 
     private void Awake()
@@ -143,6 +146,7 @@ public class EnemyIA : MonoBehaviour
         {
             enemyAnimator.SetBool("isDead", true);
 
+            GameManager.sharedInstance.UpdateScore(enemyPoints); //get enemy points
             DropItem();
             Destroy(gameObject); //Destroy enemy
         }

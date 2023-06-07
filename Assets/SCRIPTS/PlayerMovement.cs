@@ -12,11 +12,11 @@ interaction with other object
 public class PlayerMovement : MonoBehaviour
 {
     //Consta
-    private const float INITIAL_SPEED = 5f;
+    private const float INITIAL_SPEED = 6f;
     
     //Movement
     private Rigidbody rb;
-    private float walkingForce = INITIAL_SPEED;
+    [SerializeField] private float walkingForce = INITIAL_SPEED;
     [SerializeField] private float jumpingForce = 250f;
     private float gravityModifier = 1.7f;
     private Vector3 gravityForce = new Vector3(0, -9.8f, 0);
@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (other.CompareTag("Collectable")) {
             MusicManager.sharedInstance.RecollectSound();
-            RecollectableMovement collectable = other.GetComponent<RecollectableMovement>(); //Get recollectable information
+            Recollectable collectable = other.GetComponent<Recollectable>(); //Get recollectable information
 
             GameManager.sharedInstance.UpdateScore(collectable.points);
             playerLife.UpdateHunger(collectable.hunger);
@@ -188,14 +188,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);    
         }
 
-        if (other.CompareTag(appleRed) && !powerUpScript.isBig) //if already has powerup cant get another until finish
+        if (other.CompareTag(appleRed) && !powerUpScript.hasPowerUp) //if already has powerup cant get another until finish
         {
             Destroy(other.gameObject);
 
             StartCoroutine(powerUpScript.LocalScaleTransformer(secondsToWaitAppleRed));
         }
 
-        if (other.CompareTag(appleGreen) && !powerUpScript.isFast) //if already has powerup cant get another until finish
+        if (other.CompareTag(appleGreen) && !powerUpScript.hasPowerUp) //if already has powerup cant get another until finish
         {
             Destroy(other.gameObject);
 
@@ -222,16 +222,16 @@ public class PlayerMovement : MonoBehaviour
     //Function that manages the damage done to the player
     public void takeDamage(int damage, float knockback, Vector3 knockbackDir) {
 
-        if (canDamage || powerUpScript.isBig)
+        if (canDamage && !powerUpScript.isBig)
         {
             playerLife.UpdateLife(damage);
             //Apply knockback
             rb.AddForce(Vector3.up, ForceMode.Impulse);
             rb.AddRelativeForce(knockbackDir * knockback, ForceMode.Impulse); //Knockback
             MusicManager.sharedInstance.DamageSound();
+            canDamage = false;
+            StartCoroutine(InvincibleTime());
         }
-        canDamage = false;
-        StartCoroutine(InvincibleTime());
     }
 
     private void OnTriggerExit(Collider other)

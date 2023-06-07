@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         MusicManager.sharedInstance.LoseSound();
         SceneManager.LoadScene(5, LoadSceneMode.Additive);
-        Debug.Log("YOU HAVE LOST");
-
     }
 
     //Function that manages win condition
@@ -61,10 +59,12 @@ public class GameManager : MonoBehaviour
             DataPersistence.sharedInstance.completedLevels = currentScene.buildIndex;
         }
 
+        //Save Progress
+        PlayerPrefs.SetInt("LEVELS",DataPersistence.sharedInstance.completedLevels);
+        
+
         MusicManager.sharedInstance.WinSound();
         SceneManager.LoadScene(4, LoadSceneMode.Additive);
-        Debug.Log("You Won");
-        //Return level menu
     }
 
     //Check if the game is already over

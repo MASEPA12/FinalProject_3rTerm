@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 726556825129599434}
   - component: {fileID: 1932912218127254646}
-  - component: {fileID: 5882212121672760244}
+  - component: {fileID: 8272666032611976399}
   m_Layer: 0
   m_Name: heart
   m_TagString: Collectable
@@ -48,7 +48,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8161552, y: 3.580894, z: 3.9858506}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5882212121672760244
+--- !u!114 &8272666032611976399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 98779272697355120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca345ce07c065cb4c8a61cb26a434709, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb26f3a0198e704c8796b0227e55ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   recollectableParticles: {fileID: 6299108190274687714}
@@ -68,7 +68,6 @@ MonoBehaviour:
   points: 1
   hunger: 1
   heal: 1
-  playerMovement: {fileID: 0}
 --- !u!1 &2382469734714875937
 GameObject:
   m_ObjectHideFlags: 0
